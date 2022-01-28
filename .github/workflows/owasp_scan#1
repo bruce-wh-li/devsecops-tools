@@ -7,7 +7,7 @@ jobs:
     uses: bcgov/pipeline-templates/.github/workflows/owasp-scan.yaml@main
     with:
       ZAP_SCAN_TYPE: 'base' # Accepted values are base and full.
-      ZAP_TARGET_URL: http://www.itsecgames.com
+      ZAP_TARGET_URL: https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/
       ZAP_DURATION: '2'
       ZAP_MAX_DURATION: '5'
       ZAP_GCP_PUBLISH: true
