@@ -932,12 +932,12 @@ Base64 encoded data was disclosed by the application/web server. Note: in the in
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: `3Aray7rBlcvN8amq4CRb05s45SzG-neYnb`
+  * Evidence: `3AS6KQSD-DB6rpUL0OMBPnniZyzZr4jZvR`
 * URL: https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: `3Ay9f4UxFUI3KaNtCOitI0Kq9ygJ1iXmIA`
+  * Evidence: `3AZfFqqeeO9KfUPrBShV3DNFjzMb_o-gfm`
 * URL: https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/9b704c621adc8a1dcae59307e0023894dbfd2413.css%3Fmeteor_css_resource=true
   * Method: `GET`
   * Parameter: ``
@@ -957,7 +957,7 @@ Base64 encoded data was disclosed by the application/web server. Note: in the in
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: `3AF3T1EGVvIB23mfwah-xCLIWLcx0CfYVo`
+  * Evidence: `3AkgFauTzNxQyJzzDYQDhUUCFUKojGNFkj`
 * URL: https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/sitemap.xml
   * Method: `GET`
   * Parameter: ``
