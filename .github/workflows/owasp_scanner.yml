@@ -9,9 +9,9 @@ jobs:
       ZAP_SCAN_TYPE: 'base' # Accepted values are base and full.
       ZAP_TARGET_URL: https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/
       ZAP_DURATION: '2'
-      ZAP_MAX_DURATION: '4'
-      ZAP_GCP_PUBLISH: false
-      # ZAP_GCP_PROJECT: phronesis-310405  # Only required if ZAP_GCP_PUBLISH is TRUE
+      ZAP_MAX_DURATION: '5'
+      ZAP_GCP_PUBLISH: true
+      ZAP_GCP_PROJECT: owasp-scan-test  # Only required if ZAP_GCP_PUBLISH is TRUE
       # ZAP_GCP_BUCKET: 'zap-scan-results' # Only required if ZAP_GCP_PUBLISH is TRUE
     #secrets:
       # GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }} # Only required if ZAP_GCP_PUBLISH is TRUE
