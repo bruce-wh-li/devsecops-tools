@@ -1,0 +1,10 @@
+name: nmap-vuln-scan
+on:
+  workflow_dispatch:
+  push:
+jobs:
+  nmap-scan:
+    uses: bruce-wh-li/security-pipeline-templates/.github/workflows/trivy-container.yaml@main
+    with:
+      IMAGE: gregnrobinson/bcgov-nginx-demo
+      TAG: latest
