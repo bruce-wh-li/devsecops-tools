@@ -1,6 +1,6 @@
 {
 	"@version": "2.11.1",
-	"@generated": "Sat, 29 Jan 2022 04:17:20",
+	"@generated": "Sat, 29 Jan 2022 04:18:24",
 	"site":[ 
 		{
 			"@name": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca",
@@ -793,14 +793,14 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3AjPnMvWNOh34J_jTWFjVXMTSBLocH-KCF"
+							"evidence": "3AqRtnFCyg_j4wrn3BSY7sUFpfi7y7NIRU"
 						},
 						{
 							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3A5ODEajxT1DHYF0PWUwQZRG8y1PFJOgFK"
+							"evidence": "3AwfIj47v8UWMYWB6dtt2ZcpoHn3GFw5YB"
 						},
 						{
 							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/9b704c621adc8a1dcae59307e0023894dbfd2413.css?meteor_css_resource=true",
@@ -821,7 +821,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3AJQudCBVdnfA7PNvYY7J5G3HuM1iE5Kv5"
+							"evidence": "3AxPR67w_QpqfZFzsU-Xy3M6QUXqkB6K2e"
 						},
 						{
 							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/sitemap.xml",
@@ -833,7 +833,7 @@
 					],
 					"count": "6",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>\uFFFD\\x0008\u03DC\uFFFD\uFFFD4\uFFFDw\uFFFD\uFFFD\uFFFDMacUs\\x0013H\\x0012\uFFFDp\uFFFD\\x0008</p>",
+					"otherinfo": "<p>\uFFFD</p><p>\uFFFD\uFFFDqB\uFFFD\\x000f\uFFFD\uFFFD</p><p>\uFFFD\uFFFD\\x0014\uFFFD\uFFFD\uFFFD\\x0005\uFFFD\uFFFD\uFFFD\u02F3HE</p>",
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
@@ -976,7 +976,7 @@
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "24"
+					"sourceid": "26"
 				},
 				{
 					"pluginid": "10049",
