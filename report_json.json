@@ -1,6 +1,6 @@
 {
 	"@version": "2.11.1",
-	"@generated": "Sat, 29 Jan 2022 03:43:27",
+	"@generated": "Sat, 29 Jan 2022 03:57:43",
 	"site":[ 
 		{
 			"@name": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca",
@@ -8,6 +8,32 @@
 			"@port": "443",
 			"@ssl": "true",
 			"alerts": [ 
+				{
+					"pluginid": "90022",
+					"alertRef": "90022",
+					"alert": "Application Error Disclosure",
+					"name": "Application Error Disclosure",
+					"riskcode": "2",
+					"confidence": "2",
+					"riskdesc": "Medium (Medium)",
+					"desc": "<p>This page contains an error/warning message that may disclose sensitive information like the location of the file that produced the unhandled exception. This information can be used to launch further attacks against the web application. The alert could be a false positive if the error message is found inside a documentation page.</p>",
+					"instances":[ 
+						{
+							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/c029a6b2088014967102f8efaaf260dc7e0d3df5.js?meteor_js_resource=true",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Internal Server Error"
+						}
+					],
+					"count": "1",
+					"solution": "<p>Review the source code of this page. Implement custom error pages. Consider implementing a mechanism to provide a unique error reference/identifier to the client (browser) while logging the details on the server side and not exposing them to the user.</p>",
+					"otherinfo": "",
+					"reference": "",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "30"
+				},
 				{
 					"pluginid": "10038",
 					"alertRef": "10038",
@@ -233,6 +259,32 @@
 					"sourceid": "1"
 				},
 				{
+					"pluginid": "10110",
+					"alertRef": "10110",
+					"alert": "Dangerous JS Functions",
+					"name": "Dangerous JS Functions",
+					"riskcode": "1",
+					"confidence": "1",
+					"riskdesc": "Low (Low)",
+					"desc": "<p>A dangerous JS function seems to be in use that would leave the site vulnerable.</p>",
+					"instances":[ 
+						{
+							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/c029a6b2088014967102f8efaaf260dc7e0d3df5.js?meteor_js_resource=true",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "eval"
+						}
+					],
+					"count": "1",
+					"solution": "<p>See the references for security advice on the use of these functions.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://angular.io/guide/security</p>",
+					"cweid": "749",
+					"wascid": "-1",
+					"sourceid": "30"
+				},
+				{
 					"pluginid": "10015",
 					"alertRef": "10015",
 					"alert": "Incomplete or No Cache-control Header Set",
@@ -290,6 +342,13 @@
 							"evidence": ""
 						},
 						{
+							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/c029a6b2088014967102f8efaaf260dc7e0d3df5.js?meteor_js_resource=true",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
 							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -297,13 +356,39 @@
 							"evidence": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy</p><p>https://developers.google.com/web/updates/2018/06/feature-policy</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
 					"sourceid": "1"
+				},
+				{
+					"pluginid": "2",
+					"alertRef": "2",
+					"alert": "Private IP Disclosure",
+					"name": "Private IP Disclosure",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>A private IP (such as 10.x.x.x, 172.x.x.x, 192.168.x.x) or an Amazon EC2 private hostname (for example, ip-10-0-56-78) has been found in the HTTP response body. This information might be helpful for further attacks targeting internal systems.</p>",
+					"instances":[ 
+						{
+							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/c029a6b2088014967102f8efaaf260dc7e0d3df5.js?meteor_js_resource=true",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "10.0.2.2"
+						}
+					],
+					"count": "1",
+					"solution": "<p>Remove the private IP address from the HTTP response body.  For comments, use JSP/ASP/PHP comment instead of HTML/JavaScript comment which can be seen by client browsers.</p>",
+					"otherinfo": "<p>10.0.2.2</p><p>10.0.0.0</p><p>172.16.0.0</p><p>192.168.0.0</p><p>10.0.0.30</p><p>192.168.1.1:3000</p><p></p>",
+					"reference": "<p>https://tools.ietf.org/html/rfc1918</p>",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "30"
 				},
 				{
 					"pluginid": "10037",
@@ -767,14 +852,14 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3AMNSbW8GXtDO5BdX7WT9qKcbToUZKXjjB"
+							"evidence": "3AXj-78nTJqzAIxmBzjFSHl4mwCYO4omqZ"
 						},
 						{
 							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3A_eavS8JKvmpNFy--sTcvh-z34J1oYJNG"
+							"evidence": "3A84svQcRD37HCOKGiHaRlkjoGfmFdS55t"
 						},
 						{
 							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/9b704c621adc8a1dcae59307e0023894dbfd2413.css?meteor_css_resource=true",
@@ -791,11 +876,18 @@
 							"evidence": "org/TR/2001/REC-SVG-20010904/DTD/svg10"
 						},
 						{
+							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/c029a6b2088014967102f8efaaf260dc7e0d3df5.js?meteor_js_resource=true",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "nnrrrmrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrmmmmmmmnNmmmmmmrrmmNmmmmrr1111111111"
+						},
+						{
 							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/robots.txt",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3As6RDGtZoXS8g1LnSALQvFtf15BfjBAM-"
+							"evidence": "3APQ_1Tff_uDlqB4XzmRWnk2KASrIFYxS3"
 						},
 						{
 							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/sitemap.xml",
@@ -805,9 +897,9 @@
 							"evidence": "22autoupdateVersionRefreshable"
 						}
 					],
-					"count": "6",
+					"count": "7",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>\uFFFD\\x0003\rI\uFFFD\uFFFD\\x0019{C;\uFFFD]_\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDm:\\x0014d\uFFFD\uFFFD</p>",
+					"otherinfo": "<p>\uFFFD\\x0005\uFFFD\uFFFD\uFFFD'L\uFFFD\uFFFD\\x0000\uFFFDf\\x00078\uFFFDHyx\uFFFD\\x0000\uFFFD;\uFFFD&\uFFFD</p>",
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
@@ -831,6 +923,83 @@
 							"evidence": "from"
 						},
 						{
+							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/c029a6b2088014967102f8efaaf260dc7e0d3df5.js?meteor_js_resource=true",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "admin"
+						},
+						{
+							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/c029a6b2088014967102f8efaaf260dc7e0d3df5.js?meteor_js_resource=true",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "administrator"
+						},
+						{
+							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/c029a6b2088014967102f8efaaf260dc7e0d3df5.js?meteor_js_resource=true",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "bug"
+						},
+						{
+							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/c029a6b2088014967102f8efaaf260dc7e0d3df5.js?meteor_js_resource=true",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "db"
+						},
+						{
+							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/c029a6b2088014967102f8efaaf260dc7e0d3df5.js?meteor_js_resource=true",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "from"
+						},
+						{
+							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/c029a6b2088014967102f8efaaf260dc7e0d3df5.js?meteor_js_resource=true",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "query"
+						},
+						{
+							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/c029a6b2088014967102f8efaaf260dc7e0d3df5.js?meteor_js_resource=true",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "select"
+						},
+						{
+							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/c029a6b2088014967102f8efaaf260dc7e0d3df5.js?meteor_js_resource=true",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "TODO"
+						},
+						{
+							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/c029a6b2088014967102f8efaaf260dc7e0d3df5.js?meteor_js_resource=true",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user"
+						},
+						{
+							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/c029a6b2088014967102f8efaaf260dc7e0d3df5.js?meteor_js_resource=true",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "username"
+						},
+						{
+							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/c029a6b2088014967102f8efaaf260dc7e0d3df5.js?meteor_js_resource=true",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Where"
+						},
+						{
 							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -838,7 +1007,7 @@
 							"evidence": "from"
 						}
 					],
-					"count": "2",
+					"count": "13",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
 					"otherinfo": "<p>The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"<script>/* eslint-disable */</p><p></p><p>'use strict';</p><p>(function() {</p><p>\tvar debounce = function debounce(func, wait, immediate) {</p><p>\t\tvar timeo\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
@@ -950,7 +1119,7 @@
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "24"
+					"sourceid": "26"
 				},
 				{
 					"pluginid": "10049",

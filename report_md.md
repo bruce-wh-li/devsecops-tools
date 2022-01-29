@@ -6,8 +6,8 @@
 | Risk Level | Number of Alerts |
 | --- | --- |
 | High | 0 |
-| Medium | 4 |
-| Low | 9 |
+| Medium | 5 |
+| Low | 11 |
 | Informational | 6 |
 
 
@@ -17,6 +17,7 @@
 
 | Name | Risk Level | Number of Instances |
 | --- | --- | --- |
+| Application Error Disclosure | Medium | 1 |
 | Content Security Policy (CSP) Header Not Set | Medium | 2 |
 | Missing Anti-clickjacking Header | Medium | 2 |
 | Sub Resource Integrity Attribute Missing | Medium | 2 |
@@ -24,14 +25,16 @@
 | Cookie Without Secure Flag | Low | 2 |
 | Cookie with SameSite Attribute None | Low | 2 |
 | Cookie without SameSite Attribute | Low | 2 |
+| Dangerous JS Functions | Low | 1 |
 | Incomplete or No Cache-control Header Set | Low | 3 |
-| Permissions Policy Header Not Set | Low | 2 |
+| Permissions Policy Header Not Set | Low | 3 |
+| Private IP Disclosure | Low | 1 |
 | Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s) | Low | 3 |
 | Strict-Transport-Security Header Not Set | Low | 11 |
 | Timestamp Disclosure - Unix | Low | 28 |
 | X-Content-Type-Options Header Missing | Low | 11 |
-| Base64 Disclosure | Informational | 6 |
-| Information Disclosure - Suspicious Comments | Informational | 2 |
+| Base64 Disclosure | Informational | 7 |
+| Information Disclosure - Suspicious Comments | Informational | 13 |
 | Modern Web Application | Informational | 2 |
 | Non-Storable Content | Informational | 2 |
 | Storable and Cacheable Content | Informational | 3 |
@@ -43,6 +46,39 @@
 ## Alert Detail
 
 
+
+### [ Application Error Disclosure ](https://www.zaproxy.org/docs/alerts/90022/)
+
+
+
+##### Medium (Medium)
+
+### Description
+
+This page contains an error/warning message that may disclose sensitive information like the location of the file that produced the unhandled exception. This information can be used to launch further attacks against the web application. The alert could be a false positive if the error message is found inside a documentation page.
+
+* URL: https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/c029a6b2088014967102f8efaaf260dc7e0d3df5.js%3Fmeteor_js_resource=true
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `Internal Server Error`
+
+Instances: 1
+
+### Solution
+
+Review the source code of this page. Implement custom error pages. Consider implementing a mechanism to provide a unique error reference/identifier to the client (browser) while logging the details on the server side and not exposing them to the user.
+
+### Reference
+
+
+
+#### CWE Id: [ 200 ](https://cwe.mitre.org/data/definitions/200.html)
+
+
+#### WASC Id: 13
+
+#### Source ID: 3
 
 ### [ Content Security Policy (CSP) Header Not Set ](https://www.zaproxy.org/docs/alerts/10038/)
 
@@ -327,6 +363,39 @@ Ensure that the SameSite attribute is set to either 'lax' or ideally 'strict' fo
 
 #### Source ID: 3
 
+### [ Dangerous JS Functions ](https://www.zaproxy.org/docs/alerts/10110/)
+
+
+
+##### Low (Low)
+
+### Description
+
+A dangerous JS function seems to be in use that would leave the site vulnerable.
+
+* URL: https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/c029a6b2088014967102f8efaaf260dc7e0d3df5.js%3Fmeteor_js_resource=true
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `eval`
+
+Instances: 1
+
+### Solution
+
+See the references for security advice on the use of these functions.
+
+### Reference
+
+
+* [ https://angular.io/guide/security ](https://angular.io/guide/security)
+
+
+#### CWE Id: [ 749 ](https://cwe.mitre.org/data/definitions/749.html)
+
+
+#### Source ID: 3
+
 ### [ Incomplete or No Cache-control Header Set ](https://www.zaproxy.org/docs/alerts/10015/)
 
 
@@ -388,13 +457,18 @@ Permissions Policy Header is an added layer of security that helps to restrict f
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
+* URL: https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/c029a6b2088014967102f8efaaf260dc7e0d3df5.js%3Fmeteor_js_resource=true
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: ``
 * URL: https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/sitemap.xml
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
 
-Instances: 2
+Instances: 3
 
 ### Solution
 
@@ -414,6 +488,41 @@ Ensure that your web server, application server, load balancer, etc. is configur
 
 
 #### WASC Id: 15
+
+#### Source ID: 3
+
+### [ Private IP Disclosure ](https://www.zaproxy.org/docs/alerts/2/)
+
+
+
+##### Low (Medium)
+
+### Description
+
+A private IP (such as 10.x.x.x, 172.x.x.x, 192.168.x.x) or an Amazon EC2 private hostname (for example, ip-10-0-56-78) has been found in the HTTP response body. This information might be helpful for further attacks targeting internal systems.
+
+* URL: https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/c029a6b2088014967102f8efaaf260dc7e0d3df5.js%3Fmeteor_js_resource=true
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `10.0.2.2`
+
+Instances: 1
+
+### Solution
+
+Remove the private IP address from the HTTP response body.  For comments, use JSP/ASP/PHP comment instead of HTML/JavaScript comment which can be seen by client browsers.
+
+### Reference
+
+
+* [ https://tools.ietf.org/html/rfc1918 ](https://tools.ietf.org/html/rfc1918)
+
+
+#### CWE Id: [ 200 ](https://cwe.mitre.org/data/definitions/200.html)
+
+
+#### WASC Id: 13
 
 #### Source ID: 3
 
@@ -823,12 +932,12 @@ Base64 encoded data was disclosed by the application/web server. Note: in the in
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: `3AMNSbW8GXtDO5BdX7WT9qKcbToUZKXjjB`
+  * Evidence: `3AXj-78nTJqzAIxmBzjFSHl4mwCYO4omqZ`
 * URL: https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: `3A_eavS8JKvmpNFy--sTcvh-z34J1oYJNG`
+  * Evidence: `3A84svQcRD37HCOKGiHaRlkjoGfmFdS55t`
 * URL: https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/9b704c621adc8a1dcae59307e0023894dbfd2413.css%3Fmeteor_css_resource=true
   * Method: `GET`
   * Parameter: ``
@@ -839,18 +948,23 @@ Base64 encoded data was disclosed by the application/web server. Note: in the in
   * Parameter: ``
   * Attack: ``
   * Evidence: `org/TR/2001/REC-SVG-20010904/DTD/svg10`
+* URL: https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/c029a6b2088014967102f8efaaf260dc7e0d3df5.js%3Fmeteor_js_resource=true
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `nnrrrmrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrmmmmmmmnNmmmmmmrrmmNmmmmrr1111111111`
 * URL: https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/robots.txt
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: `3As6RDGtZoXS8g1LnSALQvFtf15BfjBAM-`
+  * Evidence: `3APQ_1Tff_uDlqB4XzmRWnk2KASrIFYxS3`
 * URL: https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/sitemap.xml
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: `22autoupdateVersionRefreshable`
 
-Instances: 6
+Instances: 7
 
 ### Solution
 
@@ -884,13 +998,68 @@ The response appears to contain suspicious comments which may help an attacker. 
   * Parameter: ``
   * Attack: ``
   * Evidence: `from`
+* URL: https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/c029a6b2088014967102f8efaaf260dc7e0d3df5.js%3Fmeteor_js_resource=true
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `admin`
+* URL: https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/c029a6b2088014967102f8efaaf260dc7e0d3df5.js%3Fmeteor_js_resource=true
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `administrator`
+* URL: https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/c029a6b2088014967102f8efaaf260dc7e0d3df5.js%3Fmeteor_js_resource=true
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `bug`
+* URL: https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/c029a6b2088014967102f8efaaf260dc7e0d3df5.js%3Fmeteor_js_resource=true
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `db`
+* URL: https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/c029a6b2088014967102f8efaaf260dc7e0d3df5.js%3Fmeteor_js_resource=true
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `from`
+* URL: https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/c029a6b2088014967102f8efaaf260dc7e0d3df5.js%3Fmeteor_js_resource=true
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `query`
+* URL: https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/c029a6b2088014967102f8efaaf260dc7e0d3df5.js%3Fmeteor_js_resource=true
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `select`
+* URL: https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/c029a6b2088014967102f8efaaf260dc7e0d3df5.js%3Fmeteor_js_resource=true
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `TODO`
+* URL: https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/c029a6b2088014967102f8efaaf260dc7e0d3df5.js%3Fmeteor_js_resource=true
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `user`
+* URL: https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/c029a6b2088014967102f8efaaf260dc7e0d3df5.js%3Fmeteor_js_resource=true
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `username`
+* URL: https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/c029a6b2088014967102f8efaaf260dc7e0d3df5.js%3Fmeteor_js_resource=true
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `Where`
 * URL: https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/sitemap.xml
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: `from`
 
-Instances: 2
+Instances: 13
 
 ### Solution
 
