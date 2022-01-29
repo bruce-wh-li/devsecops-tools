@@ -4,7 +4,6 @@ on:
   push:
 jobs:
   nmap-scan:
-    uses: bruce-wh-li/security-pipeline-templates/.github/workflows/trivy-container.yaml@main
-    with:
-      IMAGE: gregnrobinson/bcgov-nginx-demo
-      TAG: latest
+    run: 
+    nmap -sV --script http-vuln-cve2013-0156 <target>    
+
