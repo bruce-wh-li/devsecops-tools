@@ -5,7 +5,7 @@ def addition(number1, number2):
 
 # Define area function with return statement
 def area(radius):
-    result = 3.14 * radius * radius
+    result = 3.14159 * radius * radius
     return result  
 
 # Call addition function
