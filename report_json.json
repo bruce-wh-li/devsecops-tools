@@ -1,6 +1,6 @@
 {
 	"@version": "2.11.1",
-	"@generated": "Mon, 31 Jan 2022 18:31:10",
+	"@generated": "Mon, 31 Jan 2022 18:33:45",
 	"site":[ 
 		{
 			"@name": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca",
@@ -793,14 +793,14 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3ABabA9C3ONJp7oY89ZJTi3sVhOX4Bx5UR"
+							"evidence": "3Aieh0S7D2Rn1hQ4JL7PqEzPpG2gsnI-wt"
 						},
 						{
 							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3A5IIu6C7ohFzlYbSS9faaxp0zzWO05aQ7"
+							"evidence": "3AoF-_jUkJe0hgV5fY4_w5xuVtu8nCyZ0P"
 						},
 						{
 							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/9b704c621adc8a1dcae59307e0023894dbfd2413.css?meteor_css_resource=true",
@@ -821,7 +821,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3ArA_lzkGOjRVazQUEKFbfPPDg8lWzuLU1"
+							"evidence": "3AGF-w4zC9X7xvHMRCfMH79Lsca-R3WR5e"
 						},
 						{
 							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/sitemap.xml",
@@ -833,7 +833,7 @@
 					],
 					"count": "6",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>\uFFFD\\x0000Zl\\x000fB\uFFFD\uFFFDI\uFFFD\uFFFD\\x0018\uFFFD\uFFFDIN-\uFFFDV\\x0013\uFFFD\uFFFD\\x001cyQ</p>",
+					"otherinfo": "<p>\uFFFD\\x0008\uFFFD\uFFFDD\uFFFD\\x000fdg\uFFFD\\x00148$\uFFFD\u03E8L\u03E4m\uFFFD\uFFFDr>\uFFFD</p>",
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
@@ -976,7 +976,7 @@
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "24"
+					"sourceid": "26"
 				},
 				{
 					"pluginid": "10049",
