@@ -6,7 +6,7 @@
 | Risk Level | Number of Alerts |
 | --- | --- |
 | High | 0 |
-| Medium | 4 |
+| Medium | 5 |
 | Low | 9 |
 | Informational | 6 |
 
@@ -17,6 +17,7 @@
 
 | Name | Risk Level | Number of Instances |
 | --- | --- | --- |
+| Application Error Disclosure | Medium | 1 |
 | Content Security Policy (CSP) Header Not Set | Medium | 2 |
 | Missing Anti-clickjacking Header | Medium | 2 |
 | Sub Resource Integrity Attribute Missing | Medium | 2 |
@@ -43,6 +44,39 @@
 ## Alert Detail
 
 
+
+### [ Application Error Disclosure ](https://www.zaproxy.org/docs/alerts/90022/)
+
+
+
+##### Medium (Medium)
+
+### Description
+
+This page contains an error/warning message that may disclose sensitive information like the location of the file that produced the unhandled exception. This information can be used to launch further attacks against the web application. The alert could be a false positive if the error message is found inside a documentation page.
+
+* URL: https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/c029a6b2088014967102f8efaaf260dc7e0d3df5.js%3Fmeteor_js_resource=true
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `Internal Server Error`
+
+Instances: 1
+
+### Solution
+
+Review the source code of this page. Implement custom error pages. Consider implementing a mechanism to provide a unique error reference/identifier to the client (browser) while logging the details on the server side and not exposing them to the user.
+
+### Reference
+
+
+
+#### CWE Id: [ 200 ](https://cwe.mitre.org/data/definitions/200.html)
+
+
+#### WASC Id: 13
+
+#### Source ID: 3
 
 ### [ Content Security Policy (CSP) Header Not Set ](https://www.zaproxy.org/docs/alerts/10038/)
 
@@ -823,12 +857,12 @@ Base64 encoded data was disclosed by the application/web server. Note: in the in
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: `3ABMIB5EWd3y-qZy3ijryuZQEyUgZ8BZlV`
+  * Evidence: `3ANtM7e0JTNtlLHWOVbKLsIazg9IPId59p`
 * URL: https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: `3A0LhmdzhOeiyr8pczb3Uj7igwt9_IQHAd`
+  * Evidence: `3A7q1fiMk3ephINPUVGE4v5-weiJrQf8JX`
 * URL: https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/9b704c621adc8a1dcae59307e0023894dbfd2413.css%3Fmeteor_css_resource=true
   * Method: `GET`
   * Parameter: ``
@@ -843,7 +877,7 @@ Base64 encoded data was disclosed by the application/web server. Note: in the in
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: `3ANlDx0EURcZB0zZPxOvZUlEoB5sJpqlQl`
+  * Evidence: `3A6v5JrLvfHBt8Cdz6JNixnWW90zN42QM8`
 * URL: https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/sitemap.xml
   * Method: `GET`
   * Parameter: ``
