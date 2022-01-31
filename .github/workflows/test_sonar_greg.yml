@@ -8,7 +8,7 @@ jobs:
     uses: bruce-wh-li/security-pipeline-templates/.github/workflows/sonar-scanner.yaml@main
     with:
       ORG: ci-testing
-      PROJECT_KEY: bcgov-pipeline-templates
+      PROJECT_KEY: bcgov_platform-services-registry
       URL: https://sonarcloud.io
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
