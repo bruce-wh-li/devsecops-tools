@@ -1,4 +1,4 @@
-name: owasp-scan
+name: owasp-scan-demo-4-Nick
 on:
   workflow_dispatch:
   push:
