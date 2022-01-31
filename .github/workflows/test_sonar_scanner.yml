@@ -1,20 +1,4 @@
-#name: sonar-repo-scan
-#on:
-#  workflow_dispatch:
-#  push:
-#jobs:
-#  sonar-repo-scan:
-#    uses: bruce-wh-li/security-pipeline-templates/.github/workflows/sonar-scanner.yaml@main
-#    with:
-#      ORG: ci-testing
-#      PROJECT_KEY: secruity_pipeline_templates
-#      URL: https://sonarqube-59e31e-tools.apps.klab.devops.gov.bc.ca/projects
-#     # URL: https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/
-#    secrets:
-#      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-#      
-#      
-
+name: sonar-repo-scan
 on:
   # Trigger analysis when pushing in master or pull requests, and when creating
   # a pull request. 
