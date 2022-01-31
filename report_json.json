@@ -1,6 +1,6 @@
 {
 	"@version": "2.11.1",
-	"@generated": "Mon, 31 Jan 2022 18:44:38",
+	"@generated": "Mon, 31 Jan 2022 18:46:39",
 	"site":[ 
 		{
 			"@name": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca",
@@ -767,14 +767,14 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3Aued1qKYw_3LkLXPvBWSGmjecBh99wi_n"
+							"evidence": "3AKf4N5S-Wyjo2gQ9Z-Yr-9pwMjFTRK71N"
 						},
 						{
 							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3A4roTBd8s4W326PEUSrzOcX_PU5zWRWE-"
+							"evidence": "3All6SIJCeI-eopUiVG0bKxIe0pfoT_bHt"
 						},
 						{
 							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/9b704c621adc8a1dcae59307e0023894dbfd2413.css?meteor_css_resource=true",
@@ -795,7 +795,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3AEGzTgxfLZWMccxd94bxn1n1HHBa7s8yM"
+							"evidence": "3AnBNXwX9CbAmYMEmyGGmMItMy9BZ4ujPP"
 						},
 						{
 							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/sitemap.xml",
@@ -807,7 +807,7 @@
 					],
 					"count": "6",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>\uFFFD\\x000b\uFFFDwZ\uFFFDc\\x000f\uFFFD.B\uFFFD>\uFFFDVHi\uFFFDy\uFFFDa\uFFFD\uFFFD\"\uFFFD</p>",
+					"otherinfo": "<p>\uFFFD\\x0002\uFFFD\uFFFD\uFFFDR\uFFFDl\uFFFD\uFFFDh\\x0010\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDi\uFFFD\uFFFD\uFFFDM\\x0012\uFFFD\uFFFD</p>",
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
