@@ -8,6 +8,7 @@ jobs:
     with:
       ZAP_SCAN_TYPE: 'base' # Accepted values are base and full.
       ZAP_TARGET_URL: https://scanme.org
+      ZAP_DURATION: '2'
       ZAP_MAX_DURATION: '5'
       ZAP_GCP_PUBLISH: false
       # ZAP_GCP_PROJECT: owasp-scan-test  # Only required if ZAP_GCP_PUBLISH is TRUE
