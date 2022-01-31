@@ -1,6 +1,6 @@
 {
 	"@version": "2.11.1",
-	"@generated": "Sat, 29 Jan 2022 04:18:24",
+	"@generated": "Mon, 31 Jan 2022 17:11:31",
 	"site":[ 
 		{
 			"@name": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca",
@@ -793,14 +793,14 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3AqRtnFCyg_j4wrn3BSY7sUFpfi7y7NIRU"
+							"evidence": "3ABcQAL7q0LJVIk9qjMk7487H8T5rA-IpM"
 						},
 						{
 							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3AwfIj47v8UWMYWB6dtt2ZcpoHn3GFw5YB"
+							"evidence": "3AInna7irq_wQofUTdAMKXdo5evkS2_XFt"
 						},
 						{
 							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/9b704c621adc8a1dcae59307e0023894dbfd2413.css?meteor_css_resource=true",
@@ -821,7 +821,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3AxPR67w_QpqfZFzsU-Xy3M6QUXqkB6K2e"
+							"evidence": "3APFdDI-j814FpTrK6f6UutaDA7wJA0NEH"
 						},
 						{
 							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/sitemap.xml",
@@ -833,7 +833,7 @@
 					],
 					"count": "6",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>\uFFFD</p><p>\uFFFD\uFFFDqB\uFFFD\\x000f\uFFFD\uFFFD</p><p>\uFFFD\uFFFD\\x0014\uFFFD\uFFFD\uFFFD\\x0005\uFFFD\uFFFD\uFFFD\u02F3HE</p>",
+					"otherinfo": "<p>\uFFFD\\x0000\\@\\x0002\uFFFD\uFFFDB\uFFFDT\uFFFD=\uFFFD3$\uFFFD;\\x001f\uFFFD\uFFFD\uFFFD\\x000f\uFFFD\uFFFD</p>",
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
@@ -976,7 +976,7 @@
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "26"
+					"sourceid": "24"
 				},
 				{
 					"pluginid": "10049",
