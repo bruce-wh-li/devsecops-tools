@@ -4,10 +4,10 @@ on:
   push:
 jobs:
   sonar-repo-scan:
-    uses: bcgov/pipeline-templates/.github/workflows/sonar-scanner.yaml@main
+    uses: bruce-wh-li/security-pipeline-templates/.github/workflows/sonar-scanner.yaml@main
     with:
       ORG: ci-testing
-      PROJECT_KEY: bcgov-pipeline-templates
-      URL: https://sonarcloud.io
+      PROJECT_KEY: secruity_pipeline_templates
+      URL: https://sonarqube-59e31e-tools.apps.klab.devops.gov.bc.ca/projects
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
