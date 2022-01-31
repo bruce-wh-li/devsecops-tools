@@ -8,6 +8,7 @@ jobs:
     with:
       ORG: ci-testing
       PROJECT_KEY: secruity_pipeline_templates
-      URL: https://sonarqube-59e31e-tools.apps.klab.devops.gov.bc.ca/projects
+    #  URL: https://sonarqube-59e31e-tools.apps.klab.devops.gov.bc.ca/projects
+      URL: https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
