@@ -1,6 +1,6 @@
 {
 	"@version": "2.11.1",
-	"@generated": "Mon, 31 Jan 2022 17:11:31",
+	"@generated": "Mon, 31 Jan 2022 17:17:16",
 	"site":[ 
 		{
 			"@name": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca",
@@ -8,32 +8,6 @@
 			"@port": "443",
 			"@ssl": "true",
 			"alerts": [ 
-				{
-					"pluginid": "90022",
-					"alertRef": "90022",
-					"alert": "Application Error Disclosure",
-					"name": "Application Error Disclosure",
-					"riskcode": "2",
-					"confidence": "2",
-					"riskdesc": "Medium (Medium)",
-					"desc": "<p>This page contains an error/warning message that may disclose sensitive information like the location of the file that produced the unhandled exception. This information can be used to launch further attacks against the web application. The alert could be a false positive if the error message is found inside a documentation page.</p>",
-					"instances":[ 
-						{
-							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/c029a6b2088014967102f8efaaf260dc7e0d3df5.js?meteor_js_resource=true",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Internal Server Error"
-						}
-					],
-					"count": "1",
-					"solution": "<p>Review the source code of this page. Implement custom error pages. Consider implementing a mechanism to provide a unique error reference/identifier to the client (browser) while logging the details on the server side and not exposing them to the user.</p>",
-					"otherinfo": "",
-					"reference": "",
-					"cweid": "200",
-					"wascid": "13",
-					"sourceid": "30"
-				},
 				{
 					"pluginid": "10038",
 					"alertRef": "10038",
@@ -793,14 +767,14 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3ABcQAL7q0LJVIk9qjMk7487H8T5rA-IpM"
+							"evidence": "3ABMIB5EWd3y-qZy3ijryuZQEyUgZ8BZlV"
 						},
 						{
 							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3AInna7irq_wQofUTdAMKXdo5evkS2_XFt"
+							"evidence": "3A0LhmdzhOeiyr8pczb3Uj7igwt9_IQHAd"
 						},
 						{
 							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/9b704c621adc8a1dcae59307e0023894dbfd2413.css?meteor_css_resource=true",
@@ -821,7 +795,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3APFdDI-j814FpTrK6f6UutaDA7wJA0NEH"
+							"evidence": "3ANlDx0EURcZB0zZPxOvZUlEoB5sJpqlQl"
 						},
 						{
 							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/sitemap.xml",
@@ -833,7 +807,7 @@
 					],
 					"count": "6",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>\uFFFD\\x0000\\@\\x0002\uFFFD\uFFFDB\uFFFDT\uFFFD=\uFFFD3$\uFFFD;\\x001f\uFFFD\uFFFD\uFFFD\\x000f\uFFFD\uFFFD</p>",
+					"otherinfo": "<p>\uFFFD\\x0000L \\x001eDY\uFFFD\uFFFD\uFFFD\uFFFDr\uFFFD(\uFFFD\uFFFD\uFFFDP\\x0013% g\uFFFDY\uFFFD</p>",
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
