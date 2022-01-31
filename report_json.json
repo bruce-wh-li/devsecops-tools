@@ -1,6 +1,6 @@
 {
 	"@version": "2.11.1",
-	"@generated": "Mon, 31 Jan 2022 17:24:40",
+	"@generated": "Mon, 31 Jan 2022 18:16:26",
 	"site":[ 
 		{
 			"@name": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca",
@@ -852,14 +852,14 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3APoO9kBf1IgJjbbhaVriMdctYEwTPagPr"
+							"evidence": "3AMNtY6_QEQvDZhnld7Z503NZ7EXZUs6zk"
 						},
 						{
 							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3Ac6X0iEJltetg_nDpK_ataCYLNlp-Nq4a"
+							"evidence": "3A_nZYU2bUnV6r1sQf2nKRZzsAtGFXIsDN"
 						},
 						{
 							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/9b704c621adc8a1dcae59307e0023894dbfd2413.css?meteor_css_resource=true",
@@ -887,7 +887,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3AkddIi1der5syXCteblEdOBY0cNjIkDKs"
+							"evidence": "3As_QqJn55ESyf3OYIrd3rMl_4iGJfG05-"
 						},
 						{
 							"uri": "https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/sitemap.xml",
@@ -899,11 +899,11 @@
 					],
 					"count": "7",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>\uFFFD\\x0003\uFFFD;\uFFFD\\x0001R &6\u06C5\uFFFDk\uFFFD\uFFFD\\\uFFFD\uFFFD0L\uFFFD\uFFFD></p>",
+					"otherinfo": "<p>\uFFFD\\x0003\r\uFFFD\uFFFD\uFFFD@D/\r\uFFFDg\uFFFD\uFFFD\uFFFD\uFFFDM\uFFFDg\uFFFD\\x0017eK:\uFFFD</p>",
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10027",
@@ -1119,7 +1119,7 @@
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "26"
+					"sourceid": "24"
 				},
 				{
 					"pluginid": "10049",
