@@ -11,7 +11,3 @@ jobs:
       URL: https://sonarqube-59e31e-tools.apps.klab.devops.gov.bc.ca/projects
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-© 2022 GitHub, Inc.
-Terms
-Privacy
-Security
