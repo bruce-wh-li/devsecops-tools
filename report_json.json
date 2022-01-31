@@ -1,6 +1,6 @@
 {
 	"@version": "2.11.1",
-	"@generated": "Mon, 31 Jan 2022 22:56:45",
+	"@generated": "Mon, 31 Jan 2022 23:06:52",
 	"site":[ 
 		{
 			"@name": "http://scanme.nmap.org",
