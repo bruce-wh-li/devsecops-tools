@@ -1,4 +1,4 @@
-name: sonar-repo-scan
+name: sonar-repo-scan-greg
 on:
   workflow_dispatch:
   push:
