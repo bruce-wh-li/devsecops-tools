@@ -22,7 +22,7 @@
       - master
   pull_request:
       types: [opened, synchronize, reopened]
-  workflow_:
+  workflow_dispatch:
 #
 name: Main Workflow
 jobs:
