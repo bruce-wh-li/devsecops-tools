@@ -5,7 +5,7 @@ on:
   push:
 jobs:
   sonar-repo-scan:
-    uses: bcgov/pipeline-templates/.github/workflows/sonar-scanner.yaml@main
+    uses: bruce-wh-li/security-pipeline-templates/.github/workflows/sonar-scanner.yaml@main
     with:
       ORG: ci-testing
       PROJECT_KEY: bcgov-pipeline-templates
