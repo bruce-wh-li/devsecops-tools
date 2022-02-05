@@ -1,7 +1,0 @@
-name: codeql-scan
-on:
-  workflow_dispatch:
-  push:
-jobs:
-  codeql-scan:
-    uses: bcgov/pipeline-templates/.github/workflows/codeql.yaml@main
