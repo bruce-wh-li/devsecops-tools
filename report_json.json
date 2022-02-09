@@ -1,12 +1,12 @@
 {
 	"@version": "2.11.1",
-	"@generated": "Wed, 9 Feb 2022 00:42:37",
+	"@generated": "Wed, 9 Feb 2022 23:22:27",
 	"site":[ 
 		{
-			"@name": "http://scanme.nmap.org",
-			"@host": "scanme.nmap.org",
-			"@port": "80",
-			"@ssl": "false",
+			"@name": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca",
+			"@host": "mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca",
+			"@port": "443",
+			"@ssl": "true",
 			"alerts": [ 
 				{
 					"pluginid": "10038",
@@ -19,21 +19,21 @@
 					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
 					"instances":[ 
 						{
-							"uri": "http://scanme.nmap.org/",
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "http://scanme.nmap.org/robots.txt",
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/logo192.png",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "http://scanme.nmap.org/sitemap.xml",
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/sitemap.xml",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -49,32 +49,6 @@
 					"sourceid": "1"
 				},
 				{
-					"pluginid": "10041",
-					"alertRef": "10041",
-					"alert": "HTTP to HTTPS Insecure Transition in Form Post",
-					"name": "HTTP to HTTPS Insecure Transition in Form Post",
-					"riskcode": "2",
-					"confidence": "2",
-					"riskdesc": "Medium (Medium)",
-					"desc": "<p>This check looks for insecure HTTP pages that host HTTPS forms. The issue is that an insecure HTTP page can easily be hijacked through MITM and the secure HTTPS form can be replaced or spoofed.</p>",
-					"instances":[ 
-						{
-							"uri": "http://scanme.nmap.org/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "https://nmap.org/search.html"
-						}
-					],
-					"count": "1",
-					"solution": "<p>Use HTTPS for landing pages that host secure forms.</p>",
-					"otherinfo": "<p>The response to the following request over HTTP included an HTTPS form tag action attribute value:</p><p></p><p>http://scanme.nmap.org/The context was:</p><p></p><p><form action=\"https://nmap.org/search.html\" id=\"cse-search-box-sidebar\"></p><p>  <div></p><p>    <input type=\"hidden\" name=\"cx\" value=\"partner-pub-0078565546631069:bx60rb-fytx\"></p><p>    <input type=\"hidden\" name=\"cof\" value=\"FORID:9\"></p><p>    <input type=\"hidden\" name=\"ie\" value=\"ISO-8859-1\"></p><p>    <input type=\"text\" name=\"q\" size=\"16\"></p><p>    <input type=\"submit\" name=\"sa\" value=\"Site Search\"></p><p>  </div></p><p></form></p>",
-					"reference": "",
-					"cweid": "319",
-					"wascid": "15",
-					"sourceid": "1"
-				},
-				{
 					"pluginid": "10020",
 					"alertRef": "10020",
 					"alert": "Missing Anti-clickjacking Header",
@@ -85,14 +59,28 @@
 					"desc": "<p>The response does not include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options to protect against 'ClickJacking' attacks.</p>",
 					"instances":[ 
 						{
-							"uri": "http://scanme.nmap.org/",
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/",
+							"method": "GET",
+							"param": "X-Frame-Options",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/logo192.png",
+							"method": "GET",
+							"param": "X-Frame-Options",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/sitemap.xml",
 							"method": "GET",
 							"param": "X-Frame-Options",
 							"attack": "",
 							"evidence": ""
 						}
 					],
-					"count": "1",
+					"count": "3",
 					"solution": "<p>Modern Web browsers support the Content-Security-Policy and X-Frame-Options HTTP headers. Ensure one of them is set on all web pages returned by your site/app.</p><p>If you expect the page to be framed only by pages on your server (e.g. it's part of a FRAMESET) then you'll want to use SAMEORIGIN, otherwise if you never expect the page to be framed, you should use DENY. Alternatively consider implementing Content Security Policy's \"frame-ancestors\" directive.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
@@ -101,96 +89,103 @@
 					"sourceid": "1"
 				},
 				{
-					"pluginid": "10202",
-					"alertRef": "10202",
-					"alert": "Absence of Anti-CSRF Tokens",
-					"name": "Absence of Anti-CSRF Tokens",
+					"pluginid": "10054",
+					"alertRef": "10054",
+					"alert": "Cookie with SameSite Attribute None",
+					"name": "Cookie with SameSite Attribute None",
 					"riskcode": "1",
 					"confidence": "2",
 					"riskdesc": "Low (Medium)",
-					"desc": "<p>No Anti-CSRF tokens were found in a HTML submission form.</p><p>A cross-site request forgery is an attack that involves forcing a victim to send an HTTP request to a target destination without their knowledge or intent in order to perform an action as the victim. The underlying cause is application functionality using predictable URL/form actions in a repeatable way. The nature of the attack is that CSRF exploits the trust that a web site has for a user. By contrast, cross-site scripting (XSS) exploits the trust that a user has for a web site. Like XSS, CSRF attacks are not necessarily cross-site, but they can be. Cross-site request forgery is also known as CSRF, XSRF, one-click attack, session riding, confused deputy, and sea surf.</p><p></p><p>CSRF attacks are effective in a number of situations, including:</p><p>    * The victim has an active session on the target site.</p><p>    * The victim is authenticated via HTTP auth on the target site.</p><p>    * The victim is on the same local network as the target site.</p><p></p><p>CSRF has primarily been used to perform an action against a target site using the victim's privileges, but recent techniques have been discovered to disclose information by gaining access to the response. The risk of information disclosure is dramatically increased when the target site is vulnerable to XSS, because XSS can be used as a platform for CSRF, allowing the attack to operate within the bounds of the same-origin policy.</p>",
+					"desc": "<p>A cookie has been set with its SameSite attribute set to \"none\", which means that the cookie can be sent as a result of a 'cross-site' request. The SameSite attribute is an effective counter measure to cross-site request forgery, cross-site script inclusion, and timing attacks.</p>",
 					"instances":[ 
 						{
-							"uri": "http://scanme.nmap.org/",
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<form action=\"https://nmap.org/search.html\" id=\"cse-search-box-sidebar\">"
+							"evidence": ""
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						}
+					],
+					"count": "2",
+					"solution": "<p>Ensure that the SameSite attribute is set to either 'lax' or ideally 'strict' for all cookies.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site</p>",
+					"cweid": "1275",
+					"wascid": "13",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10110",
+					"alertRef": "10110",
+					"alert": "Dangerous JS Functions",
+					"name": "Dangerous JS Functions",
+					"riskcode": "1",
+					"confidence": "1",
+					"riskdesc": "Low (Low)",
+					"desc": "<p>A dangerous JS function seems to be in use that would leave the site vulnerable.</p>",
+					"instances":[ 
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "eval"
 						}
 					],
 					"count": "1",
-					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
-					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"cof\" \"cx\" \"ie\" \"q\" \"sa\" ].</p>",
-					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>http://cwe.mitre.org/data/definitions/352.html</p>",
-					"cweid": "352",
-					"wascid": "9",
-					"sourceid": "1"
+					"solution": "<p>See the references for security advice on the use of these functions.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://angular.io/guide/security</p>",
+					"cweid": "749",
+					"wascid": "-1",
+					"sourceid": "25"
 				},
 				{
-					"pluginid": "10017",
-					"alertRef": "10017",
-					"alert": "Cross-Domain JavaScript Source File Inclusion",
-					"name": "Cross-Domain JavaScript Source File Inclusion",
+					"pluginid": "10015",
+					"alertRef": "10015",
+					"alert": "Incomplete or No Cache-control Header Set",
+					"name": "Incomplete or No Cache-control Header Set",
 					"riskcode": "1",
 					"confidence": "2",
 					"riskdesc": "Low (Medium)",
-					"desc": "<p>The page includes one or more script files from a third-party domain.</p>",
+					"desc": "<p>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content.</p>",
 					"instances":[ 
 						{
-							"uri": "http://scanme.nmap.org/",
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/",
 							"method": "GET",
-							"param": "//g.adspeed.net/ad.php?do=js&zid=14678&wd=-1&ht=-1&target=_blank",
+							"param": "Cache-Control",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"//g.adspeed.net/ad.php?do=js&amp;zid=14678&amp;wd=-1&amp;ht=-1&amp;target=_blank\"></script>"
+							"evidence": "private"
 						},
 						{
-							"uri": "http://scanme.nmap.org/",
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/logo192.png",
 							"method": "GET",
-							"param": "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js",
+							"param": "Cache-Control",
 							"attack": "",
-							"evidence": "<script async src=\"//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></script>"
+							"evidence": ""
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/sitemap.xml",
+							"method": "GET",
+							"param": "Cache-Control",
+							"attack": "",
+							"evidence": ""
 						}
 					],
-					"count": "2",
-					"solution": "<p>Ensure JavaScript source files are loaded from only trusted sources, and the sources can't be controlled by end users of the application.</p>",
+					"count": "3",
+					"solution": "<p>Whenever possible ensure the cache-control HTTP header is set with no-cache, no-store, must-revalidate.</p>",
 					"otherinfo": "",
-					"reference": "",
-					"cweid": "829",
-					"wascid": "15",
-					"sourceid": "1"
-				},
-				{
-					"pluginid": "10009",
-					"alertRef": "10009",
-					"alert": "In Page Banner Information Leak",
-					"name": "In Page Banner Information Leak",
-					"riskcode": "1",
-					"confidence": "3",
-					"riskdesc": "Low (High)",
-					"desc": "<p>The server returned a version banner string in the response content. Such information leaks may allow attackers to further target specific issues impacting the product and version in use.</p>",
-					"instances":[ 
-						{
-							"uri": "http://scanme.nmap.org/robots.txt",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Apache/2.4.7"
-						},
-						{
-							"uri": "http://scanme.nmap.org/sitemap.xml",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Apache/2.4.7"
-						}
-					],
-					"count": "2",
-					"solution": "<p>Configure the server to prevent such information leaks. For example:</p><p>Under Tomcat this is done via the \"server\" directive and implementation of custom error pages.</p><p>Under Apache this is done via the \"ServerSignature\" and \"ServerTokens\" directives.</p>",
-					"otherinfo": "<p>There is a chance that the highlight in the finding is on a value in the headers, versus the actual matched string in the response body.</p>",
-					"reference": "<p>https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/08-Testing_for_Error_Handling/</p>",
-					"cweid": "200",
+					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p>",
+					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "7"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10063",
@@ -203,28 +198,42 @@
 					"desc": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
 					"instances":[ 
 						{
-							"uri": "http://scanme.nmap.org/",
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "http://scanme.nmap.org/robots.txt",
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/logo192.png",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "http://scanme.nmap.org/sitemap.xml",
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/main.3383beb6.chunk.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": ""
 						}
 					],
-					"count": "3",
+					"count": "5",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy</p><p>https://developers.google.com/web/updates/2018/06/feature-policy</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
@@ -233,78 +242,92 @@
 					"sourceid": "1"
 				},
 				{
-					"pluginid": "10036",
-					"alertRef": "10036",
-					"alert": "Server Leaks Version Information via \"Server\" HTTP Response Header Field",
-					"name": "Server Leaks Version Information via \"Server\" HTTP Response Header Field",
+					"pluginid": "10035",
+					"alertRef": "10035",
+					"alert": "Strict-Transport-Security Header Not Set",
+					"name": "Strict-Transport-Security Header Not Set",
 					"riskcode": "1",
 					"confidence": "3",
 					"riskdesc": "Low (High)",
-					"desc": "<p>The web/application server is leaking version information via the \"Server\" HTTP response header. Access to such information may facilitate attackers identifying other vulnerabilities your web/application server is subject to.</p>",
+					"desc": "<p>HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.e. HTTP layered over TLS/SSL). HSTS is an IETF standards track protocol and is specified in RFC 6797.</p>",
 					"instances":[ 
 						{
-							"uri": "http://scanme.nmap.org/",
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Apache/2.4.7 (Ubuntu)"
+							"evidence": ""
 						},
 						{
-							"uri": "http://scanme.nmap.org/images/sitelogo.png",
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/favicon.ico",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Apache/2.4.7 (Ubuntu)"
+							"evidence": ""
 						},
 						{
-							"uri": "http://scanme.nmap.org/robots.txt",
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/logo192.png",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Apache/2.4.7 (Ubuntu)"
+							"evidence": ""
 						},
 						{
-							"uri": "http://scanme.nmap.org/shared/css/insecdb.css",
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/manifest.json",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Apache/2.4.7 (Ubuntu)"
+							"evidence": ""
 						},
 						{
-							"uri": "http://scanme.nmap.org/shared/images/Acunetix/acx_Chess-WB.gif",
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/robots.txt",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Apache/2.4.7 (Ubuntu)"
+							"evidence": ""
 						},
 						{
-							"uri": "http://scanme.nmap.org/shared/images/tiny-eyeicon.png",
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/sitemap.xml",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Apache/2.4.7 (Ubuntu)"
+							"evidence": ""
 						},
 						{
-							"uri": "http://scanme.nmap.org/shared/images/topleftcurve.gif",
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/css/2.f01efe62.chunk.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Apache/2.4.7 (Ubuntu)"
+							"evidence": ""
 						},
 						{
-							"uri": "http://scanme.nmap.org/sitemap.xml",
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/css/main.b64b95f0.chunk.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Apache/2.4.7 (Ubuntu)"
+							"evidence": ""
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/main.3383beb6.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
 						}
 					],
-					"count": "8",
-					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to suppress the \"Server\" header or provide generic details.</p>",
+					"count": "10",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to enforce Strict-Transport-Security.</p>",
 					"otherinfo": "",
-					"reference": "<p>http://httpd.apache.org/docs/current/mod/core.html#servertokens</p><p>http://msdn.microsoft.com/en-us/library/ff648552.aspx#ht_urlscan_007</p><p>http://blogs.msdn.com/b/varunm/archive/2013/04/23/remove-unwanted-http-response-headers.aspx</p><p>http://www.troyhunt.com/2012/02/shhh-dont-let-your-response-headers.html</p>",
-					"cweid": "200",
-					"wascid": "13",
+					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>http://caniuse.com/stricttransportsecurity</p><p>http://tools.ietf.org/html/rfc6797</p>",
+					"cweid": "319",
+					"wascid": "15",
 					"sourceid": "1"
 				},
 				{
@@ -318,27 +341,440 @@
 					"desc": "<p>A timestamp was disclosed by the application/web server - Unix</p>",
 					"instances":[ 
 						{
-							"uri": "http://scanme.nmap.org/",
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "11009417"
+							"evidence": "0123456789"
 						},
 						{
-							"uri": "http://scanme.nmap.org/shared/images/Acunetix/acx_Chess-WB.gif",
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "51125622"
+							"evidence": "1013904242"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1073741823"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1073741824"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1073741825"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1116352408"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "113926993"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1249150122"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1294757372"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1322822218"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "134217727"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "134217728"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1359893119"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1396182291"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1413257819"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1426881987"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "143694565"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "150054599"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1508970993"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1521486534"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1537002063"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1541459225"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1555081692"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "16711680"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1694076839"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1695183700"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1747873779"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1750603025"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1779033703"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1899447441"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1925078388"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1955562222"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1986661051"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1996064986"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "2024104815"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "210244248"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "24177077"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "264347078"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "268435456"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "275423344"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "310598401"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "33554432"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "338241895"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "430227734"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "506948616"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "528734635"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "604807628"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "607225278"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "62914560"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "659060556"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "666307205"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "67108864"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "704751109"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "770255983"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "773529912"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "805306368"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "812702999"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "883997877"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "914150663"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "958139571"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "961987163"
 						}
 					],
-					"count": "2",
+					"count": "61",
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
-					"otherinfo": "<p>11009417, which evaluates to: 1970-05-08 10:10:17</p>",
+					"otherinfo": "<p>0123456789, which evaluates to: 1973-11-29 21:33:09</p>",
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "25"
 				},
 				{
 					"pluginid": "10021",
@@ -351,54 +787,261 @@
 					"desc": "<p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.</p>",
 					"instances":[ 
 						{
-							"uri": "http://scanme.nmap.org/",
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/",
 							"method": "GET",
 							"param": "X-Content-Type-Options",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "http://scanme.nmap.org/images/sitelogo.png",
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/favicon.ico",
 							"method": "GET",
 							"param": "X-Content-Type-Options",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "http://scanme.nmap.org/shared/css/insecdb.css",
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/logo192.png",
 							"method": "GET",
 							"param": "X-Content-Type-Options",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "http://scanme.nmap.org/shared/images/Acunetix/acx_Chess-WB.gif",
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/manifest.json",
 							"method": "GET",
 							"param": "X-Content-Type-Options",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "http://scanme.nmap.org/shared/images/tiny-eyeicon.png",
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/robots.txt",
 							"method": "GET",
 							"param": "X-Content-Type-Options",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "http://scanme.nmap.org/shared/images/topleftcurve.gif",
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/sitemap.xml",
+							"method": "GET",
+							"param": "X-Content-Type-Options",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/css/2.f01efe62.chunk.css",
+							"method": "GET",
+							"param": "X-Content-Type-Options",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/css/main.b64b95f0.chunk.css",
+							"method": "GET",
+							"param": "X-Content-Type-Options",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "X-Content-Type-Options",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/main.3383beb6.chunk.js",
 							"method": "GET",
 							"param": "X-Content-Type-Options",
 							"attack": "",
 							"evidence": ""
 						}
 					],
-					"count": "6",
+					"count": "10",
 					"solution": "<p>Ensure that the application/web server sets the Content-Type header appropriately, and that it sets the X-Content-Type-Options header to 'nosniff' for all web pages.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that does not perform MIME-sniffing at all, or that can be directed by the web application/web server to not perform MIME-sniffing.</p>",
 					"otherinfo": "<p>This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.</p><p>At \"High\" threshold this scan rule will not alert on client or server error responses.</p>",
 					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p><p>https://owasp.org/www-community/Security_Headers</p>",
 					"cweid": "693",
 					"wascid": "15",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10094",
+					"alertRef": "10094",
+					"alert": "Base64 Disclosure",
+					"name": "Base64 Disclosure",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
+					"instances":[ 
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+						}
+					],
+					"count": "1",
+					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
+					"otherinfo": "<p>\\x0000\\x0010\uFFFD\\x0010Q\uFFFD \uFFFD\uFFFD0\u04CFA\\x0014\uFFFDQU\uFFFDa\uFFFD\uFFFDq\u05DF\uFFFD\\x0018\uFFFD\uFFFDY\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u06EF\uFFFD\\x001c\uFFFD\uFFFD]\uFFFD\u37BB\uFFFD</p>",
+					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "25"
+				},
+				{
+					"pluginid": "10019",
+					"alertRef": "10019",
+					"alert": "Content-Type Header Missing",
+					"name": "Content-Type Header Missing",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The Content-Type header was either missing or empty.</p>",
+					"instances":[ 
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/favicon.ico",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/manifest.json",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						}
+					],
+					"count": "3",
+					"solution": "<p>Ensure each page is setting the specific and appropriate content-type value for the content being delivered.</p>",
+					"otherinfo": "",
+					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p>",
+					"cweid": "345",
+					"wascid": "12",
+					"sourceid": "17"
+				},
+				{
+					"pluginid": "10027",
+					"alertRef": "10027",
+					"alert": "Information Disclosure - Suspicious Comments",
+					"name": "Information Disclosure - Suspicious Comments",
+					"riskcode": "0",
+					"confidence": "1",
+					"riskdesc": "Informational (Low)",
+					"desc": "<p>The response appears to contain suspicious comments which may help an attacker. Note: Matches made within script blocks or files are against the entire content not only comments.</p>",
+					"instances":[ 
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "query"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/main.3383beb6.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "select"
+						}
+					],
+					"count": "2",
+					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
+					"otherinfo": "<p>The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"(this[\"webpackJsonpmautic-subscription-app\"]=this[\"webpackJsonpmautic-subscription-app\"]||[]).push([[2],[function(e,t,n){\"use st\", see evidence field for the suspicious comment/snippet.</p>",
+					"reference": "",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "25"
+				},
+				{
+					"pluginid": "10109",
+					"alertRef": "10109",
+					"alert": "Modern Web Application",
+					"name": "Modern Web Application",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.</p>",
+					"instances":[ 
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script>!function(e){function t(t){for(var n,i,p=t[0],a=t[1],l=t[2],f=0,s=[];f<p.length;f++)i=p[f],Object.prototype.hasOwnProperty.call(o,i)&&o[i]&&s.push(o[i][0]),o[i]=0;for(n in a)Object.prototype.hasOwnProperty.call(a,n)&&(e[n]=a[n]);for(c&&c(t);s.length;)s.shift()();return u.push.apply(u,l||[]),r()}function r(){for(var e,t=0;t<u.length;t++){for(var r=u[t],n=!0,p=1;p<r.length;p++){var a=r[p];0!==o[a]&&(n=!1)}n&&(u.splice(t--,1),e=i(i.s=r[0]))}return e}var n={},o={1:0},u=[];function i(t){if(n[t])return n[t].exports;var r=n[t]={i:t,l:!1,exports:{}};return e[t].call(r.exports,r,r.exports,i),r.l=!0,r.exports}i.m=e,i.c=n,i.d=function(e,t,r){i.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},i.r=function(e){\"undefined\"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\"Module\"}),Object.defineProperty(e,\"__esModule\",{value:!0})},i.t=function(e,t){if(1&t&&(e=i(e)),8&t)return e;if(4&t&&\"object\"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(i.r(r),Object.defineProperty(r,\"default\",{enumerable:!0,value:e}),2&t&&\"string\"!=typeof e)for(var n in e)i.d(r,n,function(t){return e[t]}.bind(null,n));return r},i.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return i.d(t,\"a\",t),t},i.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},i.p=\"/\";var p=this[\"webpackJsonpmautic-subscription-app\"]=this[\"webpackJsonpmautic-subscription-app\"]||[],a=p.push.bind(p);p.push=t,p=p.slice();for(var l=0;l<p.length;l++)t(p[l]);var c=a;r()}([])</script>"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/logo192.png",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script>!function(e){function t(t){for(var n,i,p=t[0],a=t[1],l=t[2],f=0,s=[];f<p.length;f++)i=p[f],Object.prototype.hasOwnProperty.call(o,i)&&o[i]&&s.push(o[i][0]),o[i]=0;for(n in a)Object.prototype.hasOwnProperty.call(a,n)&&(e[n]=a[n]);for(c&&c(t);s.length;)s.shift()();return u.push.apply(u,l||[]),r()}function r(){for(var e,t=0;t<u.length;t++){for(var r=u[t],n=!0,p=1;p<r.length;p++){var a=r[p];0!==o[a]&&(n=!1)}n&&(u.splice(t--,1),e=i(i.s=r[0]))}return e}var n={},o={1:0},u=[];function i(t){if(n[t])return n[t].exports;var r=n[t]={i:t,l:!1,exports:{}};return e[t].call(r.exports,r,r.exports,i),r.l=!0,r.exports}i.m=e,i.c=n,i.d=function(e,t,r){i.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},i.r=function(e){\"undefined\"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\"Module\"}),Object.defineProperty(e,\"__esModule\",{value:!0})},i.t=function(e,t){if(1&t&&(e=i(e)),8&t)return e;if(4&t&&\"object\"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(i.r(r),Object.defineProperty(r,\"default\",{enumerable:!0,value:e}),2&t&&\"string\"!=typeof e)for(var n in e)i.d(r,n,function(t){return e[t]}.bind(null,n));return r},i.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return i.d(t,\"a\",t),t},i.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},i.p=\"/\";var p=this[\"webpackJsonpmautic-subscription-app\"]=this[\"webpackJsonpmautic-subscription-app\"]||[],a=p.push.bind(p);p.push=t,p=p.slice();for(var l=0;l<p.length;l++)t(p[l]);var c=a;r()}([])</script>"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script>!function(e){function t(t){for(var n,i,p=t[0],a=t[1],l=t[2],f=0,s=[];f<p.length;f++)i=p[f],Object.prototype.hasOwnProperty.call(o,i)&&o[i]&&s.push(o[i][0]),o[i]=0;for(n in a)Object.prototype.hasOwnProperty.call(a,n)&&(e[n]=a[n]);for(c&&c(t);s.length;)s.shift()();return u.push.apply(u,l||[]),r()}function r(){for(var e,t=0;t<u.length;t++){for(var r=u[t],n=!0,p=1;p<r.length;p++){var a=r[p];0!==o[a]&&(n=!1)}n&&(u.splice(t--,1),e=i(i.s=r[0]))}return e}var n={},o={1:0},u=[];function i(t){if(n[t])return n[t].exports;var r=n[t]={i:t,l:!1,exports:{}};return e[t].call(r.exports,r,r.exports,i),r.l=!0,r.exports}i.m=e,i.c=n,i.d=function(e,t,r){i.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},i.r=function(e){\"undefined\"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:\"Module\"}),Object.defineProperty(e,\"__esModule\",{value:!0})},i.t=function(e,t){if(1&t&&(e=i(e)),8&t)return e;if(4&t&&\"object\"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(i.r(r),Object.defineProperty(r,\"default\",{enumerable:!0,value:e}),2&t&&\"string\"!=typeof e)for(var n in e)i.d(r,n,function(t){return e[t]}.bind(null,n));return r},i.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return i.d(t,\"a\",t),t},i.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},i.p=\"/\";var p=this[\"webpackJsonpmautic-subscription-app\"]=this[\"webpackJsonpmautic-subscription-app\"]||[],a=p.push.bind(p);p.push=t,p=p.slice();for(var l=0;l<p.length;l++)t(p[l]);var c=a;r()}([])</script>"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script>"
+						}
+					],
+					"count": "4",
+					"solution": "<p>This is an informational alert and so no changes are required.</p>",
+					"otherinfo": "<p>No links have been found while there are scripts, which is an indication that this is a modern web application.</p>",
+					"reference": "",
+					"cweid": "-1",
+					"wascid": "-1",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10049",
+					"alertRef": "10049",
+					"alert": "Non-Storable Content",
+					"name": "Non-Storable Content",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The response contents are not storable by caching components such as proxy servers. If the response does not contain sensitive, personal or user-specific information, it may benefit from being stored and cached, to improve performance.</p>",
+					"instances":[ 
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "private"
+						},
+						{
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "private"
+						}
+					],
+					"count": "2",
+					"solution": "<p>The content may be marked as storable by ensuring that the following conditions are satisfied:</p><p>The request method must be understood by the cache and defined as being cacheable (\"GET\", \"HEAD\", and \"POST\" are currently defined as cacheable)</p><p>The response status code must be understood by the cache (one of the 1XX, 2XX, 3XX, 4XX, or 5XX response classes are generally understood)</p><p>The \"no-store\" cache directive must not appear in the request or response header fields</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"private\" response directive must not appear in the response</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"Authorization\" header field must not appear in the request, unless the response explicitly allows it (using one of the \"must-revalidate\", \"public\", or \"s-maxage\" Cache-Control response directives)</p><p>In addition to the conditions above, at least one of the following conditions must also be satisfied by the response:</p><p>It must contain an \"Expires\" header field</p><p>It must contain a \"max-age\" response directive</p><p>For \"shared\" caches such as \"proxy\" caches, it must contain a \"s-maxage\" response directive</p><p>It must contain a \"Cache Control Extension\" that allows it to be cached</p><p>It must have a status code that is defined as cacheable by default (200, 203, 204, 206, 300, 301, 404, 405, 410, 414, 501).   </p>",
+					"otherinfo": "",
+					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
+					"cweid": "524",
+					"wascid": "13",
 					"sourceid": "1"
 				},
 				{
@@ -412,56 +1055,56 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users.  If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
 					"instances":[ 
 						{
-							"uri": "http://scanme.nmap.org/",
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/favicon.ico",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "http://scanme.nmap.org/images/sitelogo.png",
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/logo192.png",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "http://scanme.nmap.org/robots.txt",
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/manifest.json",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "http://scanme.nmap.org/shared/css/insecdb.css",
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/sitemap.xml",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "http://scanme.nmap.org/shared/images/Acunetix/acx_Chess-WB.gif",
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/css/2.f01efe62.chunk.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "http://scanme.nmap.org/shared/images/tiny-eyeicon.png",
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/css/main.b64b95f0.chunk.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "http://scanme.nmap.org/shared/images/topleftcurve.gif",
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "http://scanme.nmap.org/sitemap.xml",
+							"uri": "https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/main.3383beb6.chunk.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -474,7 +1117,7 @@
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "17"
 				}
 			]
 		}
