@@ -36,7 +36,8 @@ spec:
       image: docker.io/aquasec/trivy
       workingDir: $(workspaces.source.path)
       script: |
-        trivy image $(params.TARGET_IMAGE)
+        # trivy image $(params.TARGET_IMAGE)
+        trivy repo $(parms.TARGET_IMAGE)
       env:
         - name: TRIVY_USERNAME
           valueFrom:
