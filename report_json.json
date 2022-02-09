@@ -1,6 +1,6 @@
 {
 	"@version": "2.11.1",
-	"@generated": "Sat, 5 Feb 2022 00:34:03",
+	"@generated": "Wed, 9 Feb 2022 00:24:15",
 	"site":[ 
 		{
 			"@name": "http://scanme.nmap.org",
@@ -190,7 +190,7 @@
 					"reference": "<p>https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/08-Testing_for_Error_Handling/</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10063",
