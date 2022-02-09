@@ -5,7 +5,7 @@ metadata:
 spec:
   params:
     - name: BUILD_IMAGE
-      default: docker.io/gregnrobinson/codeql-cli:latest
+      default: docker.io/bruce-wh-li/codeql-cli:latest
       description: Reference of the image buildah will produce.
     - name: CONTEXT
       description: Path to codeql source code.
