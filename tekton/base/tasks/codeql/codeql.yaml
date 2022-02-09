@@ -62,5 +62,4 @@ spec:
           valueFrom:
             secretKeyRef:
               name: $(params.GITHUB_TOKEN)
-              key: github-pat-token
-#              key: secretToken
+                key: secretToken
