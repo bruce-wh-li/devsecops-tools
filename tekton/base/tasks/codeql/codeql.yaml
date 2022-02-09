@@ -12,7 +12,7 @@ spec:
       default: .
     - name: GITHUB_TOKEN
       description: A Github PAT with repo access.
-      default: github-pat-token
+      default: github-token
     - name: REPO
       description: Repo short form name.
     - name: REPO_URL
@@ -62,4 +62,5 @@ spec:
           valueFrom:
             secretKeyRef:
               name: $(params.GITHUB_TOKEN)
-              key: secretToken
+              key: github-pat-token
+#              key: secretToken
