@@ -9,7 +9,7 @@ spec:
   - name: appName
     value: flask-web
   - name: repoUrl
-    value: git@github.com:gregnrobinson/tekton.git
+    value: git@github.com:bruce-wh-li/tekton.git
   - name: branchName
     value: main
   - name: dockerfile
