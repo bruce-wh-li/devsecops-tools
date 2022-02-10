@@ -27,10 +27,10 @@ spec:
       default: "python:3.4-alpine"
     - name: IMAGE_REGISTRY_USER
       description: The secret name of the secret holding the username.
-      default: image-registry-username
+      default: image-registry-username1
     - name: IMAGE_REGISTRY_PASS
       description: The secret name of the secret holding the password.
-      default: image-registry-password
+      default: image-registry-password1
   steps:
     - name: scan-image-vulnerbilities
       image: docker.io/aquasec/trivy

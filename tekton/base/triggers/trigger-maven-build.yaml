@@ -5,11 +5,11 @@ metadata:
 spec:
   params:
   - name: appName
-    default: maven-test
+    default: maven-test-bruce
   - name: mavenImage
     default: index.docker.io/library/maven
   - name: repoUrl
-    default: git@github.com:bcgov/security-pipeline-templates.git
+    default: git@github.com:bruce-wh-li/security-pipeline-templates.git
   - name: branchName
     default: main
   - name: pathToContext

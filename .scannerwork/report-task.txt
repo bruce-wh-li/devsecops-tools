@@ -1,0 +1,6 @@
+projectKey=secruity_pipeline_templates
+serverUrl=https://sonarqube-59e31e-tools.apps.klab.devops.gov.bc.ca
+serverVersion=8.2.0.32929
+dashboardUrl=https://sonarqube-59e31e-tools.apps.klab.devops.gov.bc.ca/dashboard?id=secruity_pipeline_templates
+ceTaskId=AX6ydhEdzddaux330ZP9
+ceTaskUrl=https://sonarqube-59e31e-tools.apps.klab.devops.gov.bc.ca/api/ce/task?id=AX6ydhEdzddaux330ZP9

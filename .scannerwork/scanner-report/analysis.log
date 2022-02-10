@@ -1,0 +1,21 @@
+SonarQube plugins:
+  - SonarPython 2.8.0.6204 (python)
+  - Java Code Quality and Security 6.3.2.22818 (java)
+  - SonarTS 2.1.0.4359 (typescript)
+  - SonarJS 6.2.2.13315 (javascript)
+Global server settings:
+  - sonar.core.id=5E032CD4-AX6kTXfhciLrjWxIQ9Om
+  - sonar.core.startTime=2022-01-31T23:25:34+0000
+Project server settings:
+Project scanner properties:
+  - sonar.exclusions=**/*.java
+  - sonar.host.url=https://sonarqube-59e31e-tools.apps.klab.devops.gov.bc.ca
+  - sonar.login=******
+  - sonar.projectBaseDir=/Users/wenhli/documents/github/security-pipeline-templates
+  - sonar.projectKey=secruity_pipeline_templates
+  - sonar.scanner.app=ScannerCLI
+  - sonar.scanner.appVersion=4.6.2.2472
+  - sonar.sourceEncoding=UTF-8
+  - sonar.sources=.
+  - sonar.verbose=true
+  - sonar.working.directory=/Users/wenhli/documents/github/security-pipeline-templates/.scannerwork

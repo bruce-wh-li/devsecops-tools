@@ -5,7 +5,7 @@ metadata:
 spec:
   params:
     - name: BUILD_IMAGE
-      default: docker.io/gregnrobinson/codeql-cli:latest
+      default: docker.io/brucecruise/codeql-cli:latest
       description: Reference of the image buildah will produce.
     - name: CONTEXT
       description: Path to codeql source code.
@@ -34,11 +34,15 @@ spec:
     - name: codeql-create-db
       resources:
         requests:
-          memory: 2Gi
-          cpu: 600m
+#          memory: 2Gi
+#          cpu: 600m
+          memory: 1Gi
+          cpu: 300m
         limits:
-          memory: 4Gi
-          cpu: 900m
+#          memory: 4Gi
+#          cpu: 900m
+          memory: 2Gi
+          cpu: 450m
       image: $(params.BUILD_IMAGE)
       workingDir: $(workspaces.source.path)
       script: |
@@ -47,11 +51,15 @@ spec:
     - name: codeql-analyze-db
       resources:
         requests:
-          memory: 2Gi
-          cpu: 800m
+#          memory: 2Gi
+#          cpu: 800m
+          memory: 1Gi
+          cpu: 400m
         limits:
-          memory: 4Gi
-          cpu: 900m
+#          memory: 4Gi
+#          cpu: 900m
+          memory: 2Gi
+          cpu: 450m
       image: $(params.BUILD_IMAGE)
       workingDir: $(workspaces.source.path)
       script: |
