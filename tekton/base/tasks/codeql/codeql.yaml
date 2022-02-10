@@ -56,7 +56,7 @@ spec:
       workingDir: $(workspaces.source.path)
       script: |
         codeql database analyze /workspace/source/$(params.LANGUAGE)-db --format=sarif-latest --output=/workspace/source/$(params.LANGUAGE)-results
-        codeql github upload-results --verbose --repository=$(params.REPO) --ref=refs/heads/main --sarif=/workspace/source/$(params.LANGUAGE)-results
+        codeql github upload-results --repository=$(params.REPO) --ref=refs/heads/main --sarif=/workspace/source/$(params.LANGUAGE)-results -v
       env:
         - name: GITHUB_TOKEN
           valueFrom:
