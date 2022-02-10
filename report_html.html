@@ -127,7 +127,7 @@ td {
 	</h2>
 
 	<h3>
-		Generated on Thu, 10 Feb 2022 22:41:09
+		Generated on Thu, 10 Feb 2022 22:50:14
 	</h3>
 
 	
@@ -160,7 +160,7 @@ td {
 					<div>Low</div>
 				</td>
 				<td align="center">
-					<div>6</div>
+					<div>7</div>
 				</td>
 			</tr>
 			<tr>
@@ -168,7 +168,7 @@ td {
 					<div>Informational</div>
 				</td>
 				<td align="center">
-					<div>5</div>
+					<div>6</div>
 				</td>
 			</tr>
 			<tr>
@@ -209,6 +209,11 @@ td {
 				<td align="center">2</td>
 			</tr>
 			<tr>
+				<td><a href="#10110">Dangerous JS Functions</a></td>
+				<td align="center" class="risk-1">Low</td>
+				<td align="center">1</td>
+			</tr>
+			<tr>
 				<td><a href="#10015">Incomplete or No Cache-control Header Set</a></td>
 				<td align="center" class="risk-1">Low</td>
 				<td align="center">3</td>
@@ -216,22 +221,27 @@ td {
 			<tr>
 				<td><a href="#10063">Permissions Policy Header Not Set</a></td>
 				<td align="center" class="risk-1">Low</td>
-				<td align="center">4</td>
+				<td align="center">5</td>
 			</tr>
 			<tr>
 				<td><a href="#10035">Strict-Transport-Security Header Not Set</a></td>
 				<td align="center" class="risk-1">Low</td>
-				<td align="center">9</td>
+				<td align="center">10</td>
 			</tr>
 			<tr>
 				<td><a href="#10096">Timestamp Disclosure - Unix</a></td>
 				<td align="center" class="risk-1">Low</td>
-				<td align="center">48</td>
+				<td align="center">61</td>
 			</tr>
 			<tr>
 				<td><a href="#10021">X-Content-Type-Options Header Missing</a></td>
 				<td align="center" class="risk-1">Low</td>
-				<td align="center">9</td>
+				<td align="center">10</td>
+			</tr>
+			<tr>
+				<td><a href="#10094">Base64 Disclosure</a></td>
+				<td align="center" class="risk-0">Informational</td>
+				<td align="center">1</td>
 			</tr>
 			<tr>
 				<td><a href="#10019">Content-Type Header Missing</a></td>
@@ -246,7 +256,7 @@ td {
 			<tr>
 				<td><a href="#10109">Modern Web Application</a></td>
 				<td align="center" class="risk-0">Informational</td>
-				<td align="center">3</td>
+				<td align="center">4</td>
 			</tr>
 			<tr>
 				<td><a href="#10049">Non-Storable Content</a></td>
@@ -256,7 +266,7 @@ td {
 			<tr>
 				<td><a href="#10049">Storable and Cacheable Content</a></td>
 				<td align="center" class="risk-0">Informational</td>
-				<td align="center">7</td>
+				<td align="center">8</td>
 			</tr>
 		</table>
 		<div class="spacer-lg"></div>
@@ -656,6 +666,85 @@ td {
 			<table class="results">
 				<tr height="24">
 					<th width="20%" class="risk-1"><a
+						id="10110"></a>
+						<div>Low</div></th>
+					<th class="risk-1">Dangerous JS Functions</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>A dangerous JS function seems to be in use that would leave the site vulnerable.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js">https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">eval</td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">1</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>See the references for security advice on the use of these functions.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="https://angular.io/guide/security">https://angular.io/guide/security</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/749.html">749</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%"></td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10110/">10110</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-1"><a
 						id="10015"></a>
 						<div>Low</div></th>
 					<th class="risk-1">Incomplete or No Cache-control Header Set</th>
@@ -886,6 +975,32 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
+						<td width="80%"><a href="https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js">https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
 						<td width="80%"><a href="https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/main.3383beb6.chunk.js">https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/main.3383beb6.chunk.js</a></td>
 					</tr>
 					<tr>
@@ -911,7 +1026,7 @@ td {
 				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">4</td>
+					<td width="80%">5</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -1185,6 +1300,32 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
+						<td width="80%"><a href="https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js">https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
 						<td width="80%"><a href="https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/main.3383beb6.chunk.js">https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/main.3383beb6.chunk.js</a></td>
 					</tr>
 					<tr>
@@ -1210,7 +1351,7 @@ td {
 				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">9</td>
+					<td width="80%">10</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -1297,6 +1438,32 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">0123456789</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js">https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">1013904242</td>
 					</tr>
 				
 					<tr>
@@ -1582,7 +1749,59 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
+						<td width="80%">1359893119</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js">https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
 						<td width="80%">1396182291</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js">https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">1413257819</td>
 					</tr>
 				
 					<tr>
@@ -1634,7 +1853,85 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
+						<td width="80%">143694565</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js">https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">150054599</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js">https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
 						<td width="80%">1508970993</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js">https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">1521486534</td>
 					</tr>
 				
 					<tr>
@@ -1686,7 +1983,59 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
+						<td width="80%">1541459225</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js">https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
 						<td width="80%">1555081692</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js">https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">16711680</td>
 					</tr>
 				
 					<tr>
@@ -1791,6 +2140,32 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">1750603025</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js">https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">1779033703</td>
 					</tr>
 				
 					<tr>
@@ -1947,6 +2322,58 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">2024104815</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js">https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">210244248</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js">https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">24177077</td>
 					</tr>
 				
 					<tr>
@@ -2180,6 +2607,32 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
+						<td width="80%">528734635</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js">https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
 						<td width="80%">604807628</td>
 					</tr>
 				
@@ -2311,6 +2764,32 @@ td {
 						<td width="20%"
 							class="indent2">Evidence</td>
 						<td width="80%">67108864</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js">https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">704751109</td>
 					</tr>
 				
 					<tr>
@@ -2523,7 +3002,7 @@ td {
 				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">48</td>
+					<td width="80%">61</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -2785,6 +3264,32 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
+						<td width="80%"><a href="https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js">https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">X-Content-Type-Options</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
 						<td width="80%"><a href="https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/main.3383beb6.chunk.js">https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/main.3383beb6.chunk.js</a></td>
 					</tr>
 					<tr>
@@ -2810,7 +3315,7 @@ td {
 				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">9</td>
+					<td width="80%">10</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -2845,6 +3350,85 @@ td {
 					<td width="20%">Plugin Id</td>
 					<td width="80%"><a
 						href="https://www.zaproxy.org/docs/alerts/10021/">10021</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-0"><a
+						id="10094"></a>
+						<div>Informational</div></th>
+					<th class="risk-0">Base64 Disclosure</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js">https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789</td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">1</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="http://projects.webappsec.org/w/page/13246936/Information%20Leakage">http://projects.webappsec.org/w/page/13246936/Information%20Leakage</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/200.html">200</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">13</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10094/">10094</a></td>
 				</tr>
 			</table>
 			<div class="spacer"></div>
@@ -3178,9 +3762,35 @@ td {
 						<td width="80%">&lt;script&gt;!function(e){function t(t){for(var n,i,p=t[0],a=t[1],l=t[2],f=0,s=[];f&lt;p.length;f++)i=p[f],Object.prototype.hasOwnProperty.call(o,i)&amp;&amp;o[i]&amp;&amp;s.push(o[i][0]),o[i]=0;for(n in a)Object.prototype.hasOwnProperty.call(a,n)&amp;&amp;(e[n]=a[n]);for(c&amp;&amp;c(t);s.length;)s.shift()();return u.push.apply(u,l||[]),r()}function r(){for(var e,t=0;t&lt;u.length;t++){for(var r=u[t],n=!0,p=1;p&lt;r.length;p++){var a=r[p];0!==o[a]&amp;&amp;(n=!1)}n&amp;&amp;(u.splice(t--,1),e=i(i.s=r[0]))}return e}var n={},o={1:0},u=[];function i(t){if(n[t])return n[t].exports;var r=n[t]={i:t,l:!1,exports:{}};return e[t].call(r.exports,r,r.exports,i),r.l=!0,r.exports}i.m=e,i.c=n,i.d=function(e,t,r){i.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},i.r=function(e){&quot;undefined&quot;!=typeof Symbol&amp;&amp;Symbol.toStringTag&amp;&amp;Object.defineProperty(e,Symbol.toStringTag,{value:&quot;Module&quot;}),Object.defineProperty(e,&quot;__esModule&quot;,{value:!0})},i.t=function(e,t){if(1&amp;t&amp;&amp;(e=i(e)),8&amp;t)return e;if(4&amp;t&amp;&amp;&quot;object&quot;==typeof e&amp;&amp;e&amp;&amp;e.__esModule)return e;var r=Object.create(null);if(i.r(r),Object.defineProperty(r,&quot;default&quot;,{enumerable:!0,value:e}),2&amp;t&amp;&amp;&quot;string&quot;!=typeof e)for(var n in e)i.d(r,n,function(t){return e[t]}.bind(null,n));return r},i.n=function(e){var t=e&amp;&amp;e.__esModule?function(){return e.default}:function(){return e};return i.d(t,&quot;a&quot;,t),t},i.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},i.p=&quot;/&quot;;var p=this[&quot;webpackJsonpmautic-subscription-app&quot;]=this[&quot;webpackJsonpmautic-subscription-app&quot;]||[],a=p.push.bind(p);p.push=t,p=p.slice();for(var l=0;l&lt;p.length;l++)t(p[l]);var c=a;r()}([])&lt;/script&gt;</td>
 					</tr>
 				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js">https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;script&gt;</td>
+					</tr>
+				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">3</td>
+					<td width="80%">4</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -3530,6 +4140,32 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
+						<td width="80%"><a href="https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js">https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
 						<td width="80%"><a href="https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/main.3383beb6.chunk.js">https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/main.3383beb6.chunk.js</a></td>
 					</tr>
 					<tr>
@@ -3555,7 +4191,7 @@ td {
 				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">7</td>
+					<td width="80%">8</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
