@@ -19,7 +19,7 @@ spec:
       description: Full clone Url.
     - name: LANGUAGE
       description: CodeQL language to scan.
-      default: javascript
+      default: python
   workspaces:
     - name: source
       description: |
