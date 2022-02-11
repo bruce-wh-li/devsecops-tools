@@ -7,8 +7,8 @@
 | --- | --- |
 | High | 0 |
 | Medium | 2 |
-| Low | 7 |
-| Informational | 6 |
+| Low | 6 |
+| Informational | 5 |
 
 
 
@@ -20,18 +20,16 @@
 | Content Security Policy (CSP) Header Not Set | Medium | 3 |
 | Missing Anti-clickjacking Header | Medium | 3 |
 | Cookie with SameSite Attribute None | Low | 2 |
-| Dangerous JS Functions | Low | 1 |
 | Incomplete or No Cache-control Header Set | Low | 3 |
-| Permissions Policy Header Not Set | Low | 5 |
-| Strict-Transport-Security Header Not Set | Low | 10 |
+| Permissions Policy Header Not Set | Low | 4 |
+| Strict-Transport-Security Header Not Set | Low | 9 |
 | Timestamp Disclosure - Unix | Low | 61 |
 | X-Content-Type-Options Header Missing | Low | 10 |
-| Base64 Disclosure | Informational | 1 |
 | Content-Type Header Missing | Informational | 3 |
 | Information Disclosure - Suspicious Comments | Informational | 2 |
-| Modern Web Application | Informational | 4 |
+| Modern Web Application | Informational | 3 |
 | Non-Storable Content | Informational | 2 |
-| Storable and Cacheable Content | Informational | 8 |
+| Storable and Cacheable Content | Informational | 7 |
 
 
 
@@ -177,39 +175,6 @@ Ensure that the SameSite attribute is set to either 'lax' or ideally 'strict' fo
 
 #### Source ID: 3
 
-### [ Dangerous JS Functions ](https://www.zaproxy.org/docs/alerts/10110/)
-
-
-
-##### Low (Low)
-
-### Description
-
-A dangerous JS function seems to be in use that would leave the site vulnerable.
-
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `eval`
-
-Instances: 1
-
-### Solution
-
-See the references for security advice on the use of these functions.
-
-### Reference
-
-
-* [ https://angular.io/guide/security ](https://angular.io/guide/security)
-
-
-#### CWE Id: [ 749 ](https://cwe.mitre.org/data/definitions/749.html)
-
-
-#### Source ID: 3
-
 ### [ Incomplete or No Cache-control Header Set ](https://www.zaproxy.org/docs/alerts/10015/)
 
 
@@ -281,18 +246,13 @@ Permissions Policy Header is an added layer of security that helps to restrict f
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: ``
 * URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/main.3383beb6.chunk.js
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
 
-Instances: 5
+Instances: 4
 
 ### Solution
 
@@ -365,18 +325,13 @@ HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: ``
 * URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/main.3383beb6.chunk.js
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
 
-Instances: 10
+Instances: 9
 
 ### Solution
 
@@ -816,41 +771,6 @@ If possible, ensure that the end user uses a standards-compliant and modern web 
 
 #### Source ID: 3
 
-### [ Base64 Disclosure ](https://www.zaproxy.org/docs/alerts/10094/)
-
-
-
-##### Informational (Medium)
-
-### Description
-
-Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).
-
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`
-
-Instances: 1
-
-### Solution
-
-Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.
-
-### Reference
-
-
-* [ http://projects.webappsec.org/w/page/13246936/Information%20Leakage ](http://projects.webappsec.org/w/page/13246936/Information%20Leakage)
-
-
-#### CWE Id: [ 200 ](https://cwe.mitre.org/data/definitions/200.html)
-
-
-#### WASC Id: 13
-
-#### Source ID: 3
-
 ### [ Content-Type Header Missing ](https://www.zaproxy.org/docs/alerts/10019/)
 
 
@@ -959,13 +879,8 @@ The application appears to be a modern web application. If you need to explore i
   * Parameter: ``
   * Attack: ``
   * Evidence: `<script>!function(e){function t(t){for(var n,i,p=t[0],a=t[1],l=t[2],f=0,s=[];f<p.length;f++)i=p[f],Object.prototype.hasOwnProperty.call(o,i)&&o[i]&&s.push(o[i][0]),o[i]=0;for(n in a)Object.prototype.hasOwnProperty.call(a,n)&&(e[n]=a[n]);for(c&&c(t);s.length;)s.shift()();return u.push.apply(u,l||[]),r()}function r(){for(var e,t=0;t<u.length;t++){for(var r=u[t],n=!0,p=1;p<r.length;p++){var a=r[p];0!==o[a]&&(n=!1)}n&&(u.splice(t--,1),e=i(i.s=r[0]))}return e}var n={},o={1:0},u=[];function i(t){if(n[t])return n[t].exports;var r=n[t]={i:t,l:!1,exports:{}};return e[t].call(r.exports,r,r.exports,i),r.l=!0,r.exports}i.m=e,i.c=n,i.d=function(e,t,r){i.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},i.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},i.t=function(e,t){if(1&t&&(e=i(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(i.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var n in e)i.d(r,n,function(t){return e[t]}.bind(null,n));return r},i.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return i.d(t,"a",t),t},i.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},i.p="/";var p=this["webpackJsonpmautic-subscription-app"]=this["webpackJsonpmautic-subscription-app"]||[],a=p.push.bind(p);p.push=t,p=p.slice();for(var l=0;l<p.length;l++)t(p[l]);var c=a;r()}([])</script>`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `<script>`
 
-Instances: 4
+Instances: 3
 
 ### Solution
 
@@ -1071,18 +986,13 @@ The response contents are storable by caching components such as proxy servers, 
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: ``
 * URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/main.3383beb6.chunk.js
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
 
-Instances: 8
+Instances: 7
 
 ### Solution
 
