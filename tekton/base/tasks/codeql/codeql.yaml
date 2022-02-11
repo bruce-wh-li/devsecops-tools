@@ -5,7 +5,7 @@ metadata:
 spec:
   params:
     - name: BUILD_IMAGE
-      default: docker.io/brucecruise/codeql-cli:latest
+      default: docker.io/gregnrobinson/codeql-cli:latest
       description: Reference of the image buildah will produce.
     - name: CONTEXT
       description: Path to codeql source code.
@@ -56,10 +56,10 @@ spec:
       workingDir: $(workspaces.source.path)
       script: |
         codeql database analyze /workspace/source/$(params.LANGUAGE)-db --format=sarif-latest --output=/workspace/source/$(params.LANGUAGE)-results
-        codeql github upload-results --repository=$(params.REPO) --ref=refs/heads/main --sarif=/workspace/source/$(params.LANGUAGE)-results -v
+        codeql github upload-results --repository=$(params.REPO) --ref=refs/heads/main --sarif=/workspace/source/$(params.LANGUAGE)-results
       env:
         - name: GITHUB_TOKEN
           valueFrom:
             secretKeyRef:
               name: $(params.GITHUB_TOKEN)
-                key: secretToken
+              key: secretToken
