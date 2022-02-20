@@ -2,8 +2,8 @@ name: testing
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron:  '0 0 * * 0'
+  #schedule:
+  #  - cron:  '0 0 * * 0'
 jobs:
   codeql-scan:
     uses: bcgov/pipeline-templates/.github/workflows/codeql.yaml@main
