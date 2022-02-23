@@ -4,7 +4,7 @@ on:
   push:
 jobs:
   trivy-scan:
-    uses: bruce-wh-li/security-pipeline-templates/.github/workflows/trivy-container.yaml@main
+    uses: bruce-wh-li/devsecops-tools/.github/workflows/trivy-container.yaml@main
     with:
       IMAGE: gregnrobinson/bcgov-nginx-demo
       TAG: latest

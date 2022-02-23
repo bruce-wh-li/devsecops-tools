@@ -6,9 +6,9 @@ on:
   #  - cron:  '0 0 * * 0'
 jobs:
   codeql-scan:
-    uses: bcgov/pipeline-templates/.github/workflows/codeql.yaml@main
+    uses: bruce-wh-li/devsecops-tools/.github/workflows/codeql.yaml@main
   build-push:
-    uses: bcgov/pipeline-templates/.github/workflows/build-push.yaml@main
+    uses: bruce-wh-li/devsecops-tools/.github/workflows/build-push.yaml@main
     with:
       IMAGE_REGISTRY: docker.io
       IMAGE: gregnrobinson/bcgov-nginx-demo
@@ -18,12 +18,12 @@ jobs:
       IMAGE_REGISTRY_PASSWORD: ${{ secrets.IMAGE_REGISTRY_PASSWORD }}
   trivy-image-scan:
     needs: build-push
-    uses: bcgov/pipeline-templates/.github/workflows/trivy-container.yaml@main
+    uses: bruce-wh-li/devsecops-tools/.github/workflows/trivy-container.yaml@main
     with:
       IMAGE: gregnrobinson/bcgov-nginx-demo
       TAG: latest
   sonar-repo-scan:
-    uses: bcgov/pipeline-templates/.github/workflows/sonar-scanner.yaml@main
+    uses: bruce-wh-li/devsecops-tools/.github/workflows/sonar-scanner.yaml@main
     with:
       ORG: ci-testing
       PROJECT_KEY: bcgov-pipeline-templates
@@ -31,7 +31,7 @@ jobs:
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   sonar-maven-scan:
-    uses: bcgov/pipeline-templates/.github/workflows/sonar-scanner-mvn.yaml@main
+    uses: bruce-wh-li/devsecops-tools/.github/workflows/sonar-scanner-mvn.yaml@main
     with:
       WORKDIR: ./tekton/demo/maven-test
       PROJECT_KEY: pipeline-templates
@@ -39,7 +39,7 @@ jobs:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   helm-deploy:
     needs: [build-push, trivy-image-scan]
-    uses: bcgov/pipeline-templates/.github/workflows/helm-deploy.yaml@main
+    uses: bruce-wh-li/devsecops-tools/.github/workflows/helm-deploy.yaml@main
     with:
       ## DOCKER BUILD PARAMS
       NAME: flask-web
@@ -60,7 +60,7 @@ jobs:
       OPENSHIFT_TOKEN: ${{ secrets.OPENSHIFT_TOKEN }}
       TAILSCALE_API_KEY: ${{ secrets.TAILSCALE_API_KEY }}
   owasp-scan:
-    uses: bcgov/pipeline-templates/.github/workflows/owasp-scan.yaml@main
+    uses: bruce-wh-li/devsecops-tools/.github/workflows/owasp-scan.yaml@main
     needs: helm-deploy
     with:
       ZAP_SCAN_TYPE: 'base' # Accepted values are base and full.

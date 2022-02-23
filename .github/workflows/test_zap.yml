@@ -4,10 +4,10 @@ on:
   push:
 jobs:
   zap-owasp:
-    uses: bruce-wh-li/security-pipeline-templates/.github/workflows/owasp-scan.yaml@main
+    uses: bruce-wh-li/devsecops-tools/.github/workflows/owasp-scan.yaml@main
     with:
       ZAP_SCAN_TYPE: 'base' # Accepted values are base and full.
-      ZAP_TARGET_URL: https://scanme.org
+      ZAP_TARGET_URL: https://scanme.nmap.org
       ZAP_DURATION: '2'
       ZAP_MAX_DURATION: '5'
       ZAP_GCP_PUBLISH: false
