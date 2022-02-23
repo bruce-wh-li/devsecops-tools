@@ -1,1 +1,0 @@
- 2jsX´hrdemo/nginx/assets/js/demo.js

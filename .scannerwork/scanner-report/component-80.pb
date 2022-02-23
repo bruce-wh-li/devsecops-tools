@@ -1,1 +1,0 @@
-P XNhrdemo/maven-test/pom.xml
