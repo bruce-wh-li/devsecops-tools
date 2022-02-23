@@ -1,15 +1,15 @@
-name: owasp-scan-demo-4-Nick
+name: owasp-scanner
 on:
   workflow_dispatch:
   push:
 jobs:
   zap-owasp:
-    uses: bruce-wh-li/security-pipeline-templates/.github/workflows/owasp-scan.yaml@main
+    uses: bruce-wh-li/devsecops-tools/.github/workflows/owasp-scan.yaml@main
     with:
       ZAP_SCAN_TYPE: 'base' # Accepted values are base and full.
       # ZAP_TARGET_URL: https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/
       # ZAP_TARGET_URL: http://scanme.nmap.org/
-      ZAP_TARGET_URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/
+      ZAP_TARGET_URL: https://scanme.nmap.org/
       ZAP_DURATION: '2'
       ZAP_MAX_DURATION: '5'
       ZAP_GCP_PUBLISH: false
