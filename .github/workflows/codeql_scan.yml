@@ -4,4 +4,4 @@ on:
   push:
 jobs:
   codeql-scan:
-    uses: bruce-wh-li/security-pipeline-templates/.github/workflows/codeql.yaml@main
+    uses: bruce-wh-li/devsecops-tools/.github/workflows/codeql.yaml@main
