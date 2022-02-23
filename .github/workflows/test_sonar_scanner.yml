@@ -1,23 +1,13 @@
+name: sonar-maven-scan
 on:
-  # Trigger analysis when pushing in master or pull requests, and when creating
-  # a pull request.
-  push:
-    branches:
-      - master
-  pull_request:
-      types: [opened, synchronize, reopened]
   workflow_dispatch:
-name: test_sonar
+  push:
 jobs:
-  sonarcloud:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-      with:
-        # Disabling shallow clone is recommended for improving relevancy of reporting
-        fetch-depth: 0
-    - name: SonarCloud Scan
-      uses: sonarsource/sonarcloud-github-action@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  sonar-scan-mvn:
+    uses: bruce-wh-li/devsecops/.github/workflows/sonar-scanner-mvn.yaml@main
+    with:
+      WORKDIR: ./tekton/demo/maven-test
+### Sonar Cloud Setting  ### 
+      PROJECT_KEY: maven-test-bruce
+    secrets:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
