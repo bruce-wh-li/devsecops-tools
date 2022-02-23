@@ -6,9 +6,9 @@
 | Risk Level | Number of Alerts |
 | --- | --- |
 | High | 0 |
-| Medium | 2 |
+| Medium | 3 |
 | Low | 7 |
-| Informational | 6 |
+| Informational | 1 |
 
 
 
@@ -18,19 +18,15 @@
 | Name | Risk Level | Number of Instances |
 | --- | --- | --- |
 | Content Security Policy (CSP) Header Not Set | Medium | 3 |
-| Missing Anti-clickjacking Header | Medium | 3 |
-| Cookie with SameSite Attribute None | Low | 2 |
-| Dangerous JS Functions | Low | 1 |
-| Incomplete or No Cache-control Header Set | Low | 3 |
-| Permissions Policy Header Not Set | Low | 5 |
-| Strict-Transport-Security Header Not Set | Low | 10 |
-| Timestamp Disclosure - Unix | Low | 61 |
-| X-Content-Type-Options Header Missing | Low | 10 |
-| Base64 Disclosure | Informational | 1 |
-| Content-Type Header Missing | Informational | 3 |
-| Information Disclosure - Suspicious Comments | Informational | 2 |
-| Modern Web Application | Informational | 4 |
-| Non-Storable Content | Informational | 2 |
+| HTTP to HTTPS Insecure Transition in Form Post | Medium | 1 |
+| Missing Anti-clickjacking Header | Medium | 1 |
+| Absence of Anti-CSRF Tokens | Low | 1 |
+| Cross-Domain JavaScript Source File Inclusion | Low | 2 |
+| In Page Banner Information Leak | Low | 2 |
+| Permissions Policy Header Not Set | Low | 3 |
+| Server Leaks Version Information via "Server" HTTP Response Header Field | Low | 8 |
+| Timestamp Disclosure - Unix | Low | 2 |
+| X-Content-Type-Options Header Missing | Low | 6 |
 | Storable and Cacheable Content | Informational | 8 |
 
 
@@ -50,17 +46,17 @@
 
 Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page — covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.
 
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/
+* URL: http://scanme.nmap.org/
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/logo192.png
+* URL: http://scanme.nmap.org/robots.txt
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/sitemap.xml
+* URL: http://scanme.nmap.org/sitemap.xml
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
@@ -91,6 +87,39 @@ Ensure that your web server, application server, load balancer, etc. is configur
 
 #### Source ID: 3
 
+### [ HTTP to HTTPS Insecure Transition in Form Post ](https://www.zaproxy.org/docs/alerts/10041/)
+
+
+
+##### Medium (Medium)
+
+### Description
+
+This check looks for insecure HTTP pages that host HTTPS forms. The issue is that an insecure HTTP page can easily be hijacked through MITM and the secure HTTPS form can be replaced or spoofed.
+
+* URL: http://scanme.nmap.org/
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `https://nmap.org/search.html`
+
+Instances: 1
+
+### Solution
+
+Use HTTPS for landing pages that host secure forms.
+
+### Reference
+
+
+
+#### CWE Id: [ 319 ](https://cwe.mitre.org/data/definitions/319.html)
+
+
+#### WASC Id: 15
+
+#### Source ID: 3
+
 ### [ Missing Anti-clickjacking Header ](https://www.zaproxy.org/docs/alerts/10020/)
 
 
@@ -101,23 +130,13 @@ Ensure that your web server, application server, load balancer, etc. is configur
 
 The response does not include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options to protect against 'ClickJacking' attacks.
 
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/
-  * Method: `GET`
-  * Parameter: `X-Frame-Options`
-  * Attack: ``
-  * Evidence: ``
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/logo192.png
-  * Method: `GET`
-  * Parameter: `X-Frame-Options`
-  * Attack: ``
-  * Evidence: ``
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/sitemap.xml
+* URL: http://scanme.nmap.org/
   * Method: `GET`
   * Parameter: `X-Frame-Options`
   * Attack: ``
   * Evidence: ``
 
-Instances: 3
+Instances: 1
 
 ### Solution
 
@@ -137,7 +156,7 @@ If you expect the page to be framed only by pages on your server (e.g. it's part
 
 #### Source ID: 3
 
-### [ Cookie with SameSite Attribute None ](https://www.zaproxy.org/docs/alerts/10054/)
+### [ Absence of Anti-CSRF Tokens ](https://www.zaproxy.org/docs/alerts/10202/)
 
 
 
@@ -145,72 +164,63 @@ If you expect the page to be framed only by pages on your server (e.g. it's part
 
 ### Description
 
-A cookie has been set with its SameSite attribute set to "none", which means that the cookie can be sent as a result of a 'cross-site' request. The SameSite attribute is an effective counter measure to cross-site request forgery, cross-site script inclusion, and timing attacks.
+No Anti-CSRF tokens were found in a HTML submission form.
+A cross-site request forgery is an attack that involves forcing a victim to send an HTTP request to a target destination without their knowledge or intent in order to perform an action as the victim. The underlying cause is application functionality using predictable URL/form actions in a repeatable way. The nature of the attack is that CSRF exploits the trust that a web site has for a user. By contrast, cross-site scripting (XSS) exploits the trust that a user has for a web site. Like XSS, CSRF attacks are not necessarily cross-site, but they can be. Cross-site request forgery is also known as CSRF, XSRF, one-click attack, session riding, confused deputy, and sea surf.
 
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/
+CSRF attacks are effective in a number of situations, including:
+    * The victim has an active session on the target site.
+    * The victim is authenticated via HTTP auth on the target site.
+    * The victim is on the same local network as the target site.
+
+CSRF has primarily been used to perform an action against a target site using the victim's privileges, but recent techniques have been discovered to disclose information by gaining access to the response. The risk of information disclosure is dramatically increased when the target site is vulnerable to XSS, because XSS can be used as a platform for CSRF, allowing the attack to operate within the bounds of the same-origin policy.
+
+* URL: http://scanme.nmap.org/
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: ``
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/robots.txt
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: ``
-
-Instances: 2
-
-### Solution
-
-Ensure that the SameSite attribute is set to either 'lax' or ideally 'strict' for all cookies.
-
-### Reference
-
-
-* [ https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site ](https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site)
-
-
-#### CWE Id: [ 1275 ](https://cwe.mitre.org/data/definitions/1275.html)
-
-
-#### WASC Id: 13
-
-#### Source ID: 3
-
-### [ Dangerous JS Functions ](https://www.zaproxy.org/docs/alerts/10110/)
-
-
-
-##### Low (Low)
-
-### Description
-
-A dangerous JS function seems to be in use that would leave the site vulnerable.
-
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `eval`
+  * Evidence: `<form action="https://nmap.org/search.html" id="cse-search-box-sidebar">`
 
 Instances: 1
 
 ### Solution
 
-See the references for security advice on the use of these functions.
+Phase: Architecture and Design
+Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.
+For example, use anti-CSRF packages such as the OWASP CSRFGuard.
+
+Phase: Implementation
+Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.
+
+Phase: Architecture and Design
+Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).
+Note that this can be bypassed using XSS.
+
+Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.
+Note that this can be bypassed using XSS.
+
+Use the ESAPI Session Management control.
+This control includes a component for CSRF.
+
+Do not use the GET method for any request that triggers a state change.
+
+Phase: Implementation
+Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.
 
 ### Reference
 
 
-* [ https://angular.io/guide/security ](https://angular.io/guide/security)
+* [ http://projects.webappsec.org/Cross-Site-Request-Forgery ](http://projects.webappsec.org/Cross-Site-Request-Forgery)
+* [ http://cwe.mitre.org/data/definitions/352.html ](http://cwe.mitre.org/data/definitions/352.html)
 
 
-#### CWE Id: [ 749 ](https://cwe.mitre.org/data/definitions/749.html)
+#### CWE Id: [ 352 ](https://cwe.mitre.org/data/definitions/352.html)
 
+
+#### WASC Id: 9
 
 #### Source ID: 3
 
-### [ Incomplete or No Cache-control Header Set ](https://www.zaproxy.org/docs/alerts/10015/)
+### [ Cross-Domain JavaScript Source File Inclusion ](https://www.zaproxy.org/docs/alerts/10017/)
 
 
 
@@ -218,38 +228,72 @@ See the references for security advice on the use of these functions.
 
 ### Description
 
-The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content.
+The page includes one or more script files from a third-party domain.
 
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/
+* URL: http://scanme.nmap.org/
   * Method: `GET`
-  * Parameter: `Cache-Control`
+  * Parameter: `//g.adspeed.net/ad.php?do=js&zid=14678&wd=-1&ht=-1&target=_blank`
   * Attack: ``
-  * Evidence: `private`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/logo192.png
+  * Evidence: `<script type="text/javascript" src="//g.adspeed.net/ad.php?do=js&amp;zid=14678&amp;wd=-1&amp;ht=-1&amp;target=_blank"></script>`
+* URL: http://scanme.nmap.org/
   * Method: `GET`
-  * Parameter: `Cache-Control`
+  * Parameter: `//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js`
   * Attack: ``
-  * Evidence: ``
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/sitemap.xml
-  * Method: `GET`
-  * Parameter: `Cache-Control`
-  * Attack: ``
-  * Evidence: ``
+  * Evidence: `<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>`
 
-Instances: 3
+Instances: 2
 
 ### Solution
 
-Whenever possible ensure the cache-control HTTP header is set with no-cache, no-store, must-revalidate.
+Ensure JavaScript source files are loaded from only trusted sources, and the sources can't be controlled by end users of the application.
 
 ### Reference
 
 
-* [ https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching ](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching)
-* [ https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control ](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control)
+
+#### CWE Id: [ 829 ](https://cwe.mitre.org/data/definitions/829.html)
 
 
-#### CWE Id: [ 525 ](https://cwe.mitre.org/data/definitions/525.html)
+#### WASC Id: 15
+
+#### Source ID: 3
+
+### [ In Page Banner Information Leak ](https://www.zaproxy.org/docs/alerts/10009/)
+
+
+
+##### Low (High)
+
+### Description
+
+The server returned a version banner string in the response content. Such information leaks may allow attackers to further target specific issues impacting the product and version in use.
+
+* URL: http://scanme.nmap.org/robots.txt
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `Apache/2.4.7`
+* URL: http://scanme.nmap.org/sitemap.xml
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `Apache/2.4.7`
+
+Instances: 2
+
+### Solution
+
+Configure the server to prevent such information leaks. For example:
+Under Tomcat this is done via the "server" directive and implementation of custom error pages.
+Under Apache this is done via the "ServerSignature" and "ServerTokens" directives.
+
+### Reference
+
+
+* [ https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/08-Testing_for_Error_Handling/ ](https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/08-Testing_for_Error_Handling/)
+
+
+#### CWE Id: [ 200 ](https://cwe.mitre.org/data/definitions/200.html)
 
 
 #### WASC Id: 13
@@ -266,33 +310,23 @@ Whenever possible ensure the cache-control HTTP header is set with no-cache, no-
 
 Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.
 
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/
+* URL: http://scanme.nmap.org/
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/logo192.png
+* URL: http://scanme.nmap.org/robots.txt
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/sitemap.xml
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: ``
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: ``
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/main.3383beb6.chunk.js
+* URL: http://scanme.nmap.org/sitemap.xml
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
 
-Instances: 5
+Instances: 3
 
 ### Solution
 
@@ -315,7 +349,7 @@ Ensure that your web server, application server, load balancer, etc. is configur
 
 #### Source ID: 3
 
-### [ Strict-Transport-Security Header Not Set ](https://www.zaproxy.org/docs/alerts/10035/)
+### [ Server Leaks Version Information via "Server" HTTP Response Header Field ](https://www.zaproxy.org/docs/alerts/10036/)
 
 
 
@@ -323,79 +357,68 @@ Ensure that your web server, application server, load balancer, etc. is configur
 
 ### Description
 
-HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.e. HTTP layered over TLS/SSL). HSTS is an IETF standards track protocol and is specified in RFC 6797.
+The web/application server is leaking version information via the "Server" HTTP response header. Access to such information may facilitate attackers identifying other vulnerabilities your web/application server is subject to.
 
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/
+* URL: http://scanme.nmap.org/
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: ``
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/favicon.ico
+  * Evidence: `Apache/2.4.7 (Ubuntu)`
+* URL: http://scanme.nmap.org/images/sitelogo.png
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: ``
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/logo192.png
+  * Evidence: `Apache/2.4.7 (Ubuntu)`
+* URL: http://scanme.nmap.org/robots.txt
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: ``
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/manifest.json
+  * Evidence: `Apache/2.4.7 (Ubuntu)`
+* URL: http://scanme.nmap.org/shared/css/insecdb.css
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: ``
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/robots.txt
+  * Evidence: `Apache/2.4.7 (Ubuntu)`
+* URL: http://scanme.nmap.org/shared/images/Acunetix/acx_Chess-WB.gif
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: ``
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/sitemap.xml
+  * Evidence: `Apache/2.4.7 (Ubuntu)`
+* URL: http://scanme.nmap.org/shared/images/tiny-eyeicon.png
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: ``
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/css/2.f01efe62.chunk.css
+  * Evidence: `Apache/2.4.7 (Ubuntu)`
+* URL: http://scanme.nmap.org/shared/images/topleftcurve.gif
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: ``
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/css/main.b64b95f0.chunk.css
+  * Evidence: `Apache/2.4.7 (Ubuntu)`
+* URL: http://scanme.nmap.org/sitemap.xml
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: ``
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: ``
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/main.3383beb6.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: ``
+  * Evidence: `Apache/2.4.7 (Ubuntu)`
 
-Instances: 10
+Instances: 8
 
 ### Solution
 
-Ensure that your web server, application server, load balancer, etc. is configured to enforce Strict-Transport-Security.
+Ensure that your web server, application server, load balancer, etc. is configured to suppress the "Server" header or provide generic details.
 
 ### Reference
 
 
-* [ https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html ](https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html)
-* [ https://owasp.org/www-community/Security_Headers ](https://owasp.org/www-community/Security_Headers)
-* [ http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security ](http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security)
-* [ http://caniuse.com/stricttransportsecurity ](http://caniuse.com/stricttransportsecurity)
-* [ http://tools.ietf.org/html/rfc6797 ](http://tools.ietf.org/html/rfc6797)
+* [ http://httpd.apache.org/docs/current/mod/core.html#servertokens ](http://httpd.apache.org/docs/current/mod/core.html#servertokens)
+* [ http://msdn.microsoft.com/en-us/library/ff648552.aspx#ht_urlscan_007 ](http://msdn.microsoft.com/en-us/library/ff648552.aspx#ht_urlscan_007)
+* [ http://blogs.msdn.com/b/varunm/archive/2013/04/23/remove-unwanted-http-response-headers.aspx ](http://blogs.msdn.com/b/varunm/archive/2013/04/23/remove-unwanted-http-response-headers.aspx)
+* [ http://www.troyhunt.com/2012/02/shhh-dont-let-your-response-headers.html ](http://www.troyhunt.com/2012/02/shhh-dont-let-your-response-headers.html)
 
 
-#### CWE Id: [ 319 ](https://cwe.mitre.org/data/definitions/319.html)
+#### CWE Id: [ 200 ](https://cwe.mitre.org/data/definitions/200.html)
 
 
-#### WASC Id: 15
+#### WASC Id: 13
 
 #### Source ID: 3
 
@@ -409,313 +432,18 @@ Ensure that your web server, application server, load balancer, etc. is configur
 
 A timestamp was disclosed by the application/web server - Unix
 
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
+* URL: http://scanme.nmap.org/
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: `0123456789`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
+  * Evidence: `11009417`
+* URL: http://scanme.nmap.org/shared/images/Acunetix/acx_Chess-WB.gif
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: `1013904242`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `1073741823`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `1073741824`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `1073741825`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `1116352408`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `113926993`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `1249150122`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `1294757372`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `1322822218`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `134217727`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `134217728`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `1359893119`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `1396182291`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `1413257819`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `1426881987`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `143694565`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `150054599`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `1508970993`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `1521486534`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `1537002063`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `1541459225`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `1555081692`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `16711680`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `1694076839`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `1695183700`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `1747873779`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `1750603025`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `1779033703`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `1899447441`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `1925078388`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `1955562222`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `1986661051`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `1996064986`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `2024104815`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `210244248`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `24177077`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `264347078`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `268435456`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `275423344`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `310598401`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `33554432`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `338241895`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `430227734`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `506948616`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `528734635`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `604807628`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `607225278`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `62914560`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `659060556`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `666307205`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `67108864`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `704751109`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `770255983`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `773529912`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `805306368`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `812702999`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `883997877`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `914150663`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `958139571`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `961987163`
+  * Evidence: `51125622`
 
-Instances: 61
+Instances: 2
 
 ### Solution
 
@@ -744,58 +472,38 @@ Manually confirm that the timestamp data is not sensitive, and that the data can
 
 The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.
 
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/
+* URL: http://scanme.nmap.org/
   * Method: `GET`
   * Parameter: `X-Content-Type-Options`
   * Attack: ``
   * Evidence: ``
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/favicon.ico
+* URL: http://scanme.nmap.org/images/sitelogo.png
   * Method: `GET`
   * Parameter: `X-Content-Type-Options`
   * Attack: ``
   * Evidence: ``
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/logo192.png
+* URL: http://scanme.nmap.org/shared/css/insecdb.css
   * Method: `GET`
   * Parameter: `X-Content-Type-Options`
   * Attack: ``
   * Evidence: ``
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/manifest.json
+* URL: http://scanme.nmap.org/shared/images/Acunetix/acx_Chess-WB.gif
   * Method: `GET`
   * Parameter: `X-Content-Type-Options`
   * Attack: ``
   * Evidence: ``
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/robots.txt
+* URL: http://scanme.nmap.org/shared/images/tiny-eyeicon.png
   * Method: `GET`
   * Parameter: `X-Content-Type-Options`
   * Attack: ``
   * Evidence: ``
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/sitemap.xml
-  * Method: `GET`
-  * Parameter: `X-Content-Type-Options`
-  * Attack: ``
-  * Evidence: ``
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/css/2.f01efe62.chunk.css
-  * Method: `GET`
-  * Parameter: `X-Content-Type-Options`
-  * Attack: ``
-  * Evidence: ``
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/css/main.b64b95f0.chunk.css
-  * Method: `GET`
-  * Parameter: `X-Content-Type-Options`
-  * Attack: ``
-  * Evidence: ``
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: `X-Content-Type-Options`
-  * Attack: ``
-  * Evidence: ``
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/main.3383beb6.chunk.js
+* URL: http://scanme.nmap.org/shared/images/topleftcurve.gif
   * Method: `GET`
   * Parameter: `X-Content-Type-Options`
   * Attack: ``
   * Evidence: ``
 
-Instances: 10
+Instances: 6
 
 ### Solution
 
@@ -816,221 +524,6 @@ If possible, ensure that the end user uses a standards-compliant and modern web 
 
 #### Source ID: 3
 
-### [ Base64 Disclosure ](https://www.zaproxy.org/docs/alerts/10094/)
-
-
-
-##### Informational (Medium)
-
-### Description
-
-Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).
-
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`
-
-Instances: 1
-
-### Solution
-
-Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.
-
-### Reference
-
-
-* [ http://projects.webappsec.org/w/page/13246936/Information%20Leakage ](http://projects.webappsec.org/w/page/13246936/Information%20Leakage)
-
-
-#### CWE Id: [ 200 ](https://cwe.mitre.org/data/definitions/200.html)
-
-
-#### WASC Id: 13
-
-#### Source ID: 3
-
-### [ Content-Type Header Missing ](https://www.zaproxy.org/docs/alerts/10019/)
-
-
-
-##### Informational (Medium)
-
-### Description
-
-The Content-Type header was either missing or empty.
-
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/favicon.ico
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: ``
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/manifest.json
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: ``
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/robots.txt
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: ``
-
-Instances: 3
-
-### Solution
-
-Ensure each page is setting the specific and appropriate content-type value for the content being delivered.
-
-### Reference
-
-
-* [ http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx ](http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx)
-
-
-#### CWE Id: [ 345 ](https://cwe.mitre.org/data/definitions/345.html)
-
-
-#### WASC Id: 12
-
-#### Source ID: 3
-
-### [ Information Disclosure - Suspicious Comments ](https://www.zaproxy.org/docs/alerts/10027/)
-
-
-
-##### Informational (Low)
-
-### Description
-
-The response appears to contain suspicious comments which may help an attacker. Note: Matches made within script blocks or files are against the entire content not only comments.
-
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `query`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/main.3383beb6.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `select`
-
-Instances: 2
-
-### Solution
-
-Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.
-
-### Reference
-
-
-
-#### CWE Id: [ 200 ](https://cwe.mitre.org/data/definitions/200.html)
-
-
-#### WASC Id: 13
-
-#### Source ID: 3
-
-### [ Modern Web Application ](https://www.zaproxy.org/docs/alerts/10109/)
-
-
-
-##### Informational (Medium)
-
-### Description
-
-The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.
-
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `<script>!function(e){function t(t){for(var n,i,p=t[0],a=t[1],l=t[2],f=0,s=[];f<p.length;f++)i=p[f],Object.prototype.hasOwnProperty.call(o,i)&&o[i]&&s.push(o[i][0]),o[i]=0;for(n in a)Object.prototype.hasOwnProperty.call(a,n)&&(e[n]=a[n]);for(c&&c(t);s.length;)s.shift()();return u.push.apply(u,l||[]),r()}function r(){for(var e,t=0;t<u.length;t++){for(var r=u[t],n=!0,p=1;p<r.length;p++){var a=r[p];0!==o[a]&&(n=!1)}n&&(u.splice(t--,1),e=i(i.s=r[0]))}return e}var n={},o={1:0},u=[];function i(t){if(n[t])return n[t].exports;var r=n[t]={i:t,l:!1,exports:{}};return e[t].call(r.exports,r,r.exports,i),r.l=!0,r.exports}i.m=e,i.c=n,i.d=function(e,t,r){i.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},i.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},i.t=function(e,t){if(1&t&&(e=i(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(i.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var n in e)i.d(r,n,function(t){return e[t]}.bind(null,n));return r},i.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return i.d(t,"a",t),t},i.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},i.p="/";var p=this["webpackJsonpmautic-subscription-app"]=this["webpackJsonpmautic-subscription-app"]||[],a=p.push.bind(p);p.push=t,p=p.slice();for(var l=0;l<p.length;l++)t(p[l]);var c=a;r()}([])</script>`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/logo192.png
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `<script>!function(e){function t(t){for(var n,i,p=t[0],a=t[1],l=t[2],f=0,s=[];f<p.length;f++)i=p[f],Object.prototype.hasOwnProperty.call(o,i)&&o[i]&&s.push(o[i][0]),o[i]=0;for(n in a)Object.prototype.hasOwnProperty.call(a,n)&&(e[n]=a[n]);for(c&&c(t);s.length;)s.shift()();return u.push.apply(u,l||[]),r()}function r(){for(var e,t=0;t<u.length;t++){for(var r=u[t],n=!0,p=1;p<r.length;p++){var a=r[p];0!==o[a]&&(n=!1)}n&&(u.splice(t--,1),e=i(i.s=r[0]))}return e}var n={},o={1:0},u=[];function i(t){if(n[t])return n[t].exports;var r=n[t]={i:t,l:!1,exports:{}};return e[t].call(r.exports,r,r.exports,i),r.l=!0,r.exports}i.m=e,i.c=n,i.d=function(e,t,r){i.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},i.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},i.t=function(e,t){if(1&t&&(e=i(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(i.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var n in e)i.d(r,n,function(t){return e[t]}.bind(null,n));return r},i.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return i.d(t,"a",t),t},i.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},i.p="/";var p=this["webpackJsonpmautic-subscription-app"]=this["webpackJsonpmautic-subscription-app"]||[],a=p.push.bind(p);p.push=t,p=p.slice();for(var l=0;l<p.length;l++)t(p[l]);var c=a;r()}([])</script>`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/sitemap.xml
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `<script>!function(e){function t(t){for(var n,i,p=t[0],a=t[1],l=t[2],f=0,s=[];f<p.length;f++)i=p[f],Object.prototype.hasOwnProperty.call(o,i)&&o[i]&&s.push(o[i][0]),o[i]=0;for(n in a)Object.prototype.hasOwnProperty.call(a,n)&&(e[n]=a[n]);for(c&&c(t);s.length;)s.shift()();return u.push.apply(u,l||[]),r()}function r(){for(var e,t=0;t<u.length;t++){for(var r=u[t],n=!0,p=1;p<r.length;p++){var a=r[p];0!==o[a]&&(n=!1)}n&&(u.splice(t--,1),e=i(i.s=r[0]))}return e}var n={},o={1:0},u=[];function i(t){if(n[t])return n[t].exports;var r=n[t]={i:t,l:!1,exports:{}};return e[t].call(r.exports,r,r.exports,i),r.l=!0,r.exports}i.m=e,i.c=n,i.d=function(e,t,r){i.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},i.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},i.t=function(e,t){if(1&t&&(e=i(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(i.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var n in e)i.d(r,n,function(t){return e[t]}.bind(null,n));return r},i.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return i.d(t,"a",t),t},i.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},i.p="/";var p=this["webpackJsonpmautic-subscription-app"]=this["webpackJsonpmautic-subscription-app"]||[],a=p.push.bind(p);p.push=t,p=p.slice();for(var l=0;l<p.length;l++)t(p[l]);var c=a;r()}([])</script>`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `<script>`
-
-Instances: 4
-
-### Solution
-
-This is an informational alert and so no changes are required.
-
-### Reference
-
-
-
-
-#### Source ID: 3
-
-### [ Non-Storable Content ](https://www.zaproxy.org/docs/alerts/10049/)
-
-
-
-##### Informational (Medium)
-
-### Description
-
-The response contents are not storable by caching components such as proxy servers. If the response does not contain sensitive, personal or user-specific information, it may benefit from being stored and cached, to improve performance.
-
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `private`
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/robots.txt
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `private`
-
-Instances: 2
-
-### Solution
-
-The content may be marked as storable by ensuring that the following conditions are satisfied:
-The request method must be understood by the cache and defined as being cacheable ("GET", "HEAD", and "POST" are currently defined as cacheable)
-The response status code must be understood by the cache (one of the 1XX, 2XX, 3XX, 4XX, or 5XX response classes are generally understood)
-The "no-store" cache directive must not appear in the request or response header fields
-For caching by "shared" caches such as "proxy" caches, the "private" response directive must not appear in the response
-For caching by "shared" caches such as "proxy" caches, the "Authorization" header field must not appear in the request, unless the response explicitly allows it (using one of the "must-revalidate", "public", or "s-maxage" Cache-Control response directives)
-In addition to the conditions above, at least one of the following conditions must also be satisfied by the response:
-It must contain an "Expires" header field
-It must contain a "max-age" response directive
-For "shared" caches such as "proxy" caches, it must contain a "s-maxage" response directive
-It must contain a "Cache Control Extension" that allows it to be cached
-It must have a status code that is defined as cacheable by default (200, 203, 204, 206, 300, 301, 404, 405, 410, 414, 501).   
-
-### Reference
-
-
-* [ https://tools.ietf.org/html/rfc7234 ](https://tools.ietf.org/html/rfc7234)
-* [ https://tools.ietf.org/html/rfc7231 ](https://tools.ietf.org/html/rfc7231)
-* [ http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234) ](http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234))
-
-
-#### CWE Id: [ 524 ](https://cwe.mitre.org/data/definitions/524.html)
-
-
-#### WASC Id: 13
-
-#### Source ID: 3
-
 ### [ Storable and Cacheable Content ](https://www.zaproxy.org/docs/alerts/10049/)
 
 
@@ -1041,42 +534,42 @@ It must have a status code that is defined as cacheable by default (200, 203, 20
 
 The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users.  If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where "shared" caching servers such as "proxy" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.
 
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/favicon.ico
+* URL: http://scanme.nmap.org/
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/logo192.png
+* URL: http://scanme.nmap.org/images/sitelogo.png
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/manifest.json
+* URL: http://scanme.nmap.org/robots.txt
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/sitemap.xml
+* URL: http://scanme.nmap.org/shared/css/insecdb.css
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/css/2.f01efe62.chunk.css
+* URL: http://scanme.nmap.org/shared/images/Acunetix/acx_Chess-WB.gif
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/css/main.b64b95f0.chunk.css
+* URL: http://scanme.nmap.org/shared/images/tiny-eyeicon.png
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/2.8ae38162.chunk.js
+* URL: http://scanme.nmap.org/shared/images/topleftcurve.gif
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
-* URL: https://mautic-subscription-prod-de0974-prod.apps.silver.devops.gov.bc.ca/static/js/main.3383beb6.chunk.js
+* URL: http://scanme.nmap.org/sitemap.xml
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
