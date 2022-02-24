@@ -124,10 +124,8 @@ jobs:
 [Back to top](#github-actions-templates)
 
 
-### Using Trivy to scan your Git repo
-It's also possible to scan your git repos with Trivy's built-in repo scan. This can be handy if you want to run Trivy as a build time check on each PR that gets opened in your repo. This helps you identify potential vulnerablites that might get introduced with each PR.
+### Using Trivy to scan Git repo
 
-If you have [GitHub code scanning](https://docs.github.com/en/github/finding-security-vulnerabilities-and-errors-in-your-code/about-code-scanning) available you can use Trivy as a scanning tool as follows:
 ```yaml
 name: build
 on:
