@@ -4,7 +4,7 @@ on:
   push:
 jobs:
   sonar-scan-mvn:
-    uses: bruce-wh-li/devsecops/.github/workflows/sonar-scanner-mvn.yaml@main
+    uses: bruce-wh-li/devsecops-tools/.github/workflows/sonar-scanner-mvn.yaml@main
     with:
       WORKDIR: ./tekton/demo/maven-test
 ### Sonar Cloud Setting  ### 
