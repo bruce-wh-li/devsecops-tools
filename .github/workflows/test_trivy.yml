@@ -6,5 +6,6 @@ jobs:
   trivy-scan:
     uses: bruce-wh-li/devsecops-tools/.github/workflows/trivy-container.yaml@main
     with:
+## docker image 
       IMAGE: gregnrobinson/bcgov-nginx-demo
       TAG: latest
