@@ -127,7 +127,7 @@ jobs:
 ### Using Trivy to scan Git repo
 
 ```yaml
-name: build
+name: trivy-scan-gitrepo
 on:
   push:
     branches:
