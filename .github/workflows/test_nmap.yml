@@ -1,9 +1,0 @@
-name: nmap-vuln-scan
-on:
-  workflow_dispatch:
-  push:
-jobs:
-  nmap-scan:
-    run: 
-    nmap -sV --script http-vuln-cve2013-0156 https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/    
-
