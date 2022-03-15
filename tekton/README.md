@@ -159,10 +159,13 @@ All pipeline run templates listed below are tested and working. The `PipelineRun
 
 *Build and push a docker image using [buildah](https://buildah.io/).*
 
-**Required:** docker hub account</br>
-**Uses:** buildah image in quay.io </br>
-**Output:** Pipeline p-buildah created. The pipeline run does the following </br>
-            - build a flask-web image in docker hub using buildah in quay.io and run trivy scan</br> 
+Required: docker hub account
+Uses: buildah image in quay.io
+Output: Pipeline p-buildah created. 
+
+The pipeline has the following tasks
+- build a flask-web image in docker hub using buildah in quay.io 
+- run trivy scan
 
 ```yaml
 cat <<EOF | kubectl create -f -
@@ -215,9 +218,12 @@ EOF
 
 *Builds a Dockerfile and deploys the resulting image to Openshift as a deployment using [helm](https://helm.sh/docs/). By default, this configuration will use the helm chart located at `demo/flask-web/helm`.*
 
-**Required:** quay.io account</br>
-**Uses:** helm in docker, buildah in quay</br>
-**Output:** Pipeline p-helm-build-deploy created.  The pipeline run does the following - build a flask-web in quay.io image registry, run trivy scan, and deploy the flask-web in openshift</br> 
+Required: quay.io account</br>
+Uses: helm in docker, buildah in quay</br>
+Output: 
+- Pipeline p-helm-build-deploy created.  
+- build a flask-web in quay.io image registry
+- run trivy scan, and deploy the flask-web in openshift 
 
 ```yaml
 cat <<EOF | kubectl create -f -
@@ -280,14 +286,17 @@ EOF
 
 *Builds and a java application with [maven](https://maven.apache.org/).*
 
-**Required:** sonar cloud account and sonoar cloud project</br>
+Required:sonar cloud account and sonoar cloud project</br>
 *For PoC test, you can create you own project and app in sonar cloud with your github id*
 *For team looking to adopt sonar cloud, please refer to the following url*
 https://developer.gov.bc.ca/SonarQube-on-OpenShift#sonarcloud
 *Input Parm:<sonarProject> from sonar cloud*
 *           <appName> from sonar cloud*
-**Uses:** helm in docker, buildah in quay</br>
-**Output:** build a flask-web in quay.io image registry and deploy the flask-web in openshift</br> 
+Uses: maven image in docker, </br>
+Output: 
+- Pipeline p-mvn-build created
+- build a flask-web in quay.io image registry 
+- deploy the flask-web in openshift  
 
 ```yaml
 cat <<EOF | kubectl create -f -
