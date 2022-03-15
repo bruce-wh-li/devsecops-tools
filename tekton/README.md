@@ -210,7 +210,7 @@ EOF
 
 *Builds a Dockerfile and deploys the resulting image to Openshift as a deployment using [helm](https://helm.sh/docs/). By default, this configuration will use the helm chart located at `demo/flask-web/helm`.*
 
-**Required:**quay.io account</br>
+**Required:** quay.io account</br>
 **Uses:** helm in docker, buildah in quay</br>
 **Output:** build a flask-web in quay.io image registry and deploy the flask-web in openshift</br> 
 
