@@ -275,9 +275,12 @@ EOF
 
 *Builds and a java application with [maven](https://maven.apache.org/).*
 
-**Required:** sonar cloud id</br>
-*Input Parm:sonarProject*
-*appName*
+**Required:** sonar cloud account and sonoar cloud project</br>
+*For PoC test, you can create you own project and app in sonar cloud with your github id*
+*For team looking to adopt sonar cloud, please refer to the following url*
+https://developer.gov.bc.ca/SonarQube-on-OpenShift#sonarcloud
+*Input Parm:<sonarProject> from sonar cloud*
+*           <appName> from sonar cloud*
 **Uses:** helm in docker, buildah in quay</br>
 **Output:** build a flask-web in quay.io image registry and deploy the flask-web in openshift</br> 
 
