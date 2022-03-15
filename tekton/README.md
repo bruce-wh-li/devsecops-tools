@@ -161,7 +161,8 @@ All pipeline run templates listed below are tested and working. The `PipelineRun
 
 **Required:** docker hub account</br>
 **Uses:** buildah image in quay.io </br>
-**Output:** build a flask-web in docker hub using buildah in quay.io</br> 
+**Output:** Pipeline p-buildah created. The pipeline run does the following </br>
+            - build a flask-web image in docker hub using buildah in quay.io and run trivy scan</br> 
 
 ```yaml
 cat <<EOF | kubectl create -f -
@@ -216,7 +217,7 @@ EOF
 
 **Required:** quay.io account</br>
 **Uses:** helm in docker, buildah in quay</br>
-**Output:** build a flask-web in quay.io image registry and deploy the flask-web in openshift</br> 
+**Output:** Pipeline p-helm-build-deploy created.  The pipeline run does the following - build a flask-web in quay.io image registry, run trivy scan, and deploy the flask-web in openshift</br> 
 
 ```yaml
 cat <<EOF | kubectl create -f -
