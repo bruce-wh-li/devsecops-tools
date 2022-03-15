@@ -159,6 +159,10 @@ All pipeline run templates listed below are tested and working. The `PipelineRun
 
 *Build and push a docker image using [buildah](https://buildah.io/).*
 
+**Required:** docker hub account</br>
+**Uses:** buildah image in quay.io </br>
+**Output:** build a flask-web in docker hub using buildah in quay.io</br> 
+
 ```yaml
 cat <<EOF | kubectl create -f -
 apiVersion: tekton.dev/v1beta1
