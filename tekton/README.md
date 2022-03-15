@@ -208,7 +208,7 @@ EOF
 
 ### **build-deploy-helm**
 
-*Builds a Dockerfile and deploys the resulting image to Openshift as a deployment using [helm](https://helm.sh/docs/). By default, this configuration will use the helm chart located at`demo/flask-web/helm`.*
+*Builds a Dockerfile and deploys the resulting image to Openshift as a deployment using [helm](https://helm.sh/docs/). By default, this configuration will use the helm chart located at `demo/flask-web/helm`.*
 
 ```yaml
 cat <<EOF | kubectl create -f -
