@@ -275,6 +275,12 @@ EOF
 
 *Builds and a java application with [maven](https://maven.apache.org/).*
 
+**Required:** sonar cloud id</br>
+*Input Parm:sonarProject*
+*appName*
+**Uses:** helm in docker, buildah in quay</br>
+**Output:** build a flask-web in quay.io image registry and deploy the flask-web in openshift</br> 
+
 ```yaml
 cat <<EOF | kubectl create -f -
 apiVersion: tekton.dev/v1beta1
