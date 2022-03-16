@@ -91,8 +91,8 @@ Note: This project has been tested on *linux/arm64*, *linux/amd64*, *linux/aarch
 1. [kubectl](https://kubernetes.io/docs/tasks/tools/) >= 1.21.0
 2. [python3](https://www.python.org/)
 3. [pip](https://pip.pypa.io/en/stable/installation/)
-4. [github ssh-key] (https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
-5. [github pat] (https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
+4. [github ssh-key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+5. [github pat](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
 
 ## Installation
 
