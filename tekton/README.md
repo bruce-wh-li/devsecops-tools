@@ -320,7 +320,7 @@ spec:
   - name: mavenImage
     value: index.docker.io/library/maven
   - name: repoUrl
-    value: git@github.com:bcgov/pipeline-templates.git
+    value: git@github.com:bruce-wh-li/pipeline-templates.git
   - name: branchName
     value: main
   - name: pathToContext
@@ -328,7 +328,7 @@ spec:
   - name: runSonarScan
     value: 'true'
   - name: sonarProject
-    value: ci-testing
+    value: maven-test-bruce
   workspaces:
   - name: shared-data
     volumeClaimTemplate:
