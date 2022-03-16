@@ -8,4 +8,4 @@ This repo contains a catalog of pipeline templates to kickstart development amon
 
 - [Tekton Templates](docs/tekton.md)
 - [Github Templates](docs/github.md)
-- [ZAP Scanning Report](https://github.com/bcgov/security-pipeline-templates/blob/zap-scan/README.md)
+- [ZAP Scanning Report](https://github.com/bruce-wh-li/devsecops-tools/blob/zap-scan/README.md)
