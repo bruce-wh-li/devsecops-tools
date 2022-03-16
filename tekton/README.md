@@ -528,7 +528,8 @@ spec:
     name: p-owasp
   params:
   - name: targetUrl
-    value: https://example.com
+    value: http://scanme.nmap.org
+#scanType is either quick or full
   - name: scanType
     value: quick
   - name: scanDuration
