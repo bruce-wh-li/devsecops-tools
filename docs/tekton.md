@@ -99,8 +99,8 @@ Note: This project has been tested on *linux/arm64*, *linux/amd64*, *linux/aarch
 1. Clone the repository. (If you want to make changes, fork the repository)
 
    ```bash
-   git clone https://github.com/bcgov/pipeline-templates
-   cd ./pipeline-templates/tekton
+   git clone https://github.com/bruce-wh-li/devsecops-tools.git
+   cd ./devsecops-tools/tekton
    ```
 
 2. Create a file named `secrets.ini` using the snippet below.
