@@ -114,13 +114,17 @@ Note: This project has been tested on *linux/arm64*, *linux/amd64*, *linux/aarch
    ```bash
    cat <<EOF >./overlays/secrets/secrets.ini
    [literals]
+   github-token=
+   github-webhook-secret=
+   #docker image user and password
    image-registry-username=
    image-registry-password=
-   github-webhook-secret=
-   github-pat-token=
-   sonar-token=
    docker-config-path=/Users/<user>/.docker/config.json
-
+   #quay io imager user and password
+   image-registry-username1=
+   image-registry-password1=Johnnyhasmary$123
+   #sonar cloud
+   sonar-token=
    [ssh]
    ssh-key-path=/Users/<USER>/.ssh/id_rsa
    EOF
