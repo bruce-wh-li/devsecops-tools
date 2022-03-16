@@ -454,6 +454,12 @@ EOF
 
 *Scans for vulnerbilities and file systems. [SonarCloud](https://github.com/aquasecurity/trivy)*
 
+Required: quay.io account</br>
+Uses: helm in docker, buildah in quay</br>
+Output: 
+- Pipeline p-trivy created.  
+- run trivy scan on python:3.4-alpine image 
+
 ```yaml
 cat <<EOF | kubectl create -f -
 apiVersion: tekton.dev/v1beta1
