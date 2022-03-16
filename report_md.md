@@ -6,9 +6,9 @@
 | Risk Level | Number of Alerts |
 | --- | --- |
 | High | 0 |
-| Medium | 2 |
-| Low | 3 |
-| Informational | 1 |
+| Medium | 4 |
+| Low | 5 |
+| Informational | 2 |
 
 
 
@@ -17,12 +17,17 @@
 
 | Name | Risk Level | Number of Instances |
 | --- | --- | --- |
+| Absence of Anti-CSRF Tokens | Medium | 2 |
 | Content Security Policy (CSP) Header Not Set | Medium | 4 |
-| Proxy Disclosure | Medium | 4 |
-| Permissions Policy Header Not Set | Low | 4 |
-| Strict-Transport-Security Header Not Set | Low | 4 |
-| Timestamp Disclosure - Unix | Low | 4 |
-| Non-Storable Content | Informational | 4 |
+| Missing Anti-clickjacking Header | Medium | 1 |
+| Sub Resource Integrity Attribute Missing | Medium | 1 |
+| In Page Banner Information Leak | Low | 3 |
+| Permissions Policy Header Not Set | Low | 5 |
+| Server Leaks Version Information via "Server" HTTP Response Header Field | Low | 9 |
+| Timestamp Disclosure - Unix | Low | 1 |
+| X-Content-Type-Options Header Missing | Low | 6 |
+| Base64 Disclosure | Informational | 1 |
+| Storable and Cacheable Content | Informational | 9 |
 
 
 
@@ -30,6 +35,75 @@
 ## Alert Detail
 
 
+
+### [ Absence of Anti-CSRF Tokens ](https://www.zaproxy.org/docs/alerts/10202/)
+
+
+
+##### Medium (Low)
+
+### Description
+
+No Anti-CSRF tokens were found in a HTML submission form.
+A cross-site request forgery is an attack that involves forcing a victim to send an HTTP request to a target destination without their knowledge or intent in order to perform an action as the victim. The underlying cause is application functionality using predictable URL/form actions in a repeatable way. The nature of the attack is that CSRF exploits the trust that a web site has for a user. By contrast, cross-site scripting (XSS) exploits the trust that a user has for a web site. Like XSS, CSRF attacks are not necessarily cross-site, but they can be. Cross-site request forgery is also known as CSRF, XSRF, one-click attack, session riding, confused deputy, and sea surf.
+
+CSRF attacks are effective in a number of situations, including:
+    * The victim has an active session on the target site.
+    * The victim is authenticated via HTTP auth on the target site.
+    * The victim is on the same local network as the target site.
+
+CSRF has primarily been used to perform an action against a target site using the victim's privileges, but recent techniques have been discovered to disclose information by gaining access to the response. The risk of information disclosure is dramatically increased when the target site is vulnerable to XSS, because XSS can be used as a platform for CSRF, allowing the attack to operate within the bounds of the same-origin policy.
+
+* URL: http://scanme.nmap.org/
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `<form id="sb-search" action="/search/">`
+* URL: http://scanme.nmap.org/
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `<form id="footer-search" action="/search/">`
+
+Instances: 2
+
+### Solution
+
+Phase: Architecture and Design
+Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.
+For example, use anti-CSRF packages such as the OWASP CSRFGuard.
+
+Phase: Implementation
+Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.
+
+Phase: Architecture and Design
+Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).
+Note that this can be bypassed using XSS.
+
+Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.
+Note that this can be bypassed using XSS.
+
+Use the ESAPI Session Management control.
+This control includes a component for CSRF.
+
+Do not use the GET method for any request that triggers a state change.
+
+Phase: Implementation
+Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.
+
+### Reference
+
+
+* [ http://projects.webappsec.org/Cross-Site-Request-Forgery ](http://projects.webappsec.org/Cross-Site-Request-Forgery)
+* [ http://cwe.mitre.org/data/definitions/352.html ](http://cwe.mitre.org/data/definitions/352.html)
+
+
+#### CWE Id: [ 352 ](https://cwe.mitre.org/data/definitions/352.html)
+
+
+#### WASC Id: 9
+
+#### Source ID: 3
 
 ### [ Content Security Policy (CSP) Header Not Set ](https://www.zaproxy.org/docs/alerts/10038/)
 
@@ -41,22 +115,22 @@
 
 Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page — covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.
 
-* URL: https://photo-sharing-web--bcb254-dev.apps.clab.devops.gov.bc.ca
+* URL: http://scanme.nmap.org/
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
-* URL: https://photo-sharing-web--bcb254-dev.apps.clab.devops.gov.bc.ca/
+* URL: http://scanme.nmap.org/robots.txt
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
-* URL: https://photo-sharing-web--bcb254-dev.apps.clab.devops.gov.bc.ca/robots.txt
+* URL: http://scanme.nmap.org/search/%3Fq=ZAP
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
-* URL: https://photo-sharing-web--bcb254-dev.apps.clab.devops.gov.bc.ca/sitemap.xml
+* URL: http://scanme.nmap.org/sitemap.xml
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
@@ -87,7 +161,7 @@ Ensure that your web server, application server, load balancer, etc. is configur
 
 #### Source ID: 3
 
-### [ Proxy Disclosure ](https://www.zaproxy.org/docs/alerts/40025/)
+### [ Missing Anti-clickjacking Header ](https://www.zaproxy.org/docs/alerts/10020/)
 
 
 
@@ -95,54 +169,115 @@ Ensure that your web server, application server, load balancer, etc. is configur
 
 ### Description
 
-1 proxy server(s) were detected or fingerprinted. This information helps a potential attacker to determine 
- - A list of targets for an attack against the application.
- - Potential vulnerabilities on the proxy servers that service the application.
- - The presence or absence of any proxy-based components that might cause attacks against the application to be detected, prevented, or mitigated. 
+The response does not include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options to protect against 'ClickJacking' attacks.
 
-* URL: https://photo-sharing-web--bcb254-dev.apps.clab.devops.gov.bc.ca
+* URL: http://scanme.nmap.org/
   * Method: `GET`
-  * Parameter: ``
-  * Attack: `TRACE, OPTIONS methods with 'Max-Forwards' header. TRACK method.`
-  * Evidence: ``
-* URL: https://photo-sharing-web--bcb254-dev.apps.clab.devops.gov.bc.ca/
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: `TRACE, OPTIONS methods with 'Max-Forwards' header. TRACK method.`
-  * Evidence: ``
-* URL: https://photo-sharing-web--bcb254-dev.apps.clab.devops.gov.bc.ca/robots.txt
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: `TRACE, OPTIONS methods with 'Max-Forwards' header. TRACK method.`
-  * Evidence: ``
-* URL: https://photo-sharing-web--bcb254-dev.apps.clab.devops.gov.bc.ca/sitemap.xml
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: `TRACE, OPTIONS methods with 'Max-Forwards' header. TRACK method.`
+  * Parameter: `X-Frame-Options`
+  * Attack: ``
   * Evidence: ``
 
-Instances: 4
+Instances: 1
 
 ### Solution
 
-Disable the 'TRACE' method on the proxy servers, as well as the origin web/application server.
-Disable the 'OPTIONS' method on the proxy servers, as well as the origin web/application server, if it is not required for other purposes, such as 'CORS' (Cross Origin Resource Sharing).
-Configure the web and application servers with custom error pages, to prevent 'fingerprintable' product-specific error pages being leaked to the user in the event of HTTP errors, such as 'TRACK' requests for non-existent pages.
-Configure all proxies, application servers, and web servers to prevent disclosure of the technology and version information in the 'Server' and 'X-Powered-By' HTTP response headers.
-
+Modern Web browsers support the Content-Security-Policy and X-Frame-Options HTTP headers. Ensure one of them is set on all web pages returned by your site/app.
+If you expect the page to be framed only by pages on your server (e.g. it's part of a FRAMESET) then you'll want to use SAMEORIGIN, otherwise if you never expect the page to be framed, you should use DENY. Alternatively consider implementing Content Security Policy's "frame-ancestors" directive.
 
 ### Reference
 
 
-* [ https://tools.ietf.org/html/rfc7231#section-5.1.2 ](https://tools.ietf.org/html/rfc7231#section-5.1.2)
+* [ https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options ](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options)
+
+
+#### CWE Id: [ 1021 ](https://cwe.mitre.org/data/definitions/1021.html)
+
+
+#### WASC Id: 15
+
+#### Source ID: 3
+
+### [ Sub Resource Integrity Attribute Missing ](https://www.zaproxy.org/docs/alerts/90003/)
+
+
+
+##### Medium (High)
+
+### Description
+
+The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content. 
+
+* URL: http://scanme.nmap.org/
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `<link rel="preload" href="https://www.google-analytics.com/analytics.js" as="script">`
+
+Instances: 1
+
+### Solution
+
+Provide a valid integrity attribute to the tag.
+
+### Reference
+
+
+* [ https://developer.mozilla.org/en/docs/Web/Security/Subresource_Integrity ](https://developer.mozilla.org/en/docs/Web/Security/Subresource_Integrity)
+
+
+#### CWE Id: [ 345 ](https://cwe.mitre.org/data/definitions/345.html)
+
+
+#### WASC Id: 15
+
+#### Source ID: 3
+
+### [ In Page Banner Information Leak ](https://www.zaproxy.org/docs/alerts/10009/)
+
+
+
+##### Low (High)
+
+### Description
+
+The server returned a version banner string in the response content. Such information leaks may allow attackers to further target specific issues impacting the product and version in use.
+
+* URL: http://scanme.nmap.org/robots.txt
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `Apache/2.4.7`
+* URL: http://scanme.nmap.org/search/%3Fq=ZAP
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `Apache/2.4.7`
+* URL: http://scanme.nmap.org/sitemap.xml
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `Apache/2.4.7`
+
+Instances: 3
+
+### Solution
+
+Configure the server to prevent such information leaks. For example:
+Under Tomcat this is done via the "server" directive and implementation of custom error pages.
+Under Apache this is done via the "ServerSignature" and "ServerTokens" directives.
+
+### Reference
+
+
+* [ https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/08-Testing_for_Error_Handling/ ](https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/08-Testing_for_Error_Handling/)
 
 
 #### CWE Id: [ 200 ](https://cwe.mitre.org/data/definitions/200.html)
 
 
-#### WASC Id: 45
+#### WASC Id: 13
 
-#### Source ID: 1
+#### Source ID: 3
 
 ### [ Permissions Policy Header Not Set ](https://www.zaproxy.org/docs/alerts/10063/)
 
@@ -154,28 +289,33 @@ Configure all proxies, application servers, and web servers to prevent disclosur
 
 Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.
 
-* URL: https://photo-sharing-web--bcb254-dev.apps.clab.devops.gov.bc.ca
+* URL: http://scanme.nmap.org/
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
-* URL: https://photo-sharing-web--bcb254-dev.apps.clab.devops.gov.bc.ca/
+* URL: http://scanme.nmap.org/robots.txt
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
-* URL: https://photo-sharing-web--bcb254-dev.apps.clab.devops.gov.bc.ca/robots.txt
+* URL: http://scanme.nmap.org/search/%3Fq=ZAP
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
-* URL: https://photo-sharing-web--bcb254-dev.apps.clab.devops.gov.bc.ca/sitemap.xml
+* URL: http://scanme.nmap.org/shared/ga.js
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: ``
+* URL: http://scanme.nmap.org/sitemap.xml
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
   * Evidence: ``
 
-Instances: 4
+Instances: 5
 
 ### Solution
 
@@ -198,7 +338,7 @@ Ensure that your web server, application server, load balancer, etc. is configur
 
 #### Source ID: 3
 
-### [ Strict-Transport-Security Header Not Set ](https://www.zaproxy.org/docs/alerts/10035/)
+### [ Server Leaks Version Information via "Server" HTTP Response Header Field ](https://www.zaproxy.org/docs/alerts/10036/)
 
 
 
@@ -206,49 +346,73 @@ Ensure that your web server, application server, load balancer, etc. is configur
 
 ### Description
 
-HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.e. HTTP layered over TLS/SSL). HSTS is an IETF standards track protocol and is specified in RFC 6797.
+The web/application server is leaking version information via the "Server" HTTP response header. Access to such information may facilitate attackers identifying other vulnerabilities your web/application server is subject to.
 
-* URL: https://photo-sharing-web--bcb254-dev.apps.clab.devops.gov.bc.ca
+* URL: http://scanme.nmap.org/
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: ``
-* URL: https://photo-sharing-web--bcb254-dev.apps.clab.devops.gov.bc.ca/
+  * Evidence: `Apache/2.4.7 (Ubuntu)`
+* URL: http://scanme.nmap.org/images/sitelogo.png
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: ``
-* URL: https://photo-sharing-web--bcb254-dev.apps.clab.devops.gov.bc.ca/robots.txt
+  * Evidence: `Apache/2.4.7 (Ubuntu)`
+* URL: http://scanme.nmap.org/robots.txt
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: ``
-* URL: https://photo-sharing-web--bcb254-dev.apps.clab.devops.gov.bc.ca/sitemap.xml
+  * Evidence: `Apache/2.4.7 (Ubuntu)`
+* URL: http://scanme.nmap.org/search/%3Fq=ZAP
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: ``
+  * Evidence: `Apache/2.4.7 (Ubuntu)`
+* URL: http://scanme.nmap.org/shared/css/main.css
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `Apache/2.4.7 (Ubuntu)`
+* URL: http://scanme.nmap.org/shared/ga.js
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `Apache/2.4.7 (Ubuntu)`
+* URL: http://scanme.nmap.org/shared/images/tiny-eyeicon.png
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `Apache/2.4.7 (Ubuntu)`
+* URL: http://scanme.nmap.org/site.css
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `Apache/2.4.7 (Ubuntu)`
+* URL: http://scanme.nmap.org/sitemap.xml
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: `Apache/2.4.7 (Ubuntu)`
 
-Instances: 4
+Instances: 9
 
 ### Solution
 
-Ensure that your web server, application server, load balancer, etc. is configured to enforce Strict-Transport-Security.
+Ensure that your web server, application server, load balancer, etc. is configured to suppress the "Server" header or provide generic details.
 
 ### Reference
 
 
-* [ https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html ](https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html)
-* [ https://owasp.org/www-community/Security_Headers ](https://owasp.org/www-community/Security_Headers)
-* [ http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security ](http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security)
-* [ http://caniuse.com/stricttransportsecurity ](http://caniuse.com/stricttransportsecurity)
-* [ http://tools.ietf.org/html/rfc6797 ](http://tools.ietf.org/html/rfc6797)
+* [ http://httpd.apache.org/docs/current/mod/core.html#servertokens ](http://httpd.apache.org/docs/current/mod/core.html#servertokens)
+* [ http://msdn.microsoft.com/en-us/library/ff648552.aspx#ht_urlscan_007 ](http://msdn.microsoft.com/en-us/library/ff648552.aspx#ht_urlscan_007)
+* [ http://blogs.msdn.com/b/varunm/archive/2013/04/23/remove-unwanted-http-response-headers.aspx ](http://blogs.msdn.com/b/varunm/archive/2013/04/23/remove-unwanted-http-response-headers.aspx)
+* [ http://www.troyhunt.com/2012/02/shhh-dont-let-your-response-headers.html ](http://www.troyhunt.com/2012/02/shhh-dont-let-your-response-headers.html)
 
 
-#### CWE Id: [ 319 ](https://cwe.mitre.org/data/definitions/319.html)
+#### CWE Id: [ 200 ](https://cwe.mitre.org/data/definitions/200.html)
 
 
-#### WASC Id: 15
+#### WASC Id: 13
 
 #### Source ID: 3
 
@@ -262,28 +426,13 @@ Ensure that your web server, application server, load balancer, etc. is configur
 
 A timestamp was disclosed by the application/web server - Unix
 
-* URL: https://photo-sharing-web--bcb254-dev.apps.clab.devops.gov.bc.ca
+* URL: http://scanme.nmap.org/shared/ga.js
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: `66666667`
-* URL: https://photo-sharing-web--bcb254-dev.apps.clab.devops.gov.bc.ca/
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `66666667`
-* URL: https://photo-sharing-web--bcb254-dev.apps.clab.devops.gov.bc.ca/robots.txt
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `66666667`
-* URL: https://photo-sharing-web--bcb254-dev.apps.clab.devops.gov.bc.ca/sitemap.xml
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `66666667`
+  * Evidence: `11009417`
 
-Instances: 4
+Instances: 1
 
 ### Solution
 
@@ -302,7 +451,69 @@ Manually confirm that the timestamp data is not sensitive, and that the data can
 
 #### Source ID: 3
 
-### [ Non-Storable Content ](https://www.zaproxy.org/docs/alerts/10049/)
+### [ X-Content-Type-Options Header Missing ](https://www.zaproxy.org/docs/alerts/10021/)
+
+
+
+##### Low (Medium)
+
+### Description
+
+The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.
+
+* URL: http://scanme.nmap.org/
+  * Method: `GET`
+  * Parameter: `X-Content-Type-Options`
+  * Attack: ``
+  * Evidence: ``
+* URL: http://scanme.nmap.org/images/sitelogo.png
+  * Method: `GET`
+  * Parameter: `X-Content-Type-Options`
+  * Attack: ``
+  * Evidence: ``
+* URL: http://scanme.nmap.org/shared/css/main.css
+  * Method: `GET`
+  * Parameter: `X-Content-Type-Options`
+  * Attack: ``
+  * Evidence: ``
+* URL: http://scanme.nmap.org/shared/ga.js
+  * Method: `GET`
+  * Parameter: `X-Content-Type-Options`
+  * Attack: ``
+  * Evidence: ``
+* URL: http://scanme.nmap.org/shared/images/tiny-eyeicon.png
+  * Method: `GET`
+  * Parameter: `X-Content-Type-Options`
+  * Attack: ``
+  * Evidence: ``
+* URL: http://scanme.nmap.org/site.css
+  * Method: `GET`
+  * Parameter: `X-Content-Type-Options`
+  * Attack: ``
+  * Evidence: ``
+
+Instances: 6
+
+### Solution
+
+Ensure that the application/web server sets the Content-Type header appropriately, and that it sets the X-Content-Type-Options header to 'nosniff' for all web pages.
+If possible, ensure that the end user uses a standards-compliant and modern web browser that does not perform MIME-sniffing at all, or that can be directed by the web application/web server to not perform MIME-sniffing.
+
+### Reference
+
+
+* [ http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx ](http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx)
+* [ https://owasp.org/www-community/Security_Headers ](https://owasp.org/www-community/Security_Headers)
+
+
+#### CWE Id: [ 693 ](https://cwe.mitre.org/data/definitions/693.html)
+
+
+#### WASC Id: 15
+
+#### Source ID: 3
+
+### [ Base64 Disclosure ](https://www.zaproxy.org/docs/alerts/10094/)
 
 
 
@@ -310,45 +521,98 @@ Manually confirm that the timestamp data is not sensitive, and that the data can
 
 ### Description
 
-The response contents are not storable by caching components such as proxy servers. If the response does not contain sensitive, personal or user-specific information, it may benefit from being stored and cached, to improve performance.
+Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).
 
-* URL: https://photo-sharing-web--bcb254-dev.apps.clab.devops.gov.bc.ca
+* URL: http://scanme.nmap.org/shared/css/main.css
   * Method: `GET`
   * Parameter: ``
   * Attack: ``
-  * Evidence: `no-store`
-* URL: https://photo-sharing-web--bcb254-dev.apps.clab.devops.gov.bc.ca/
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `no-store`
-* URL: https://photo-sharing-web--bcb254-dev.apps.clab.devops.gov.bc.ca/robots.txt
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `no-store`
-* URL: https://photo-sharing-web--bcb254-dev.apps.clab.devops.gov.bc.ca/sitemap.xml
-  * Method: `GET`
-  * Parameter: ``
-  * Attack: ``
-  * Evidence: `no-store`
+  * Evidence: `PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDEgMSI+PHBhdGggZD0iTTEsMEExLDEgMCwwLDAgMCwxTDAsMFoiIGZpbGw9IiMyYTBkNDUiLz48L3N2Zz4K`
 
-Instances: 4
+Instances: 1
 
 ### Solution
 
-The content may be marked as storable by ensuring that the following conditions are satisfied:
-The request method must be understood by the cache and defined as being cacheable ("GET", "HEAD", and "POST" are currently defined as cacheable)
-The response status code must be understood by the cache (one of the 1XX, 2XX, 3XX, 4XX, or 5XX response classes are generally understood)
-The "no-store" cache directive must not appear in the request or response header fields
-For caching by "shared" caches such as "proxy" caches, the "private" response directive must not appear in the response
-For caching by "shared" caches such as "proxy" caches, the "Authorization" header field must not appear in the request, unless the response explicitly allows it (using one of the "must-revalidate", "public", or "s-maxage" Cache-Control response directives)
-In addition to the conditions above, at least one of the following conditions must also be satisfied by the response:
-It must contain an "Expires" header field
-It must contain a "max-age" response directive
-For "shared" caches such as "proxy" caches, it must contain a "s-maxage" response directive
-It must contain a "Cache Control Extension" that allows it to be cached
-It must have a status code that is defined as cacheable by default (200, 203, 204, 206, 300, 301, 404, 405, 410, 414, 501).   
+Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.
+
+### Reference
+
+
+* [ http://projects.webappsec.org/w/page/13246936/Information%20Leakage ](http://projects.webappsec.org/w/page/13246936/Information%20Leakage)
+
+
+#### CWE Id: [ 200 ](https://cwe.mitre.org/data/definitions/200.html)
+
+
+#### WASC Id: 13
+
+#### Source ID: 3
+
+### [ Storable and Cacheable Content ](https://www.zaproxy.org/docs/alerts/10049/)
+
+
+
+##### Informational (Medium)
+
+### Description
+
+The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users.  If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where "shared" caching servers such as "proxy" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.
+
+* URL: http://scanme.nmap.org/
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: ``
+* URL: http://scanme.nmap.org/images/sitelogo.png
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: ``
+* URL: http://scanme.nmap.org/robots.txt
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: ``
+* URL: http://scanme.nmap.org/search/%3Fq=ZAP
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: ``
+* URL: http://scanme.nmap.org/shared/css/main.css
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: ``
+* URL: http://scanme.nmap.org/shared/ga.js
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: ``
+* URL: http://scanme.nmap.org/shared/images/tiny-eyeicon.png
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: ``
+* URL: http://scanme.nmap.org/site.css
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: ``
+* URL: http://scanme.nmap.org/sitemap.xml
+  * Method: `GET`
+  * Parameter: ``
+  * Attack: ``
+  * Evidence: ``
+
+Instances: 9
+
+### Solution
+
+Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:
+Cache-Control: no-cache, no-store, must-revalidate, private
+Pragma: no-cache
+Expires: 0
+This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request. 
 
 ### Reference
 
