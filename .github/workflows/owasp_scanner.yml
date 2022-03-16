@@ -6,7 +6,7 @@ jobs:
   zap-owasp:
     uses: bruce-wh-li/devsecops-tools/.github/workflows/owasp-scan.yaml@main
     with:
-      ZAP_SCAN_TYPE: 'full' # Accepted values are base and full.
+      ZAP_SCAN_TYPE: 'base' # Accepted values are base and full.
       # ZAP_TARGET_URL: https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/
       # ZAP_TARGET_URL: http://scanme.nmap.org/
       ZAP_TARGET_URL: https://photo-sharing-web--bcb254-dev.apps.clab.devops.gov.bc.ca
