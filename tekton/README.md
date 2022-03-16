@@ -411,6 +411,13 @@ sonar.host.url=https://sonarcloud.io
 - **sonarProject**: The project to run the scan against.
 - **sonarTokenSecret**: The authentication token for SonarQube/SonarCloud.
 
+Required: sonar cloud account
+Uses: sonarProject, sonarTokenSecret
+Output:
+- Pipeline p-sonar created.
+- Scan github repo using Sonar Cloud
+Note: sonarToken can be created following my account -> secret
+
 ```yaml
 cat <<EOF | kubectl create -f -
 apiVersion: tekton.dev/v1beta1
@@ -424,11 +431,11 @@ spec:
   - name: sonarHostUrl
     value: https://sonarcloud.io
   - name: sonarProject
-    value: tekton
+    value: maven-test-bruce
   - name: sonarTokenSecret
     value: sonar-token
   - name: repoUrl
-    value: git@github.com:gregnrobinson/gregrobinson-ca-k8s.git
+    value: git@github.com:bruce-wh-li/security-pipeline-templates.git
   - name: branchName
     value: main
   workspaces:
