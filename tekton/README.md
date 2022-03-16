@@ -91,14 +91,16 @@ Note: This project has been tested on *linux/arm64*, *linux/amd64*, *linux/aarch
 1. [kubectl](https://kubernetes.io/docs/tasks/tools/) >= 1.21.0
 2. [python3](https://www.python.org/)
 3. [pip](https://pip.pypa.io/en/stable/installation/)
+4. [github ssh-key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+5. [github pat](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
 
 ## Installation
 
 1. Clone the repository. (If you want to make changes, fork the repository)
 
    ```bash
-   git clone https://github.com/bcgov/pipeline-templates
-   cd ./pipeline-templates/tekton
+   git clone https://github.com/bruce-wh-li/devsecops-tools.git
+   cd ./devsecops-tools/tekton
    ```
 
 2. Create a file named `secrets.ini` using the snippet below.
@@ -112,12 +114,17 @@ Note: This project has been tested on *linux/arm64*, *linux/amd64*, *linux/aarch
    ```bash
    cat <<EOF >./overlays/secrets/secrets.ini
    [literals]
+   github-token=
+   github-webhook-secret=
+   #docker image user and password
    image-registry-username=
    image-registry-password=
-   github-webhook-secret=
-   github-pat-token=
+   docker-config-path=/Users/<user>/.docker/config.json
+   #quay io imager user and password
+   image-registry-username1=
+   image-registry-password1=
+   #sonar cloud
    sonar-token=
-
    [ssh]
    ssh-key-path=/Users/<USER>/.ssh/id_rsa
    EOF
@@ -172,7 +179,7 @@ cat <<EOF | kubectl create -f -
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
-  generateName: docker-build-push-run-
+  generateName: docker-build-push-run
 spec:
   pipelineRef:
     name: p-buildah
@@ -184,11 +191,11 @@ spec:
   - name: imageRegistryPass
     value: image-registry-password # Secret name containing secret
   - name: imageUrl
-    value: gregnrobinson/flask-web
+    value: brucecruise/flask-web
   - name: imageTag
     value: latest
-  - name: repoUrl
-    value: git@github.com:bcgov/pipeline-templates.git
+  - name: repoUrl #The git repository URL containing the Dockerfile.
+    value: git@github.com:bruce-wh-li/security-pipeline-templates.git
   - name: branchName
     value: main
   - name: dockerfile
@@ -239,16 +246,16 @@ spec:
     value: quay.io
   - name: imageRegistryUser
   # Secret name containing secret
-    value: image-registry-username
+    value: image-registry-username1
   - name: imageRegistryPass
   # Secret name containing secret
-    value: image-registry-password
+    value: image-registry-password1
   - name: imageUrl
-    value: gregnrobinson/tkn-flask-web
+    value: oykotbruce/tkn-flask-web
   - name: imageTag
     value: latest
   - name: repoUrl
-    value: git@github.com:bcgov/pipeline-templates.git
+    value: git@github.com:bruce-wh-li/security-pipeline-templates.git
   - name: branchName
     value: main
   - name: helmRelease
@@ -258,7 +265,7 @@ spec:
   - name: helmValues
     value: values.yaml
   - name: dockerfile
-    value: ./Dockerfile
+    value: ./tekton/demo/flask-web/Dockerfile
   - name: pathToContext
     value: ./tekton/demo/flask-web
   - name: buildahImage
