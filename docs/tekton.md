@@ -122,7 +122,7 @@ Note: This project has been tested on *linux/arm64*, *linux/amd64*, *linux/aarch
    docker-config-path=/Users/<user>/.docker/config.json
    #quay io imager user and password
    image-registry-username1=
-   image-registry-password1=Johnnyhasmary$123
+   image-registry-password1=
    #sonar cloud
    sonar-token=
    [ssh]
