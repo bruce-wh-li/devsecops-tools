@@ -117,9 +117,10 @@ Note: This project has been tested on *linux/arm64*, *linux/amd64*, *linux/aarch
    github-webhook-secret=
    github-pat-token=
    sonar-token=
+   docker-config-path=/Users/<user>/.docker/config.json
 
    [ssh]
-   ssh-key-path=/Users/<USER>/.ssh/config.json
+   ssh-key-path=/Users/<USER>/.ssh/id_rsa
    EOF
    ```
 
@@ -164,7 +165,7 @@ cat <<EOF | kubectl create -f -
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
-  generateName: docker-build-push-run-
+  generateName: docker-build-push-run
 spec:
   pipelineRef:
     name: p-buildah
@@ -176,11 +177,11 @@ spec:
   - name: imageRegistryPass
     value: image-registry-password # Secret name containing secret
   - name: imageUrl
-    value: gregnrobinson/flask-web
+    value: brucecruise/flask-web
   - name: imageTag
     value: latest
   - name: repoUrl
-    value: git@github.com:bcgov/pipeline-templates.git
+    value: git@github.com:bruce-wh-li/security-pipeline-templates.git
   - name: branchName
     value: main
   - name: dockerfile
@@ -224,16 +225,16 @@ spec:
     value: quay.io
   - name: imageRegistryUser
   # Secret name containing secret
-    value: image-registry-username
+    value: image-registry-username1
   - name: imageRegistryPass
   # Secret name containing secret
-    value: image-registry-password
+    value: image-registry-password1
   - name: imageUrl
-    value: gregnrobinson/tkn-flask-web
+    value: oykotbruce/tkn-flask-web
   - name: imageTag
     value: latest
   - name: repoUrl
-    value: git@github.com:bcgov/pipeline-templates.git
+    value: git@github.com:bruce-wh-li/security-pipeline-templates.git
   - name: branchName
     value: main
   - name: helmRelease
@@ -243,7 +244,7 @@ spec:
   - name: helmValues
     value: values.yaml
   - name: dockerfile
-    value: ./Dockerfile
+    value: ./tekton/demo/flask-web/Dockerfile
   - name: pathToContext
     value: ./tekton/demo/flask-web
   - name: buildahImage
@@ -286,7 +287,7 @@ spec:
   - name: mavenImage
     value: index.docker.io/library/maven
   - name: repoUrl
-    value: git@github.com:bcgov/pipeline-templates.git
+    value: git@github.com:bruce-wh-li/pipeline-templates.git
   - name: branchName
     value: main
   - name: pathToContext
@@ -294,7 +295,7 @@ spec:
   - name: runSonarScan
     value: 'true'
   - name: sonarProject
-    value: ci-testing
+    value: maven-test-bruce
   workspaces:
   - name: shared-data
     volumeClaimTemplate:
@@ -397,11 +398,11 @@ spec:
   - name: sonarHostUrl
     value: https://sonarcloud.io
   - name: sonarProject
-    value: tekton
+    value: maven-test-bruce
   - name: sonarTokenSecret
     value: sonar-token
   - name: repoUrl
-    value: git@github.com:gregnrobinson/gregrobinson-ca-k8s.git
+    value: git@github.com:bruce-wh-li/security-pipeline-templates.git
   - name: branchName
     value: main
   workspaces:
@@ -481,7 +482,8 @@ spec:
     name: p-owasp
   params:
   - name: targetUrl
-    value: https://example.com
+    value: http://scanme.nmap.org
+#scanType is either quick or full
   - name: scanType
     value: quick
   - name: scanDuration
