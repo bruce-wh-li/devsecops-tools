@@ -186,7 +186,7 @@ spec:
     value: brucecruise/flask-web
   - name: imageTag
     value: latest
-  - name: repoUrl
+  - name: repoUrl #The git repository URL containing the Dockerfile.
     value: git@github.com:bruce-wh-li/security-pipeline-templates.git
   - name: branchName
     value: main
