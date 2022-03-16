@@ -428,7 +428,7 @@ EOF
 
 ### **trivy-scan**
 
-*Scans for vulnerbilities and file systems. [SonarCloud](https://github.com/aquasecurity/trivy)*
+*Scans for vulnerbilities and file systems. [Aqua Trivy Scanner](https://github.com/aquasecurity/trivy)*
 
 ```yaml
 cat <<EOF | kubectl create -f -
