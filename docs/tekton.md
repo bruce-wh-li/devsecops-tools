@@ -341,9 +341,9 @@ spec:
   - name: buildImageUrl
     value: docker.io/gregnrobinson/codeql-cli:latest
   - name: repoUrl
-    value: git@github.com:bcgov/pipeline-templates.git
+    value: git@github.com:bruce-wh-li/devsecops-tools.git
   - name: repo
-    value: bcgov/security-pipeline-templates
+    value: bruce-wh-li/devsecops-tools
   - name: branchName
     value: main
   - name: pathToContext
