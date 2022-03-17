@@ -296,9 +296,7 @@ EOF
 Required:sonar cloud account and sonoar cloud project</br>
 *For PoC test, you can create you own project and app in sonar cloud with your github id*
 *For team looking to adopt sonar cloud, please refer to the following url*
-https://developer.gov.bc.ca/SonarQube-on-OpenShift#sonarcloud
-*Input Parm:<sonarProject> from sonar cloud*
-*           <appName> from sonar cloud*
+[Get your sonar cloud](https://developer.gov.bc.ca/SonarQube-on-OpenShift#sonarcloud)
 Uses: maven image in docker, </br>
 Output: 
 - Pipeline p-mvn-build created

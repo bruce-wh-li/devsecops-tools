@@ -16,6 +16,14 @@ This project contains all Github Actions templates. To make use of the repositor
 - [Testing Framework](#testing-framework)
 - [Reference](#reference)
 
+## Prerequisites
+
+Note: This project has been tested on *linux/arm64*, *linux/amd64*, *linux/aarch64*, and *darwin/arm64*.
+
+1. [docker hub account](https://www.docker.com/)
+2. [sonar cloud account](https://www.python.org/)
+[Get your sonar cloud](https://developer.gov.bc.ca/SonarQube-on-OpenShift#sonarcloud)
+
 ## How to Use
 
 1. To get started, copy one of the [workflow templates](#workflow-templates) to your own repository under `.github/workflows/<workflow_name>`.
@@ -40,7 +48,10 @@ jobs:
     uses: bruce-wh-li/devsecops-tools/.github/workflows/build-push.yaml@main
     with:
       IMAGE_REGISTRY: docker.io
-      IMAGE: gregnrobinson/bcgov-nginx-demo
+# your docker image url      
+# example
+#     IMAGE: gregnrobinson/bcgov-nginx-demo
+      IMAGE: <docker account>/bcgov-nginx-demo
       WORKDIR: ./demo/nginx
     secrets:
       IMAGE_REGISTRY_USER: ${{ secrets.IMAGE_REGISTRY_USER }}
@@ -50,7 +61,7 @@ jobs:
 [Back to top](#github-actions-templates)
 
 ### Helm Deploy
-
+*Need TAILSCALE API to complete the demo to allow access openshift from a github runner*
 ```yaml
 name: helm-deploy
 on:
@@ -94,6 +105,8 @@ jobs:
     uses: bruce-wh-li/devsecops-tools/.github/workflows/owasp-scan.yaml@main
     with:
       ZAP_SCAN_TYPE: 'base' # Accepted values are base and full.
+# ZAP_TARGET_URL: http://scanme.nmap.org 
+# ZAP_TARGET_URL should be url that you can lawfully scan, e.g. your own project in test, dev namespace
       ZAP_TARGET_URL: http://www.itsecgames.com
       ZAP_DURATION: '2'
       ZAP_MAX_DURATION: '5'
@@ -181,8 +194,13 @@ jobs:
   sonar-repo-scan:
     uses: bruce-wh-li/devsecops-tools/.github/workflows/sonar-scanner.yaml@main
     with:
-      ORG: ci-testing
-      PROJECT_KEY: bcgov-pipeline-templates
+# Your Sonar Cloud Organization
+# for example, ORG: ci-testing
+#     ORG: <sonar_cloud_organization>
+      ORG: bruce-ci-testing
+# Your Project Key
+# for example, PROJECT_KEY: bcgov-pipeline-templates
+      PROJECT_KEY: maven-test-bruce
       URL: https://sonarcloud.io
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -202,7 +220,9 @@ jobs:
     uses: bruce-wh-li/devsecops-tools/.github/workflows/sonar-scanner-mvn.yaml@main
     with:
       WORKDIR: ./tekton/demo/maven-test
-      PROJECT_KEY: pipeline-templates
+# Your Sonar Project Key
+# for example, PROJECT_KEY: bcgov-pipeline-templates
+      PROJECT_KEY: <project key>
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 ```
