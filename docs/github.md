@@ -39,7 +39,8 @@ When a workflow is called, it is imported into the callers context, and executes
 ### Docker Build Push
 *It creates nginx image from github repo in ./demo and docker build and push to docker hub*
 ```yaml
-name: test-docker-build-push.yml
+#file name test-docker-build-push.yml
+name: docker-build-push
 on:
   workflow_dispatch:
   push:
@@ -96,7 +97,8 @@ jobs:
 ### Owasp Scan
 
 ```yaml
-name: test-owasp-scan.yml
+#file name: test-owasp-scan.yml
+name: owasp-scan
 on:
   workflow_dispatch:
   push:
