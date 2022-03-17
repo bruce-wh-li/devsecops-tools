@@ -37,7 +37,7 @@ When a workflow is called, it is imported into the callers context, and executes
 ## Workflow Templates
 
 ### Docker Build Push
-
+*It creates nginx image from github repo in ./demo and docker build and push to docker hub*
 ```yaml
 name: test-docker-build-push.yml
 on:
