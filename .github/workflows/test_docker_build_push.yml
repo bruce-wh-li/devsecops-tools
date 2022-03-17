@@ -10,7 +10,7 @@ jobs:
 # your docker image url      
 # example, IMAGE: gregnrobinson/bcgov-nginx-demo
 #     IMAGE: <docker hub account>/bcgov-nginx-demo
-      IMAGE: ${{ secrets.IMAGE_REGISTRY_USER/bcgov_nginx-demo }}
+      IMAGE: brucecruise/bcgov_nginx-demo
       WORKDIR: ./demo/nginx
     secrets:
      IMAGE_REGISTRY_USER: ${{ secrets.IMAGE_REGISTRY_USER }}
