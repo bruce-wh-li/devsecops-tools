@@ -22,7 +22,7 @@ Note: This project has been tested on *linux/arm64*, *linux/amd64*, *linux/aarch
 
 1. [docker hub account](https://www.docker.com/)
 2. [sonar cloud account](https://www.python.org/)
-`[Get your sonar cloud](https://developer.gov.bc.ca/SonarQube-on-OpenShift#sonarcloud)`
+     - [Get your sonar cloud](https://developer.gov.bc.ca/SonarQube-on-OpenShift#sonarcloud)
 
 ## How to Use
 
