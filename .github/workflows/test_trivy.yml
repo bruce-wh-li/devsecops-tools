@@ -1,3 +1,4 @@
+#workflow_name: test-trivy-scan.yml
 name: trivy-scan
 on:
   workflow_dispatch:
@@ -6,6 +7,7 @@ jobs:
   trivy-scan:
     uses: bruce-wh-li/devsecops-tools/.github/workflows/trivy-container.yaml@main
     with:
-## docker image 
-      IMAGE: gregnrobinson/bcgov-nginx-demo
+      IMAGE: brucecruise/bcgov-nginx-demo
       TAG: latest
+secrets:
+      IMAGE_REGISTRY_USER: ${{ secrets.IMAGE_REGISTRY_USER }}

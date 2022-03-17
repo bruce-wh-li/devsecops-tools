@@ -1,3 +1,4 @@
+#workflow_name: test-helm-deploy.yml
 name: helm-deploy
 on:
   workflow_dispatch:

@@ -1,3 +1,4 @@
+#workflow_name: test-docker-build-push.yml
 name: docker-build-push
 on:
   workflow_dispatch:
