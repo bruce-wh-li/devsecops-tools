@@ -1,4 +1,4 @@
-name: owasp-scan
+name: test-owasp-scan.yml
 on:
   workflow_dispatch:
   push:
