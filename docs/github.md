@@ -49,9 +49,10 @@ jobs:
     with:
       IMAGE_REGISTRY: docker.io
 # your docker image url      
-# example
-#     IMAGE: gregnrobinson/bcgov-nginx-demo
-      IMAGE: <docker account>/bcgov-nginx-demo
+# example, IMAGE: gregnrobinson/bcgov-nginx-demo
+
+#     IMAGE: <docker hub account>/bcgov-nginx-demo
+      IMAGE: brucecruise/bcgov-nginx-demo
       WORKDIR: ./demo/nginx
     secrets:
       IMAGE_REGISTRY_USER: ${{ secrets.IMAGE_REGISTRY_USER }}
