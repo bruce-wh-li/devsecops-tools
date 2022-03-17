@@ -7,9 +7,6 @@ on:
 env:
   DOCKER_USER: brucecruise
 
-secrets:
-      IMAGE_REGISTRY_USER: ${{ secrets.IMAGE_REGISTRY_USER }}
-      
 jobs:
   trivy-scan:
     uses: bruce-wh-li/devsecops-tools/.github/workflows/trivy-container.yaml@main
