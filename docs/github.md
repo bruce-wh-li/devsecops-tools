@@ -50,9 +50,8 @@ jobs:
       IMAGE_REGISTRY: docker.io
 # your docker image url      
 # example, IMAGE: gregnrobinson/bcgov-nginx-demo
-
 #     IMAGE: <docker hub account>/bcgov-nginx-demo
-      IMAGE: brucecruise/bcgov-nginx-demo
+      IMAGE: IMAGE_REGISTRY_USER/bcgov-nginx-demo
       WORKDIR: ./demo/nginx
     secrets:
       IMAGE_REGISTRY_USER: ${{ secrets.IMAGE_REGISTRY_USER }}
@@ -131,8 +130,10 @@ jobs:
   trivy-scan:
     uses: bruce-wh-li/devsecops-tools/.github/workflows/trivy-container.yaml@main
     with:
-      IMAGE: gregnrobinson/bcgov-nginx-demo
+      IMAGE: IMAGE_REGISTRY_USER/bcgov-nginx-demo
       TAG: latest
+secrets:
+      IMAGE_REGISTRY_USER: ${{ secrets.IMAGE_REGISTRY_USER }}
 ```
 
 [Back to top](#github-actions-templates)

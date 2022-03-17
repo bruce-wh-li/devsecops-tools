@@ -1,0 +1,17 @@
+name: docker-build-push
+on:
+  workflow_dispatch:
+  push:
+jobs:
+  build-push:
+    uses: bruce-wh-li/devsecops-tools/.github/workflows/build-push.yaml@main
+    with:
+      IMAGE_REGISTRY: docker.io
+# your docker image url      
+# example, IMAGE: gregnrobinson/bcgov-nginx-demo
+#     IMAGE: <docker hub account>/bcgov-nginx-demo
+      IMAGE: IMAGE_REGISTRY_USER/bcgov-nginx-demo
+      WORKDIR: ./demo/nginx
+    secrets:
+      IMAGE_REGISTRY_USER: ${{ secrets.IMAGE_REGISTRY_USER }}
+      IMAGE_REGISTRY_PASSWORD: ${{ secrets.IMAGE_REGISTRY_PASSWORD }}
