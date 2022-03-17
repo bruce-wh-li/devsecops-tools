@@ -22,7 +22,7 @@ This project contains all Github Actions templates. To make use of the repositor
 
 2. Create any referenced secrets in **settings > repository secrets**.
 
-3. Push a change to trigger the workflow. The workflow will call the `bcgov/pipeline-templates` repository.
+3. Push a change to trigger the workflow. The workflow will call the `bruce-wh-li/devsecops-tools` repository.
 
 When a workflow is called, it is imported into the callers context, and executes as if all the logic is running locally within the repository.
 
@@ -37,7 +37,7 @@ on:
   push:
 jobs:
   build-push:
-    uses: bcgov/pipeline-templates/.github/workflows/build-push.yaml@main
+    uses: bruce-wh-li/devsecops-tools/.github/workflows/build-push.yaml@main
     with:
       IMAGE_REGISTRY: docker.io
       IMAGE: gregnrobinson/bcgov-nginx-demo
@@ -58,7 +58,7 @@ on:
   push:
 jobs:
   helm-deploy:
-    uses: bcgov/pipeline-templates/.github/workflows/helm-deploy.yaml@main
+    uses: bruce-wh-li/devsecops-tools/.github/workflows/helm-deploy.yaml@main
     with:
       ## HELM RELEASE NAME
       NAME: flask-web
@@ -91,7 +91,7 @@ on:
   push:
 jobs:
   zap-owasp:
-    uses: bcgov/pipeline-templates/.github/workflows/owasp-scan.yaml@main
+    uses: bruce-wh-li/devsecops-tools/.github/workflows/owasp-scan.yaml@main
     with:
       ZAP_SCAN_TYPE: 'base' # Accepted values are base and full.
       ZAP_TARGET_URL: http://www.itsecgames.com
@@ -115,7 +115,7 @@ on:
   push:
 jobs:
   trivy-scan:
-    uses: bcgov/pipeline-templates/.github/workflows/trivy-container.yaml@main
+    uses: bruce-wh-li/devsecops-tools/.github/workflows/trivy-container.yaml@main
     with:
       IMAGE: gregnrobinson/bcgov-nginx-demo
       TAG: latest
@@ -165,7 +165,7 @@ on:
   push:
 jobs:
   codeql-scan:
-    uses: bcgov/pipeline-templates/.github/workflows/codeql.yaml@main
+    uses: bruce-wh-li/devsecops-tools/.github/workflows/codeql.yaml@main
 ```
 
 [Back to top](#github-actions-templates)
@@ -179,7 +179,7 @@ on:
   push:
 jobs:
   sonar-repo-scan:
-    uses: bcgov/pipeline-templates/.github/workflows/sonar-scanner.yaml@main
+    uses: bruce-wh-li/devsecops-tools/.github/workflows/sonar-scanner.yaml@main
     with:
       ORG: ci-testing
       PROJECT_KEY: bcgov-pipeline-templates
@@ -199,7 +199,7 @@ on:
   push:
 jobs:
   sonar-scan-mvn:
-    uses: bcgov/pipeline-templates/.github/workflows/sonar-scanner-mvn.yaml@main
+    uses: bruce-wh-li/devsecops-tools/.github/workflows/sonar-scanner-mvn.yaml@main
     with:
       WORKDIR: ./tekton/demo/maven-test
       PROJECT_KEY: pipeline-templates
@@ -222,9 +222,9 @@ on:
   workflow_dispatch:
 jobs:
   codeql-scan:
-    uses: bcgov/pipeline-templates/.github/workflows/codeql.yaml@main
+    uses: bruce-wh-li/devsecops-tools/.github/workflows/codeql.yaml@main
   build-push:
-    uses: bcgov/pipeline-templates/.github/workflows/build-push.yaml@main
+    uses: bruce-wh-li/devsecops-tools/.github/workflows/build-push.yaml@main
     with:
       IMAGE_REGISTRY: docker.io
       IMAGE: gregnrobinson/bcgov-nginx-demo
@@ -234,12 +234,12 @@ jobs:
       IMAGE_REGISTRY_PASSWORD: ${{ secrets.IMAGE_REGISTRY_PASSWORD }}
   trivy-image-scan:
     needs: build-push
-    uses: bcgov/pipeline-templates/.github/workflows/trivy-container.yaml@main
+    uses: bruce-wh-li/devsecops-tools/.github/workflows/trivy-container.yaml@main
     with:
       IMAGE: gregnrobinson/bcgov-nginx-demo
       TAG: latest
   sonar-repo-scan:
-    uses: bcgov/pipeline-templates/.github/workflows/sonar-scanner.yaml@main
+    uses: bruce-wh-li/devsecops-tools/.github/workflows/sonar-scanner.yaml@main
     with:
       ORG: ci-testing
       PROJECT_KEY: bcgov-pipeline-templates
@@ -247,7 +247,7 @@ jobs:
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   sonar-maven-scan:
-    uses: bcgov/pipeline-templates/.github/workflows/sonar-scanner-mvn.yaml@main
+    uses: bruce-wh-li/devsecops-tools/.github/workflows/sonar-scanner-mvn.yaml@main
     with:
       WORKDIR: ./tekton/demo/maven-test
       PROJECT_KEY: pipeline-templates
@@ -255,7 +255,7 @@ jobs:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   helm-deploy:
     needs: [build-push, trivy-image-scan]
-    uses: bcgov/pipeline-templates/.github/workflows/helm-deploy.yaml@main
+    uses: bruce-wh-li/devsecops-tools/.github/workflows/helm-deploy.yaml@main
     with:
       ## DOCKER BUILD PARAMS
       NAME: flask-web
@@ -276,7 +276,7 @@ jobs:
       OPENSHIFT_TOKEN: ${{ secrets.OPENSHIFT_TOKEN }}
       TAILSCALE_API_KEY: ${{ secrets.TAILSCALE_API_KEY }}
   owasp-scan:
-    uses: bcgov/pipeline-templates/.github/workflows/owasp-scan.yaml@main
+    uses: bruce-wh-li/devsecops-tools/.github/workflows/owasp-scan.yaml@main
     needs: helm-deploy
     with:
       ZAP_SCAN_TYPE: 'base' # Accepted values are base and full.
@@ -365,7 +365,7 @@ The following repository secrets are required depending on which template is bei
 
 Every Sunday, all worlflows are tested using a `workflow_call` to each workflow from the testing workflow.
 
-[View Pipeline Run](https://github.com/bcgov/pipeline-templates/actions/runs/1707326261)
+[View Pipeline Run](https://github.com/bruce-wh-li/devsecops-tools/actions/runs/1707326261)
 
 ![image](https://user-images.githubusercontent.com/26353407/149749137-427a0384-cf79-4b2c-ac6d-c3c736db4714.png)
 
