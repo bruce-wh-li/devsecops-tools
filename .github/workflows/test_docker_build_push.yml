@@ -1,4 +1,6 @@
 name: docker-build-push
+env: 
+  IMAGE_NAME: bcgov-nginx-demo2
 on:
   workflow_dispatch:
   push:
@@ -10,7 +12,7 @@ jobs:
 # your docker image url      
 # example, IMAGE: gregnrobinson/bcgov-nginx-demo
 #     IMAGE: <docker hub account>/bcgov-nginx-demo
-      IMAGE: ${{ format('{0}/{1}', secrets.IMAGE_REGISTRY_USER, 'bcgov-nginx-demo') }}
+      IMAGE: ${{ format('{0}/{1}', secrets.IMAGE_REGISTRY_USER, env.IMAGE_NAME) }}
       WORKDIR: ./demo/nginx
     secrets:
       IMAGE_REGISTRY_USER: ${{ secrets.IMAGE_REGISTRY_USER }}
