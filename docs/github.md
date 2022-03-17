@@ -51,11 +51,11 @@ jobs:
 # your docker image url      
 # example, IMAGE: gregnrobinson/bcgov-nginx-demo
 #     IMAGE: <docker hub account>/bcgov-nginx-demo
-      IMAGE: IMAGE_REGISTRY_USER/bcgov-nginx-demo
+      IMAGE: brucecruise/bcgov_nginx-demo
       WORKDIR: ./demo/nginx
     secrets:
       IMAGE_REGISTRY_USER: ${{ secrets.IMAGE_REGISTRY_USER }}
-      IMAGE_REGISTRY_PASSWORD: ${{ secrets.IMAGE_REGISTRY_PASSWORD }}
+      IMAGE_REGISTRY_PASSWORD: ${{ secrets.IMAGE_REGISTRY_PASSWORD }}   
 ```
 
 [Back to top](#github-actions-templates)
