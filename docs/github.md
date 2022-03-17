@@ -196,12 +196,12 @@ jobs:
     uses: bruce-wh-li/devsecops-tools/.github/workflows/sonar-scanner.yaml@main
     with:
 # Your Sonar Cloud Organization
-# for example, ORG: ci-testing
+# for example, ORG: ci-testing, bruce-ci-testing
 #     ORG: <sonar_cloud_organization>
-      ORG: bruce-ci-testing
+      ORG: {{dev.secretes.SONAR_ORG_KEY}}
 # Your Project Key
-# for example, PROJECT_KEY: bcgov-pipeline-templates
-      PROJECT_KEY: maven-test-bruce
+# for example, PROJECT_KEY: bcgov-pipeline-templates, maven-test-bruce
+      PROJECT_KEY: $${{dev.secretes.SONAR_PROJECT_KEY}}
       URL: https://sonarcloud.io
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
