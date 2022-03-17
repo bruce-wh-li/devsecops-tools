@@ -26,7 +26,7 @@ Note: This project has been tested on *linux/arm64*, *linux/amd64*, *linux/aarch
 
 ## How to Use
 
-1. To get started, copy one of the [workflow templates](#workflow-templates) to your own repository under `.github/workflows/<workflow_name>.yml`.
+1. To get started, copy one of the [workflow templates](#workflow-templates) to your own repository under `.github/workflows/<workflow_name>`.  *<workflow_name> needs to have yml or yaml as extension*
 
 2. Create any referenced secrets in **settings > repository secrets**.
 
@@ -39,7 +39,7 @@ When a workflow is called, it is imported into the callers context, and executes
 ### Docker Build Push
 *It creates nginx image from github repo in ./demo and docker build and push to docker hub*
 ```yaml
-#file name: test-docker-build-push.yml
+#workflow_name: test-docker-build-push.yml
 name: docker-build-push
 on:
   workflow_dispatch:
@@ -64,7 +64,7 @@ jobs:
 ### Helm Deploy
 *Need TAILSCALE API to complete the demo to allow access openshift from a github runner*
 ```yaml
-#file name: test-helm-deploy.yml
+#workflow_name: test-helm-deploy.yml
 name: helm-deploy
 on:
   workflow_dispatch:
@@ -98,7 +98,7 @@ jobs:
 ### Owasp Scan
 
 ```yaml
-#file name: test-owasp-scan.yml
+#workflow_name: test-owasp-scan.yml
 name: owasp-scan
 on:
   workflow_dispatch:
@@ -127,7 +127,7 @@ jobs:
 ### Trivy Scan
 
 ```yaml
-#file name: test-trivy-scan.yml
+#workflow_name: test-trivy-scan.yml
 name: trivy-scan
 on:
   workflow_dispatch:
@@ -148,7 +148,7 @@ secrets:
 ### Using Trivy to scan Git repo
 
 ```yaml
-#file name: test-trivy-scan-gitrepo.yml
+#workflow_name: test-trivy-scan-gitrepo.yml
 name: scan-gitrepo
 on:
   push:
@@ -181,7 +181,7 @@ jobs:
 ### CodeQL Scan
 
 ```yaml
-#file name: test-codeql-scan.yml
+#workflow_name: test-codeql-scan.yml
 name: codeql-scan
 on:
   workflow_dispatch:
@@ -196,7 +196,7 @@ jobs:
 ### Sonar Repo Scan
 
 ```yaml
-#file name: test-sonar-repo-scan.yml
+#workflow_name: test-sonar-repo-scan.yml
 name: sonar-repo-scan
 on:
   workflow_dispatch:
@@ -222,7 +222,7 @@ jobs:
 ### Sonar Maven Scan
 
 ```yaml
-#file name: test-sonar-maven-scan.yml
+#workflow_name: test-sonar-maven-scan.yml
 name: sonar-maven-scan
 on:
   workflow_dispatch:
@@ -246,7 +246,7 @@ jobs:
 You add several jobs to a single caller workflow and integrate secrurity related components with build and deploy components. Refer to the example below on how to do this.
 
 ```yaml
-#file name: test-helm-build-deploy-cicd.yml
+#workflow_name: test-helm-build-deploy-cicd.yml
 name: helm-build-deploy-cicd
 on:
   push:
