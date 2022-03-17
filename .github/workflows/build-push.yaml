@@ -69,8 +69,10 @@ jobs:
     - id: latest
       uses: pozetroninc/github-action-get-latest-release@master
       with:
-        owner: bcgov
-        repo: security-pipeline-templates
+##        owner: bcgov
+##        repo: security-pipeline-templates
+        owner: bruce-wh-li
+        repo: devsecops-tools
         excludes: prerelease, draft
     - name: Tag Push Latest
       working-directory: ${{ inputs.WORKDIR }}
