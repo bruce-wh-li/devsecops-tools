@@ -14,6 +14,6 @@ jobs:
 #     IMAGE: <docker hub account>/bcgov-nginx-demo
       IMAGE: ${{ format('{0}/{1}', secrets.IMAGE_REGISTRY_USER, env.IMAGE_NAME) }}
       WORKDIR: ./demo/nginx
-    secrets:
-      IMAGE_REGISTRY_USER: ${{ secrets.IMAGE_REGISTRY_USER }}
-      IMAGE_REGISTRY_PASSWORD: ${{ secrets.IMAGE_REGISTRY_PASSWORD }}
+secrets:
+  IMAGE_REGISTRY_USER: ${{ secrets.IMAGE_REGISTRY_USER }}
+  IMAGE_REGISTRY_PASSWORD: ${{ secrets.IMAGE_REGISTRY_PASSWORD }}
