@@ -1,0 +1,26 @@
+name: helm-deploy
+on:
+  workflow_dispatch:
+  push:
+jobs:
+  helm-deploy:
+    uses: bruce-wh-li/devsecops-tools/.github/workflows/helm-deploy.yaml@main
+    with:
+      ## HELM RELEASE NAME
+      NAME: flask-web
+
+      ## HELM VARIABLES
+      HELM_DIR: ./demo/flask-web/helm
+      VALUES_FILE: ./demo/flask-web/helm/values.yaml
+
+      OPENSHIFT_NAMESPACE: "default"
+      APP_PORT: "80"
+
+      # Used to access Redhat Openshift on an internal IP address from a Github Runner.
+      TAILSCALE: true
+    secrets:
+      IMAGE_REGISTRY_USER: ${{ secrets.IMAGE_REGISTRY_USER }}
+      IMAGE_REGISTRY_PASSWORD: ${{ secrets.IMAGE_REGISTRY_PASSWORD }}
+      OPENSHIFT_SERVER: ${{ secrets.OPENSHIFT_SERVER }}
+      OPENSHIFT_TOKEN: ${{ secrets.OPENSHIFT_TOKEN }}
+      TAILSCALE_API_KEY: ${{ secrets.TAILSCALE_API_KEY }}

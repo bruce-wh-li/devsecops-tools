@@ -62,7 +62,7 @@ jobs:
 [Back to top](#github-actions-templates)
 
 ### Helm Deploy
-*Need TAILSCALE API to complete the demo to allow access openshift from a github runner*
+_**Need TAILSCALE API to complete the demo to allow access openshift from a github runner**_
 ```yaml
 #workflow_name: test-helm-deploy.yml
 name: helm-deploy
