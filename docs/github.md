@@ -39,7 +39,7 @@ When a workflow is called, it is imported into the callers context, and executes
 ### Docker Build Push
 
 ```yaml
-name: docker-build-push
+name: test-docker-build-push.yml
 on:
   workflow_dispatch:
   push:
@@ -96,7 +96,7 @@ jobs:
 ### Owasp Scan
 
 ```yaml
-name: owasp-scan
+name: test-owasp-scan.yml
 on:
   workflow_dispatch:
   push:
@@ -105,7 +105,8 @@ jobs:
     uses: bruce-wh-li/devsecops-tools/.github/workflows/owasp-scan.yaml@main
     with:
       ZAP_SCAN_TYPE: 'base' # Accepted values are base and full.
-# ZAP_TARGET_URL: http://scanme.nmap.org 
+## ZAP_TARGET_URL: https://rocketchat-bruce-59e31e-dev.apps.klab.devops.gov.bc.ca/
+# ZAP_TARGET_URL: https://photo-sharing-web--bcb254-dev.apps.clab.devops.gov.bc.ca
 # ZAP_TARGET_URL should be url that you can lawfully scan, e.g. your own project in test, dev namespace
       ZAP_TARGET_URL: http://www.itsecgames.com
       ZAP_DURATION: '2'
