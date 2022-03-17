@@ -124,7 +124,7 @@ jobs:
 ### Trivy Scan
 
 ```yaml
-name: trivy-scan
+name: test-trivy-scan.yml
 on:
   workflow_dispatch:
   push:
@@ -132,7 +132,7 @@ jobs:
   trivy-scan:
     uses: bruce-wh-li/devsecops-tools/.github/workflows/trivy-container.yaml@main
     with:
-      IMAGE: IMAGE_REGISTRY_USER/bcgov-nginx-demo
+      IMAGE: brucecruise/bcgov-nginx-demo
       TAG: latest
 secrets:
       IMAGE_REGISTRY_USER: ${{ secrets.IMAGE_REGISTRY_USER }}
@@ -144,7 +144,7 @@ secrets:
 ### Using Trivy to scan Git repo
 
 ```yaml
-name: trivy-scan-gitrepo
+name: test-trivy-scan-gitrepo.yml
 on:
   push:
     branches:
@@ -176,7 +176,7 @@ jobs:
 ### CodeQL Scan
 
 ```yaml
-name: codeql-scan
+name: test-codeql-scan.yml
 on:
   workflow_dispatch:
   push:
@@ -190,7 +190,7 @@ jobs:
 ### Sonar Repo Scan
 
 ```yaml
-name: sonar-repo-scan
+name: test-sonar-repo-scan.yml
 on:
   workflow_dispatch:
   push:
@@ -215,7 +215,7 @@ jobs:
 ### Sonar Maven Scan
 
 ```yaml
-name: sonar-maven-scan
+name: test-sonar-maven-scan.yml
 on:
   workflow_dispatch:
   push:
@@ -238,7 +238,7 @@ jobs:
 You add several jobs to a single caller workflow and integrate secrurity related components with build and deploy components. Refer to the example below on how to do this.
 
 ```yaml
-name: helm-build-deploy-cicd
+name: test-helm-build-deploy-cicd.yml
 on:
   push:
     branches:
@@ -251,7 +251,8 @@ jobs:
     uses: bruce-wh-li/devsecops-tools/.github/workflows/build-push.yaml@main
     with:
       IMAGE_REGISTRY: docker.io
-      IMAGE: gregnrobinson/bcgov-nginx-demo
+#      IMAGE: gregnrobinson/bcgov-nginx-demo
+      IMAGE: brucecruise/bcgov-nginx-demo
       WORKDIR: ./demo/nginx
     secrets:
       IMAGE_REGISTRY_USER: ${{ secrets.IMAGE_REGISTRY_USER }}
@@ -260,7 +261,8 @@ jobs:
     needs: build-push
     uses: bruce-wh-li/devsecops-tools/.github/workflows/trivy-container.yaml@main
     with:
-      IMAGE: gregnrobinson/bcgov-nginx-demo
+#      IMAGE: gregnrobinson/bcgov-nginx-demo
+      IMAGE: brucecruise/bcgov-nginx-demo
       TAG: latest
   sonar-repo-scan:
     uses: bruce-wh-li/devsecops-tools/.github/workflows/sonar-scanner.yaml@main
