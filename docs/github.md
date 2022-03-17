@@ -26,7 +26,7 @@ Note: This project has been tested on *linux/arm64*, *linux/amd64*, *linux/aarch
 
 ## How to Use
 
-1. To get started, copy one of the [workflow templates](#workflow-templates) to your own repository under `.github/workflows/<workflow_name>`.
+1. To get started, copy one of the [workflow templates](#workflow-templates) to your own repository under `.github/workflows/<workflow_name>.yml`.
 
 2. Create any referenced secrets in **settings > repository secrets**.
 
