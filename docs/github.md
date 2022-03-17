@@ -22,7 +22,7 @@ Note: This project has been tested on *linux/arm64*, *linux/amd64*, *linux/aarch
 
 1. [docker hub account](https://www.docker.com/)
 2. [sonar cloud account](https://www.python.org/)
-[Get your sonar cloud](https://developer.gov.bc.ca/SonarQube-on-OpenShift#sonarcloud)
+- [Get your sonar cloud](https://developer.gov.bc.ca/SonarQube-on-OpenShift#sonarcloud)
 
 ## How to Use
 
@@ -39,7 +39,7 @@ When a workflow is called, it is imported into the callers context, and executes
 ### Docker Build Push
 *It creates nginx image from github repo in ./demo and docker build and push to docker hub*
 ```yaml
-#file name test-docker-build-push.yml
+#file name: test-docker-build-push.yml
 name: docker-build-push
 on:
   workflow_dispatch:
@@ -64,6 +64,7 @@ jobs:
 ### Helm Deploy
 *Need TAILSCALE API to complete the demo to allow access openshift from a github runner*
 ```yaml
+#file name: test-helm-deploy.yml
 name: helm-deploy
 on:
   workflow_dispatch:
@@ -126,7 +127,8 @@ jobs:
 ### Trivy Scan
 
 ```yaml
-name: test-trivy-scan.yml
+#file name: test-trivy-scan.yml
+name: trivy-scan
 on:
   workflow_dispatch:
   push:
@@ -146,7 +148,8 @@ secrets:
 ### Using Trivy to scan Git repo
 
 ```yaml
-name: test-trivy-scan-gitrepo.yml
+#file name: test-trivy-scan-gitrepo.yml
+name: scan-gitrepo
 on:
   push:
     branches:
@@ -178,7 +181,8 @@ jobs:
 ### CodeQL Scan
 
 ```yaml
-name: test-codeql-scan.yml
+#file name: test-codeql-scan.yml
+name: codeql-scan
 on:
   workflow_dispatch:
   push:
@@ -192,7 +196,8 @@ jobs:
 ### Sonar Repo Scan
 
 ```yaml
-name: test-sonar-repo-scan.yml
+#file name: test-sonar-repo-scan.yml
+name: sonar-repo-scan
 on:
   workflow_dispatch:
   push:
@@ -217,7 +222,8 @@ jobs:
 ### Sonar Maven Scan
 
 ```yaml
-name: test-sonar-maven-scan.yml
+#file name: test-sonar-maven-scan.yml
+name: sonar-maven-scan
 on:
   workflow_dispatch:
   push:
@@ -240,7 +246,8 @@ jobs:
 You add several jobs to a single caller workflow and integrate secrurity related components with build and deploy components. Refer to the example below on how to do this.
 
 ```yaml
-name: test-helm-build-deploy-cicd.yml
+#file name: test-helm-build-deploy-cicd.yml
+name: helm-build-deploy-cicd
 on:
   push:
     branches:
