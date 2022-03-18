@@ -18,5 +18,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: echo ("$DOCKER_USER")
+      - name: test
+        run: echo("$DOCKER_USER")
 
