@@ -38,6 +38,11 @@ When a workflow is called, it is imported into the callers context, and executes
 
 ### Docker Build Push
 *It creates nginx image from github repo in ./demo and docker build and push to docker hub*
+setting:
+
+    {
+        flowChart : true
+    }
 
 ```flow
 st=>start: User login
