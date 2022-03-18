@@ -11,13 +11,13 @@ jobs:
    trivy-scan:
      runs-on: ubuntu-latest
      steps:
-#     - name: step_1
-#         uses: bruce-wh-li/devsecops-tools/.github/workflows/trivy-container.yaml@main
-#         with:
+        - name: step_1
+          uses: bruce-wh-li/devsecops-tools/.github/workflows/trivy-container.yaml@main
+          with:
 # Docker Url you want to save image
 #      IMAGE: <docker account>/bcgov-nginx-demo
-#          IMAGE: brucecruise/bcgov-nginx-demo
-#          TAG: latest
+            IMAGE: brucecruise/bcgov-nginx-demo
+            TAG: latest
         - name: step_2
           run: echo "$DOCKER_USER"
 
