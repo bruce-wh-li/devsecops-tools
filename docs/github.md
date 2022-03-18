@@ -28,7 +28,7 @@ Note: This project has been tested on *linux/arm64*, *linux/amd64*, *linux/aarch
 
 1. To get started, copy one of the [workflow templates](#workflow-templates) to your own repository under `.github/workflows/<workflow_name>`.  *<workflow_name> needs to have yml or yaml as extension*
 
-2. Create any referenced secrets in **settings > repository secrets**.
+2. Create any referenced secrets in **Repository Settings tab > Secrets > Actions > New repository secret**.
 
 3. Push a change to trigger the workflow. The workflow will call the `bruce-wh-li/devsecops-tools` repository.
 
@@ -37,23 +37,8 @@ When a workflow is called, it is imported into the callers context, and executes
 ## Workflow Templates
 
 ### Docker Build Push
+
 *It creates nginx image from github repo in ./demo and docker build and push to docker hub*
-setting:
-
-    {
-        flowChart : true
-    }
-
-```flow
-st=>start: User login
-op=>operation: Operation
-cond=>condition: Successful Yes or No?
-e=>end: Into admin
-
-st->op->cond
-cond(yes)->e
-cond(no)->op
-```
 
 ```yaml
 #workflow_name: test-docker-build-push.yml
@@ -79,7 +64,9 @@ jobs:
 [Back to top](#github-actions-templates)
 
 ### Helm Deploy
-_**Need TAILSCALE API to complete the demo to allow access openshift from a github runner**_
+
+_Need TAILSCALE API to complete the demo to allow access openshift from a github runner_
+
 ```yaml
 #workflow_name: test-helm-deploy.yml
 name: helm-deploy
