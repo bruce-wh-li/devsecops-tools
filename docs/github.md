@@ -26,7 +26,7 @@ Note: This project has been tested on *linux/arm64*, *linux/amd64*, *linux/aarch
 
 ## How to Use
 
-1. To get started, copy one of the [workflow templates](#workflow-templates) to your own repository under `.github/workflows/<workflow_name>`.  *<workflow_name> needs to have yml or yaml as extension*
+1. To get started, copy one of the [workflow templates](#workflow-templates) to your own repository under `.github/workflows/<workflow_name>`.  *<workflow_name> needs to have yml or yaml as the file name extension*
 
 2. Create any referenced secrets in **Repository Settings tab > Secrets > Actions > New repository secret**.
 
@@ -101,6 +101,8 @@ jobs:
 
 ### Owasp Scan
 
+_Scan website specified in ZAP_TARGET_URL using OWASP Scantool_ 
+
 ```yaml
 #workflow_name: test-owasp-scan.yml
 name: owasp-scan
@@ -130,6 +132,8 @@ jobs:
 
 ### Trivy Scan
 
+_Trivy Scan the docker image specified_ 
+
 ```yaml
 #workflow_name: test-trivy-scan.yml
 name: trivy-scan
@@ -140,10 +144,9 @@ jobs:
   trivy-scan:
     uses: bruce-wh-li/devsecops-tools/.github/workflows/trivy-container.yaml@main
     with:
+#     IMAGE: <docker account>/bcgov-nginx-demo
       IMAGE: brucecruise/bcgov-nginx-demo
       TAG: latest
-secrets:
-      IMAGE_REGISTRY_USER: ${{ secrets.IMAGE_REGISTRY_USER }}
 ```
 
 [Back to top](#github-actions-templates)
