@@ -9,10 +9,15 @@ env:
 
 jobs:
   trivy-scan:
-    uses: bruce-wh-li/devsecops-tools/.github/workflows/trivy-container.yaml@main
-    with:
+  steps:
+    scan:
+      uses: bruce-wh-li/devsecops-tools/.github/workflows/trivy-container.yaml@main
+      with:
 # Docker Url you want to save image
 #      IMAGE: <docker account>/bcgov-nginx-demo
-      IMAGE: brucecruise/bcgov-nginx-demo
-      TAG: latest
+        IMAGE: brucecruise/bcgov-nginx-demo
+        TAG: latest
+    test:
+        echo "$DOCKER_USER"
+
 
