@@ -11,8 +11,10 @@ jobs:
     with:
 # Docker Url you want to save image
 #      IMAGE: <docker account>/bcgov-nginx-demo
-      IMAGE: ${{ secrets.IMAGE_REGISTRY_USER }}/bcgov-nginx-demo
+      IMAGE: ${{image_name}}/bcgov-nginx-demo
       TAG: latest
+    secrets:
+      image_name: ${{ secrets.IMAGE_REGISTRY_USER}}
 
 
 
