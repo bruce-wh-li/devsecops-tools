@@ -3,6 +3,7 @@ name: docker-build-push
 on:
   workflow_dispatch:
   push:
+  
 jobs:
   build-push:
     uses: bruce-wh-li/devsecops-tools/.github/workflows/build-push.yaml@main
