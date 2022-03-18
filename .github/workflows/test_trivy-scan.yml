@@ -1,5 +1,9 @@
 #workflow_name: test-trivy-scan.yml
 name: trivy-scan
+inputs:
+  image_url:
+   default: {{ secrets.IMAGE_URL }}
+   required: true
 on:
   workflow_dispatch:
   push:
@@ -9,7 +13,7 @@ jobs:
     with:
 # Docker Url you want to save image
 #      IMAGE: <docker account>/bcgov-nginx-demo
-      IMAGE: ${{ secrets.IMAGE_URL }}
+      IMAGE: ${{ image_url }}
       TAG: latest
 
 
