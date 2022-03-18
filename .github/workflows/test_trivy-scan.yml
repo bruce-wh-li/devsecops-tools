@@ -3,10 +3,6 @@ name: trivy-scan
 on:
   workflow_dispatch:
   push:
-
-env:
-  DOCKER_USER: brucecruise
-
 jobs:
   trivy-scan:
     uses: bruce-wh-li/devsecops-tools/.github/workflows/trivy-container.yaml@main
@@ -15,9 +11,5 @@ jobs:
 #      IMAGE: <docker account>/bcgov-nginx-demo
       IMAGE: ${{env.DOCKER_USER}}/bcgov-nginx-demo
       TAG: latest
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: test
-        run: echo("$DOCKER_USER")
+
 
