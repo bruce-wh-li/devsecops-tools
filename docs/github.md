@@ -38,6 +38,18 @@ When a workflow is called, it is imported into the callers context, and executes
 
 ### Docker Build Push
 *It creates nginx image from github repo in ./demo and docker build and push to docker hub*
+
+```flow
+st=>start: User login
+op=>operation: Operation
+cond=>condition: Successful Yes or No?
+e=>end: Into admin
+
+st->op->cond
+cond(yes)->e
+cond(no)->op
+```
+
 ```yaml
 #workflow_name: test-docker-build-push.yml
 name: docker-build-push
