@@ -3,15 +3,13 @@ name: trivy-scan
 on:
   workflow_dispatch:
   push:
-
-
 jobs:
   trivy-scan:
     uses: bruce-wh-li/devsecops-tools/.github/workflows/trivy-container.yaml@main
     with:
 # Docker Url you want to save image
 #      IMAGE: <docker account>/bcgov-nginx-demo
-      IMAGE: ${{secrets.IMAGE_URL}}
+      IMAGE: ${{ secrets.IMAGE_URL }}
       TAG: latest
 
 
