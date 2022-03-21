@@ -1,0 +1,15 @@
+#workflow_name: test-sonar-maven-scan.yml
+name: sonar-maven-scan
+on:
+  workflow_dispatch:
+  push:
+jobs:
+  sonar-scan-mvn:
+    uses: bruce-wh-li/devsecops-tools/.github/workflows/sonar-scanner-mvn.yaml@main
+    with:
+      WORKDIR: ./tekton/demo/maven-test
+# Your Sonar Project Key
+# for example, PROJECT_KEY: bcgov-pipeline-templates,maven-test-bruce
+      PROJECT_KEY: maven-test-bruce
+    secrets:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

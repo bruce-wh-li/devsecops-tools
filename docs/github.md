@@ -191,8 +191,8 @@ jobs:
 ```
 [Back to top](#github-actions-templates)
 ### CodeQL Scan
-e 
-_It scan the source code of language 'python', 'javascript', 'css' in Git Repo_</br>
+ 
+_It scans the source code of language 'python', 'javascript', 'css' in Git Repo_</br>
 _CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python' ]_ 
 
 ```yaml
@@ -210,7 +210,7 @@ jobs:
 
 ### Sonar Repo Scan
 
-It scan the Sonar Cloud project of the organization specified.
+It scans the Sonar Cloud project of the organization specified.
 
 ```yaml
 #workflow_name: test-sonar-repo-scan.yml
@@ -238,6 +238,8 @@ jobs:
 
 ### Sonar Maven Scan
 
+It scans maven project with Maven Source location specified 
+
 ```yaml
 #workflow_name: test-sonar-maven-scan.yml
 name: sonar-maven-scan
@@ -250,8 +252,8 @@ jobs:
     with:
       WORKDIR: ./tekton/demo/maven-test
 # Your Sonar Project Key
-# for example, PROJECT_KEY: bcgov-pipeline-templates
-      PROJECT_KEY: <project key>
+# for example, PROJECT_KEY: bcgov-pipeline-templates,maven-test-bruce
+      PROJECT_KEY: maven-test-bruce
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 ```
