@@ -238,7 +238,7 @@ jobs:
 
 ### Sonar Maven Scan
 
-It scans maven project with Maven Source location specified 
+It scans maven application with Maven Source location specified 
 
 ```yaml
 #workflow_name: test-sonar-maven-scan.yml
