@@ -191,8 +191,8 @@ jobs:
 ```
 [Back to top](#github-actions-templates)
 ### CodeQL Scan
-
-_It scan the source code of the  'python', 'javascript', 'css' in Git Repo_
+e 
+_It scan the source code of language 'python', 'javascript', 'css' in Git Repo_</br>
 _CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python' ]_ 
 
 ```yaml
@@ -210,6 +210,8 @@ jobs:
 
 ### Sonar Repo Scan
 
+It scan the Sonar Cloud project of the organization specified.
+
 ```yaml
 #workflow_name: test-sonar-repo-scan.yml
 name: sonar-repo-scan
@@ -221,12 +223,12 @@ jobs:
     uses: bruce-wh-li/devsecops-tools/.github/workflows/sonar-scanner.yaml@main
     with:
 # Your Sonar Cloud Organization
-# for example, ORG: ci-testing, bruce-ci-testing
+# for example, ORG: ci-testing, bruce-ci-testing, bcgov-sonarcloud
 #     ORG: <sonar_cloud_organization>
-      ORG: {{dev.secretes.SONAR_ORG_KEY}}
+      ORG: bruce-ci-testing
 # Your Project Key
 # for example, PROJECT_KEY: bcgov-pipeline-templates, maven-test-bruce
-      PROJECT_KEY: $${{dev.secretes.SONAR_PROJECT_KEY}}
+      PROJECT_KEY: maven-test-bruce
       URL: https://sonarcloud.io
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
