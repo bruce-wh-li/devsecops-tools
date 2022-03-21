@@ -7,7 +7,7 @@ This project contains all Github Actions templates. To make use of the repositor
   - [Helm Deploy](#helm-deploy)
   - [Owasp Scan](#owasp-scan)
   - [Trivy Scan](#trivy-scan)
-  - [Trivy Repo Scan](#trivy-scan-gitrepo)  
+  - [Trivy Git Repo Scan](#trivy-scan-gitrepo)  
   - [CodeQL Scan](#codeql-scan)
   - [Sonar Repo Scan](#sonar-repo-scan)
   - [Sonar Maven Scan](#sonar-maven-scan)
@@ -211,7 +211,7 @@ jobs:
 
 ### Sonar Repo Scan
 
-It scans the Sonar Cloud project of the organization specified.
+_It scans the Sonar Cloud project of the organization specified._
 
 ```yaml
 #workflow_name: test-sonar-repo-scan.yml
