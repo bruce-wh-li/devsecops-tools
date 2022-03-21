@@ -7,7 +7,7 @@ This project contains all Github Actions templates. To make use of the repositor
   - [Helm Deploy](#helm-deploy)
   - [Owasp Scan](#owasp-scan)
   - [Trivy Scan](#trivy-scan)
-  - [Trivy Git Repo Scan](#trivy-scan-gitrepo)  
+  - [Trivy Git Repo Scan](#trivy-gitrepo-scan)  
   - [CodeQL Scan](#codeql-scan)
   - [Sonar Repo Scan](#sonar-repo-scan)
   - [Sonar Maven Scan](#sonar-maven-scan)
@@ -160,7 +160,7 @@ _It runs Trivy Scanner in Repo Mode and upload scan report to Github Security ta
 
 ```yaml
 #workflow_name: test-trivy-repo.yml
-name: trivy-scan-gitrepo
+name: trivy-gitrepo-scan
 on:
   push:
     branches:
