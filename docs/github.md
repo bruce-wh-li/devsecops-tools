@@ -133,6 +133,7 @@ jobs:
 ### Trivy Scan
 
 _Trivy Scan the docker image specified_ 
+_The docker image was create in previous workflow (test-docker-build-push.yml)_
 
 ```yaml
 #workflow_name: test-trivy-scan.yml
