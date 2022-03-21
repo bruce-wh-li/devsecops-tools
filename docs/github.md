@@ -6,12 +6,13 @@ This project contains all Github Actions templates. To make use of the repositor
   - [Docker Build Push](#docker-build-push)
   - [Helm Deploy](#helm-deploy)
   - [Owasp Scan](#owasp-scan)
-  - [Trivy Scan](#trivy-scan)
   - [Trivy Git Repo Scan](#trivy-gitrepo-scan)  
+  - [Trivy Scan](#trivy-scan)
   - [CodeQL Scan](#codeql-scan)
   - [Sonar Repo Scan](#sonar-repo-scan)
   - [Sonar Maven Scan](#sonar-maven-scan)
   - [Putting it all Together](#putting-it-all-together)
+
 - [Secrets Management](#secrets-management)
 - [Workflow Triggers](#workflow-triggers)
 - [Testing Framework](#testing-framework)
@@ -128,31 +129,7 @@ jobs:
     secrets:
       GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }} # Only required if ZAP_GCP_PUBLISH is TRUE
 ```
-
 [Back to top](#github-actions-templates)
-
-### Trivy Scan
-
-_Trivy Scan the docker image specified_ 
-_The docker image was supposedly created in previous demo workflow (test-docker-build-push.yml)_
-
-```yaml
-#workflow_name: test-trivy-scan.yml
-name: trivy-scan
-on:
-  workflow_dispatch:
-  push:
-jobs:
-  trivy-scan:
-    uses: bruce-wh-li/devsecops-tools/.github/workflows/trivy-container.yaml@main
-    with:
-#     IMAGE: <docker account>/bcgov-nginx-demo
-      IMAGE: brucecruise/bcgov-nginx-demo
-      TAG: latest
-```
-
-[Back to top](#github-actions-templates)
-
 
 ### Trivy Git Repo Scan
 
@@ -190,7 +167,30 @@ jobs:
         with:
           sarif_file: 'trivy-results.sarif'
 ```
+[Back to top](#github-actions-templates)### Trivy Scan
+
+_Trivy Scan the docker image specified_ 
+_The docker image was supposedly created in previous demo workflow (test-docker-build-push.yml)_
+
+```yaml
+#workflow_name: test-trivy-scan.yml
+name: trivy-scan
+on:
+  workflow_dispatch:
+  push:
+jobs:
+  trivy-scan:
+    uses: bruce-wh-li/devsecops-tools/.github/workflows/trivy-container.yaml@main
+    with:
+#     IMAGE: <docker account>/bcgov-nginx-demo
+      IMAGE: brucecruise/bcgov-nginx-demo
+      TAG: latest
+```
+
 [Back to top](#github-actions-templates)
+
+
+
 ### CodeQL Scan
  
 _It scans the source code of language 'python', 'javascript', 'css' in Git Repo_</br>
