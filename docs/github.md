@@ -155,14 +155,18 @@ jobs:
 
 ### Using Trivy to scan Git repo
 
+-It runs Trivy Scanner in Repo Mode and upload scan report to Github Security tab_
+
 ```yaml
-#workflow_name: test-trivy-scan-gitrepo.yml
-name: scan-gitrepo
+#workflow_name: test-trivy-repo.yml
+name: trivy-scan-gitrepo
 on:
   push:
     branches:
       - master
   pull_request:
+  workflow_dispatch:
+  workflow_call:
 jobs:
   build:
     name: Build

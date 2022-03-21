@@ -1,4 +1,4 @@
-#workflow_name: test-trivy_repo.yml
+#workflow_name: test-trivy-repo.yml
 name: trivy-scan-gitrepo
 on:
   push:
@@ -6,6 +6,7 @@ on:
       - master
   pull_request:
   workflow_dispatch:
+  workflow_call:
 jobs:
   build:
     name: Build
