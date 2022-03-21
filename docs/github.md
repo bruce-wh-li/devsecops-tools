@@ -133,7 +133,7 @@ jobs:
 ### Trivy Scan
 
 _Trivy Scan the docker image specified_ 
-_The docker image was create in previous workflow (test-docker-build-push.yml)_
+_The docker image was supposedly created in previous demo workflow (test-docker-build-push.yml)_
 
 ```yaml
 #workflow_name: test-trivy-scan.yml
@@ -155,7 +155,7 @@ jobs:
 
 ### Using Trivy to scan Git repo
 
--It runs Trivy Scanner in Repo Mode and upload scan report to Github Security tab_
+_It runs Trivy Scanner in Repo Mode and upload scan report to Github Security tab_
 
 ```yaml
 #workflow_name: test-trivy-repo.yml
