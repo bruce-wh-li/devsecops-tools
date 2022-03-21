@@ -101,7 +101,7 @@ jobs:
 
 ### Owasp Scan
 
-_Scan website specified in ZAP_TARGET_URL using OWASP Scantool_ 
+_Scan website specified in ZAP_TARGET_URL using OWASP Scan Tool_ 
 
 ```yaml
 #workflow_name: test-owasp-scan.yml
@@ -186,6 +186,9 @@ jobs:
 ```
 [Back to top](#github-actions-templates)
 ### CodeQL Scan
+
+_It scan the source code of the  'python', 'javascript', 'css' in Git Repo_
+_CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python' ]_ 
 
 ```yaml
 #workflow_name: test-codeql-scan.yml
