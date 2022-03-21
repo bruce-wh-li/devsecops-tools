@@ -7,6 +7,7 @@ This project contains all Github Actions templates. To make use of the repositor
   - [Helm Deploy](#helm-deploy)
   - [Owasp Scan](#owasp-scan)
   - [Trivy Scan](#trivy-scan)
+  - [Trivy Repo Scan](#trivy-scan-gitrepo)  
   - [CodeQL Scan](#codeql-scan)
   - [Sonar Repo Scan](#sonar-repo-scan)
   - [Sonar Maven Scan](#sonar-maven-scan)
@@ -153,7 +154,7 @@ jobs:
 [Back to top](#github-actions-templates)
 
 
-### Using Trivy to scan Git repo
+### Trivy Git Repo Scan
 
 _It runs Trivy Scanner in Repo Mode and upload scan report to Github Security tab_
 
@@ -238,7 +239,8 @@ jobs:
 
 ### Sonar Maven Scan
 
-It scans maven application with Maven Source location specified 
+_It scans maven application with Maven Source location specified_ </br>
+_Scan Result can be found in [sonarcloud](https://sonarcloud.io/project/overview?id=maven-test-bruce)_
 
 ```yaml
 #workflow_name: test-sonar-maven-scan.yml
