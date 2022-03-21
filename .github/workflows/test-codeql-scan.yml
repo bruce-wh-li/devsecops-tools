@@ -1,3 +1,4 @@
+#workflow_name: test-codeql-scan.yml
 name: codeql-scan
 on:
   workflow_dispatch:

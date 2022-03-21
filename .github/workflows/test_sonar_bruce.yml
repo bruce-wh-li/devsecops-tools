@@ -1,3 +1,5 @@
+#workflow_name: test-sonar_bruce.yml
+name: test sonar bruce
 on:
   # Trigger analysis when pushing in master or pull requests, and when creating
   # a pull request. 
@@ -7,7 +9,6 @@ on:
   pull_request:
       types: [opened, synchronize, reopened]
   workflow_dispatch:
-name: test sonar bruce
 jobs:
   sonarqube:
     runs-on: ubuntu-latest

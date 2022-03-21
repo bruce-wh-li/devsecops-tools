@@ -1,3 +1,4 @@
+#workflow_name: test-trivy_repo.yml
 name: trivy-scan-gitrepo
 on:
   push:

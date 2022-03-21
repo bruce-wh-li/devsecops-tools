@@ -1,3 +1,4 @@
+#workflow_name: test-sonar_scanner.yml
 name: sonar-maven-scan
 on:
   workflow_dispatch:
