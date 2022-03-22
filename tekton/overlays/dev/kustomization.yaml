@@ -33,3 +33,4 @@ patchesJson6902:
         path: /metadata/annotations
         value:
           tekton.dev/git-0: github.com
+          
