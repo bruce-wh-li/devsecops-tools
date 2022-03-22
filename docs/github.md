@@ -6,13 +6,12 @@ This project contains all Github Actions templates. To make use of the repositor
   - [Docker Build Push](#docker-build-push)
   - [Helm Deploy](#helm-deploy)
   - [Owasp Scan](#owasp-scan)
-  - [Trivy Git Repo Scan](#trivy-gitrepo-scan)  
+  - [Trivy Git Repo Scan](#trivy-git-repo-scan)
   - [Trivy Scan](#trivy-scan)
   - [CodeQL Scan](#codeql-scan)
   - [Sonar Repo Scan](#sonar-repo-scan)
   - [Sonar Maven Scan](#sonar-maven-scan)
   - [Putting it all Together](#putting-it-all-together)
-
 - [Secrets Management](#secrets-management)
 - [Workflow Triggers](#workflow-triggers)
 - [Testing Framework](#testing-framework)
@@ -132,12 +131,10 @@ jobs:
 [Back to top](#github-actions-templates)
 
 ### Trivy Git Repo Scan
-
-_It runs Trivy Scanner in Repo Mode and upload scan report to Github Security tab_
-
+_It runs Trivy Scanner in Repo Mode and uploads scan report to Github Security tab_
 ```yaml
 #workflow_name: test-trivy-repo.yml
-name: trivy-gitrepo-scan
+name: gitrepo-scan
 on:
   push:
     branches:
@@ -167,7 +164,8 @@ jobs:
         with:
           sarif_file: 'trivy-results.sarif'
 ```
-[Back to top](#github-actions-templates)### Trivy Scan
+[Back to top](#github-actions-templates)
+### Trivy Scan
 
 _Trivy Scan the docker image specified_ 
 _The docker image was supposedly created in previous demo workflow (test-docker-build-push.yml)_
