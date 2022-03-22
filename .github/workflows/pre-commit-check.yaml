@@ -1,5 +1,5 @@
 name: pre-commit
-# TEST
+# TEST 2
 on:
   push:
 jobs:
