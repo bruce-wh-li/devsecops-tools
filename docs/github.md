@@ -89,7 +89,8 @@ jobs:
       APP_PORT: "80"
 
       # Used to access Redhat Openshift on an internal IP address from a Github Runner.
-      TAILSCALE: true
+#      TAILSCALE: true
+      TAILSCALE: false 
     secrets:
       IMAGE_REGISTRY_USER: ${{ secrets.IMAGE_REGISTRY_USER }}
       IMAGE_REGISTRY_PASSWORD: ${{ secrets.IMAGE_REGISTRY_PASSWORD }}
@@ -237,7 +238,7 @@ jobs:
 
 ### Sonar Maven Scan
 
-_It scans maven application with Maven Source location specified_ </br>
+_It scans the specified maven application source library_ </br>
 _Scan Result can be found in [sonarcloud](https://sonarcloud.io/project/overview?id=maven-test-bruce)_
 
 ```yaml
