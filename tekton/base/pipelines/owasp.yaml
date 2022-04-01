@@ -22,7 +22,7 @@ spec:
     type: string
   - name: repoUrl
     type: string
-  - name: REPO
+  - name: repo
     type: string
   tasks:
     - name: owasp-scan
