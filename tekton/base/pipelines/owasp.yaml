@@ -20,6 +20,8 @@ spec:
     type: string
   - name: GITHUB_TOKEN
     type: string
+  - name: repoUrl
+    type: string
   - name: REPO
     type: string
   tasks:
@@ -37,6 +39,8 @@ spec:
           value: $(params.githubToken)
         - name: REPO
           value: $(params.repo)
+        - name: REPO_URL
+          value: $(params.repoUrl)
       workspaces:
         - name: source
           workspace: shared-data

@@ -496,6 +496,8 @@ spec:
     value: '2'
   - name: repo
     value: bruce-wh-li/devsecops-tools
+  - name: repoUrl
+    value: git@github.com:bruce-wh-li/devsecops-tools.git
   - name: githubToken
     value: github-pat-token
   workspaces:
