@@ -30,6 +30,9 @@ spec:
     - name: SCAN_DURATION
       description: The duration of the OWASP scan.
       default: "1"
+    - name: GITHUB_TOKEN
+      description: A Github PAT with repo access.
+      default: github-token
     - name: REPO
       description: Repo short form name.
     - name: REPO_URL
