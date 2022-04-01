@@ -18,12 +18,15 @@ spec:
     type: string
   - name: scanDuration
     type: string
-  - name: GITHUB_TOKEN
-    type: string
+  - name: githubToken
+      type: string
+      description: Reference to the secret name storing the github PAT.
   - name: repoUrl
-    type: string
+      type: string
+      description: The git repository URL to clone from.
   - name: repo
-    type: string
+      type: string
+      description: The git repository name.
   tasks:
     - name: owasp-scan
       taskRef:
