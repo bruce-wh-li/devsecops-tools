@@ -48,7 +48,7 @@ spec:
         then
           echo "performing quick scan"
          #zap-baseline.py -t $(params.TARGET_URL) -d -g gen.conf -J owasp-quick-results.json -m $(params.SCAN_DURATION) -I
-         zap-baseline.py -t $(params.TARGET_URL) -d -g gen.conf -r owasp-quick-results.html -m $(params.SCAN_DURATION) -I
+         zap-baseline.py -t $(params.TARGET_URL) -d -g gen.conf -w owasp-quick-results.md -m $(params.SCAN_DURATION) -I
          #codeql database analyze /workspace/owasp-quick-results.json --format=sarif-latest --output=/workspace/owasp-quick-results
          #codeql github upload-results --repository=$(params.REPO) --ref=refs/heads/main --sarif=/workspace/owasp-quick-results
          #cat $(workspaces.owasp-settings.path)/owasp-quick-results.json
