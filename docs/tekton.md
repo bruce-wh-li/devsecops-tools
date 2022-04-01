@@ -494,6 +494,10 @@ spec:
     value: quick
   - name: scanDuration
     value: '2'
+  - name: repo
+    value: bruce-wh-li/devsecops-tools
+  - name: githubToken
+    value: github-pat-token
   workspaces:
   - name: shared-data
     volumeClaimTemplate:
