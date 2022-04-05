@@ -71,4 +71,6 @@ spec:
       workspaces:
         - name: source 
           workspace: shared-data
+        - name: owasp-settings
+          workspace: owasp-settings
 
