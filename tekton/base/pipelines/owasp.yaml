@@ -61,6 +61,8 @@ spec:
     - name: add-issue
       taskRef:
         name: t-add-issuer
+      runAfter:
+       - owasp-scan
       params:
         - name: TITLE
           value: $(params.title)
