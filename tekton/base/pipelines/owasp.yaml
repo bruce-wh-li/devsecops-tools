@@ -62,7 +62,7 @@ spec:
           workspace: owasp-settings
     - name: add-issue
       taskRef:
-        name: add-issue
+        name: t-add-issue
       params:
         - name: TITLE
           value: $(params.title)
