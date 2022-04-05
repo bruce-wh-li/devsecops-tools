@@ -500,12 +500,6 @@ spec:
     value: git@github.com:bruce-wh-li/devsecops-tools.git
   - name: githubToken
     value: github-pat-token
-  - name: title
-    value: 'Tekton Zap Scan Result'
-  - name: body
-    value: ""
-  - name: github-secret
-    value: ""
   workspaces:
   - name: shared-data
     volumeClaimTemplate:

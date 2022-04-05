@@ -27,17 +27,6 @@ spec:
   - name: repo
     type: string
     description: The git repository name.
-  - name: title
-    type: string
-    description: Issue Title
-  - name: body
-    type: string
-    default: ""
-    description: The body of the PR request
-  - name: github-secret
-    type: string
-    default: github
-    description: "The name of the secret that has your github username and token"
   tasks:
     - name: owasp-scan
       taskRef:
@@ -60,17 +49,4 @@ spec:
           workspace: shared-data
         - name: owasp-settings
           workspace: owasp-settings
-    - name: add-issue
-      taskRef:
-        name: t-add-issue
-      params:
-        - name: TITLE
-          value: $(params.title)
-        - name: BODY 
-          value: $(params.body)
-        - name: SECRET
-          value: "$(params.github-secret)"
-      workspaces:
-        - name: source 
-          workspace: shared-data
-
+   
