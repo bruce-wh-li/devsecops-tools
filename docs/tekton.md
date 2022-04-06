@@ -93,6 +93,8 @@ Note: This project has been tested on *linux/arm64*, *linux/amd64*, *linux/aarch
 3. [pip](https://pip.pypa.io/en/stable/installation/)
 4. [github ssh-key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
 5. [github pat](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
+6. [sonar cloud account](https://www.python.org/)
+     - [Get your sonar cloud](https://developer.gov.bc.ca/SonarQube-on-OpenShift#sonarcloud)
 
 ## Installation
 
@@ -382,9 +384,12 @@ For scans with SonarCloud, create a `sonar-project.properties` file at the root 
 
 ```conf
 # sonar-project.properties
+#sonar.organization=bruce-ci-testing
+#sonar.projectKey=maven-test-bruce
 sonar.organization=ci-testing
 sonar.projectKey=tekton
 sonar.host.url=https://sonarcloud.io
+sonar.exclusions=**/*.java
 ```
 
 - **sonarHostUrl**: The SonarQube/SonarCloud instance.
