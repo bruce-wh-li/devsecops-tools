@@ -60,7 +60,7 @@ spec:
           workspace: owasp-settings
     - name: add-issue
       taskRef:
-        name: t-add-issuer
+        name: add-issue
       runAfter:
        - owasp-scan
       params:
