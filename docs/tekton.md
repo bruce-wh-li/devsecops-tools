@@ -189,7 +189,7 @@ spec:
   - name: imageTag
     value: latest
   - name: repoUrl #The git repository URL containing the Dockerfile.
-    value: git@github.com:bruce-wh-li/security-pipeline-templates.git
+    value: git@github.com:bruce-wh-li/devsecops-tools.git
   - name: branchName
     value: main
   - name: dockerfile
@@ -295,7 +295,7 @@ spec:
   - name: mavenImage
     value: index.docker.io/library/maven
   - name: repoUrl
-    value: git@github.com:bruce-wh-li/pipeline-templates.git
+    value: git@github.com:bruce-wh-li/devsecops-tools.git
   - name: branchName
     value: main
   - name: pathToContext
@@ -413,7 +413,7 @@ spec:
   - name: sonarTokenSecret
     value: sonar-token
   - name: repoUrl
-    value: git@github.com:bruce-wh-li/security-pipeline-templates.git
+    value: git@github.com:bruce-wh-li/devsecops-tools.git
   - name: branchName
     value: main
   workspaces:
