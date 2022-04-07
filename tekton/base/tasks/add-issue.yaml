@@ -17,6 +17,9 @@ spec:
     type: string
     default: 'github'
     description: "The name of the secret that has your github username and token"
+  - name: SECRET
+    type: sting
+    default: s''
   steps:
     - name: run-commands
       image: docker.io/michaelin/github-cli:latest
