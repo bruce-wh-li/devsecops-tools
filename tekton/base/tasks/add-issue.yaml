@@ -24,11 +24,13 @@ spec:
         #!/usr/bin/env bash
         # git login
         echo "GH CLI Auth"
-        gh auth login --with-token < ${{ secrets.github-token }}
+        gh auth login --with-token < SECRET
         # git create issue
         gh issue create -t "$(params.title)" -b "$(params.body)"
       workingDir: $(workspaces.source.path)
       env:
+        - name: SECRET
+          value: ${{secrets.github-token}}
         - name: GITHUB_TOKEN
           valueFrom:
             secretKeyRef:
