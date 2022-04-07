@@ -65,11 +65,11 @@ spec:
       runAfter:
        - owasp-scan
       params:
-        - name: TITLE
+        - name: title
           value: $(params.title)
-        - name: BODY 
+        - name: body
           value: $(params.body)
-        - name: GITHUB_SECRET
+        - name: github-secret
           value: $(params.github-secret)
       workspaces:
         - name: source 
