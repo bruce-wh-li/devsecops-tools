@@ -17,9 +17,6 @@ spec:
     type: string
     default: 'github'
     description: "The name of the secret that has your github username and token"
-  - name: SECRET
-    type: string
-    default: ''
   steps:
     - name: run-commands
       image: docker.io/michaelin/github-cli:latest
@@ -27,7 +24,7 @@ spec:
         #!/usr/bin/env bash
         # git login
         echo "GH CLI Auth"
-        gh auth login --with-token < SECRET
+        gh auth login --with-token < env.SECRET.github-token
         # git create issue
         gh issue create -t "$(params.title)" -b "$(params.body)"
       workingDir: $(workspaces.source.path)
