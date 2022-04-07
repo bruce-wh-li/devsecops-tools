@@ -30,7 +30,10 @@ spec:
       workingDir: $(workspaces.source.path)
       env:
         - name: SECRET
-          value: ${{secrets.github-token}}
+          valueFrom:
+            secretKeyRef:
+              name: $(params.github-secret)
+              key: github-token
         - name: GITHUB_TOKEN
           valueFrom:
             secretKeyRef:
