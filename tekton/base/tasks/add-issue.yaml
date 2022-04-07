@@ -6,14 +6,16 @@ spec:
   workspaces:
   - name: source
   params:
-  - name: TITLE
-    default: "Tekton Zap Scan Result"
+  - name: title
+    type: string
     description: Issue Title
-  - name: BODY
+  - name: body
+    type: string
     default: ""
     description: The body of the PR request
-  - name: SECRET
-    type: github-token
+  - name: github-secret
+    type: string
+    default: github
     description: "The name of the secret that has your github username and token"
   steps:
     - name: run-commands
