@@ -58,11 +58,6 @@ spec:
           workspace: shared-data
         - name: owasp-settings
           workspace: owasp-settings
-    - name: ZAP Results
-      uses: JamesIves/github-pages-deploy-action@4.1.6
-        with:
-          branch: zap-scan
-          folder: public/zap
     - name: add-issue
       taskRef:
         name: t-add-issue
