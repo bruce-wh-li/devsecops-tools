@@ -1,11 +1,10 @@
-## ./base/tasks/kustomization.yaml
+
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 namePrefix: t-
 
 resources:
-- add-issue.yaml
 - buildah.yaml
 - git-clone.yaml
 - mvn-build.yaml
@@ -20,3 +19,4 @@ resources:
 - helm-deploy.yaml
 - yq.yaml
 - ./codeql
+- add-issue
