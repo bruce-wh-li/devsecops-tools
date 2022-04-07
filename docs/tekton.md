@@ -506,9 +506,9 @@ spec:
   - name: githubToken
     value: github-pat-token
   - name: title
-    value: 'Tekton Zap Scan Result'
+    value: "Tekton Zap Scan Result"
   - name: body
-    value: ""
+    value: "test"
   - name: github-secret
     value: ""
   workspaces:
