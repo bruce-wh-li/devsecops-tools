@@ -22,6 +22,9 @@ spec:
       image: docker.io/michaelin/github-cli:latest
       script: |
         #!/usr/bin/env bash
+        # git login
+        echo "GH CLI Auth"
+        gh auth login --with-token < ${{ secrets.github-token }}
         # git create issue
         gh issue create -t "$(params.title)" -b "$(params.body)"
       workingDir: $(workspaces.source.path)
