@@ -58,18 +58,10 @@ spec:
           workspace: shared-data
         - name: owasp-settings
           workspace: owasp-settings
-    - name: generate-id
-      taskRef:
-        name: t-generate-id
-        kind: Task
-      runAfter:
-        - owasp-scan
-      workspaces:
-        - name: source
-          workspace: shared-data 
     - name: add-issue
       taskRef:
         name: t-add-issue
+        kind: Task
       runAfter:
        - owasp-scan
       params:
