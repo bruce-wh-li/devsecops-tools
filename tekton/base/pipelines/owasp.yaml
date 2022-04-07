@@ -67,3 +67,18 @@ spec:
       workspaces:
         - name: source
           workspace: shared-data 
+    - name: add-issue
+      taskRef:
+        name: t-add-issue
+      runAfter:
+       - owasp-scan
+      params:
+        - name: TITLE
+          value: $(params.title)
+        - name: BODY 
+          value: $(params.body)
+        - name: GITHUB_SECRET
+          value: $(params.github-secret)
+      workspaces:
+        - name: source 
+          workspace: shared-data
