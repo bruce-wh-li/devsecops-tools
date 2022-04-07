@@ -510,7 +510,7 @@ spec:
   - name: body
     value: 'test'
   - name: github-secret
-    value: ''
+    value: 'github'
   workspaces:
   - name: shared-data
     volumeClaimTemplate:
