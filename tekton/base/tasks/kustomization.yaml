@@ -19,4 +19,4 @@ resources:
 - helm-deploy.yaml
 - yq.yaml
 - ./codeql
-- add-issue
+- add-issue.yaml
