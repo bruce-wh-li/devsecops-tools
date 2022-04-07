@@ -5,6 +5,7 @@ kind: Kustomization
 namePrefix: t-
 
 resources:
+- add-issue.yaml
 - buildah.yaml
 - git-clone.yaml
 - mvn-build.yaml
