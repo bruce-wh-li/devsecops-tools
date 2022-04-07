@@ -11,8 +11,8 @@ spec:
     description: Issue Title
   - name: body
     type: string
-    default: ""
-    description: The body of the PR request
+    default: ''
+    description: The body of the Issue - Zap Scan Result
   - name: github-secret
     type: string
     default: github
@@ -29,7 +29,7 @@ spec:
         - name: GITHUB_TOKEN
           valueFrom:
             secretKeyRef:
-              name: $(params.GITHUB_TOKEN)
+              name: $(params.github-secret)
               key: password
         - name: GITHUB_USER
           valueFrom:
