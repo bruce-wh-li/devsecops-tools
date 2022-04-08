@@ -18,7 +18,17 @@ spec:
     default: 'github'
     description: "The name of the secret that has your github username and token"
   steps:
-    - env:
+    - name: run-commands
+      image: docker.io/michaelin/github-cli:latest
+      script: |
+        #!/usr/bin/env bash
+        # git login
+        echo "GH CLI Auth"
+        gh auth login --with-token < SECRET
+        # git create issue
+        gh issue create -t "$(params.title)" -b "$(params.body)"
+      workingDir: $(workspaces.source.path)
+      env:
         - name: SECRET
           valueFrom:
             secretKeyRef:
@@ -39,14 +49,3 @@ spec:
             secretKeyRef:
               name: $(params.github-secret)
               key: email
-    - name: run-commands
-      image: docker.io/michaelin/github-cli:latest
-      script: |
-        #!/usr/bin/env bash
-        # git login
-        echo "GH CLI Auth"
-        gh auth login --with-token < SECRET
-        # git create issue
-        gh issue create -t "$(params.title)" -b "$(params.body)"
-      workingDir: $(workspaces.source.path)
-    
