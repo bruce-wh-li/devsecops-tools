@@ -524,6 +524,9 @@ spec:
             storage: 1Gi
   - name: owasp-settings
     emptyDir: {}
+  - name: ssh-creds
+    secret:
+      secretName: ssh-key-path
 EOF
 ```
 
