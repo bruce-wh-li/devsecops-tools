@@ -503,6 +503,8 @@ spec:
     value: bruce-wh-li/devsecops-tools
   - name: repoUrl
     value: git@github.com:bruce-wh-li/devsecops-tools.git
+  - name: branchName
+    value: main
   - name: githubToken
     value: github-pat-token
   - name: title
