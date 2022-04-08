@@ -23,11 +23,11 @@ spec:
       script: |
         #!/usr/bin/env bash
         # git login
-        echo "GH CLI Auth"
-        echo $(params.github-secret)
-        echo $SECRET > token.txt
-        gh auth login --with-token < token.txt
-        rm token.txt
+        #echo "GH CLI Auth"
+        #echo $(params.github-secret)
+        #echo $SECRET > token.txt
+        #gh auth login --with-token < token.txt
+        #rm token.txt
 
         # git create issue
         echo "GH Creat issue"
