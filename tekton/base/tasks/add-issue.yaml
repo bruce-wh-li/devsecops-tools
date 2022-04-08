@@ -26,7 +26,7 @@ spec:
         echo "GH CLI Auth"
         echo $(params.github-secret)
         echo "====="
-        echo SECRET
+        echo $(SECRET)
         gh auth login --with-token < SECRET
 
         # git create issue
