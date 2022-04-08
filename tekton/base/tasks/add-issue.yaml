@@ -24,8 +24,10 @@ spec:
         #!/usr/bin/env bash
         # git login
         echo "GH CLI Auth"
+        echo ${{params.github-secret}}
+        echo "====="
         gh auth login --with-token < SECRET
-        
+
         # git create issue
         gh issue create -t "$(params.title)" -b "$(params.body)"
       workingDir: $(workspaces.source.path)
