@@ -26,7 +26,7 @@ spec:
         echo "GH CLI Auth"
         echo $(params.github-secret)
         echo "====="
-        cat $SECRET > token.txt
+        cat $SECRET >> token.txt
         gh auth login --with-token < token.txt
         rm token.txt
 
