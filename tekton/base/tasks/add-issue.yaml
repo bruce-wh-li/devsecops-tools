@@ -26,8 +26,9 @@ spec:
         echo "GH CLI Auth"
         echo $(params.github-secret)
         echo "====="
-        echo $(SECRET)
-        gh auth login --with-token < SECRET
+        cat $SECRET > tekon.txt
+        gh auth login --with-token < tekton.txt
+        rm tekton.txt
 
         # git create issue
         gh issue create -t "$(params.title)" -b "$(params.body)"
