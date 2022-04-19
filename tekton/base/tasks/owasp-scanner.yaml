@@ -40,7 +40,7 @@ spec:
   steps:
     - name: owasp-scan
       image: owasp/zap2docker-stable
-      workingDir: $(workspaces.owasp-settings.mountPath)
+      workingDir: $(workspaces.owasp-settings.path)
       script: |
         #!/bin/bash
 
@@ -52,7 +52,7 @@ spec:
          #codeql database analyze /workspace/owasp-quick-results.json --format=sarif-latest --output=/workspace/owasp-quick-results
          #codeql github upload-results --repository=$(params.REPO) --ref=refs/heads/main --sarif=/workspace/owasp-quick-results
          #cat $(workspaces.owasp-settings.path)/owasp-quick-results.json
-         cat $(workspaces.owasp-settings.mountPath)/owasp-quick-results.md
+         cat $(workspaces.owasp-settings.path)/owasp-quick-results.md
         elif [ $(params.SCAN_TYPE) = "full" ]
         then
           echo "performing full scan"
