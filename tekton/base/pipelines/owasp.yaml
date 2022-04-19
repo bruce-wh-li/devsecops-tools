@@ -4,6 +4,7 @@ metadata:
   name: owasp
 spec:
   workspaces:
+  volumeClaimTemplate:
     - name: shared-data
       description: |
         This workspace will receive the cloned git repo and be passed

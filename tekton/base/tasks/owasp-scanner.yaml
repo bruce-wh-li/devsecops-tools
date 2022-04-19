@@ -20,7 +20,6 @@ spec:
     - name: owasp-settings
       optional: true
       mountPath: /zap/wrk
-      emptyDir: {}
   params:
     - name: TARGET_URL
       description: Host URL where the sonarqube server is running
