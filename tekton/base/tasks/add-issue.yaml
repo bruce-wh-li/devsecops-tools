@@ -35,7 +35,6 @@ spec:
         echo $GITHUB_EMAIL
         #gh issue create -t "$(params.title)" -b "$(params.body)"
         #result=$(< /zap/wrk/owasp-quick-results.md)
-        result=$(< /zap/wrk/owasp-quick-results.md)
         echo "$result"
         gh issue create -t "Tekton Zap Scan Result" -b "$(result)"
       workingDir: $(workspaces.source.path)
