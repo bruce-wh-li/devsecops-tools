@@ -58,6 +58,8 @@ spec:
           value: $(params.repo)
         - name: REPO_URL
           value: $(params.repoUrl)
+        - name: SCAN_RESULT
+          value: "$(tasks.owasp-scan.results.commit)"
       workspaces:
         - name: source
           workspace: shared-data
