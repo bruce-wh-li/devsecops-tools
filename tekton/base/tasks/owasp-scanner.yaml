@@ -40,7 +40,7 @@ spec:
   steps:
     - name: owasp-scan
       image: owasp/zap2docker-stable
-      workingDir: $(workspaces.owasp-settings.mountpath)
+      workingDir: $(workspaces.owasp-settings.mountPath)
       script: |
         #!/bin/bash
 
