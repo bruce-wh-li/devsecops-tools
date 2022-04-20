@@ -40,7 +40,7 @@ spec:
         result=$(< /zap/wrk/owasp-quick-results.md)
         echo "echo"
         echo "$result"
-        gh issue create -t "Tekton Zap Scan Result" -b "$(result)"
+        gh issue create -t "Tekton Zap Scan Result" -b "$result"
       workingDir: $(workspaces.source.path)
       env:
         - name: SECRET
