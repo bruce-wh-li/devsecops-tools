@@ -523,7 +523,14 @@ spec:
           requests:
             storage: 1Gi
   - name: owasp-settings
-    emptyDir: {}
+      volumeClaimTemplate:
+        spec:
+          accessModes:
+            - ReadWriteOnce # access mode may affect how you can use this volume in parallel tasks
+          resources:
+            requests:
+              storage: 1Gi
+  #  emptyDir: {}
   - name: ssh-creds
     secret:
       secretName: ssh-key-path
