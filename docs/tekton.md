@@ -523,9 +523,9 @@ spec:
           requests:
             storage: 1Gi
   - name: owasp-settings
-      volumeClaimTemplate:
-        spec:
-          accessModes:
+    volumeClaimTemplate:
+      spec:
+        accessModes:
         - ReadWriteOnce # access mode may affect how you can use this volume in parallel tasks
         resources:
           requests:
