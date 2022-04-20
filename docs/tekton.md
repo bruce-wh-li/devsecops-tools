@@ -526,7 +526,7 @@ spec:
     volumeClaimTemplate:
       spec:
         accessModes:
-        - ReadWriteMany # access mode may affect how you can use this volume in parallel tasks
+        - ReadWriteOnce # access mode may affect how you can use this volume in parallel tasks
         resources:
           requests:
             storage: 1Gi
