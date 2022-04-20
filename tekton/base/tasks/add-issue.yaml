@@ -5,7 +5,7 @@ metadata:
 spec:
   workspaces:
   - name: source
-  - name: owasp-settings
+  - name: owasp
     optional: true
     mountPath: /zap/wrk
   params:
