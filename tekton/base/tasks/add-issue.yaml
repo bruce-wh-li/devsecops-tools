@@ -34,10 +34,11 @@ spec:
 
         # git create issue
         echo "GH Creat issue"
-        echo $GITHUB_USER
-        echo $GITHUB_EMAIL
+        #echo $GITHUB_USER
+        #echo $GITHUB_EMAIL
         #gh issue create -t "$(params.title)" -b "$(params.body)"
         result=$(< /zap/wrk/owasp-quick-results.md)
+        echo "echo"
         echo "$result"
         gh issue create -t "Tekton Zap Scan Result" -b "$(result)"
       workingDir: $(workspaces.source.path)
