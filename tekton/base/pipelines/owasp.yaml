@@ -42,9 +42,27 @@ spec:
     type: string
     description: "The name of the secret that has your github username and token"
   tasks:
+    - name: fetch-repository
+      taskRef:
+        name: t-git-clone
+        kind: Task
+      workspaces:
+        - name: output
+          workspace: shared-data
+        - name: ssh-directory
+          workspace: ssh-creds
+      params:
+        - name: url
+          value: $(params.repoUrl)
+        - name: deleteExisting
+          value: "true"
+        - name: revision
+          value: $(params.branchName)
     - name: owasp-scan
       taskRef:
         name: t-owasp-scanner
+      runAfter:
+         - t-git-clone
       params:
         - name: TARGET_URL
           value: $(params.targetUrl)
@@ -63,30 +81,13 @@ spec:
           workspace: shared-data
         - name: owasp-settings
           workspace: owasp-settings
-    - name: fetch-repository
-      taskRef:
-        name: t-git-clone
-        kind: Task
-      runAfter:
-       - owasp-scan
-      workspaces:
-        - name: output
-          workspace: shared-data
-        - name: ssh-directory
-          workspace: ssh-creds
-      params:
-        - name: url
-          value: $(params.repoUrl)
-        - name: deleteExisting
-          value: "true"
-        - name: revision
-          value: $(params.branchName)
+
     - name: add-issue
       taskRef:
         name: t-add-issue
         kind: Task
       runAfter:
-       - fetch-repository
+       - t-owasp-scanner
       params:
         - name: title
           value: $(params.title)
