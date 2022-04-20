@@ -62,7 +62,7 @@ spec:
       taskRef:
         name: t-owasp-scanner
       runAfter:
-         - t-git-clone
+        - fetch-repository
       params:
         - name: TARGET_URL
           value: $(params.targetUrl)
@@ -87,7 +87,7 @@ spec:
         name: t-add-issue
         kind: Task
       runAfter:
-       - t-owasp-scanner
+       - owasp-scan
       params:
         - name: title
           value: $(params.title)
