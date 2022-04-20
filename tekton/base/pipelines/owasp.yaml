@@ -74,8 +74,6 @@ spec:
           workspace: shared-data
         - name: ssh-directory
           workspace: ssh-creds
-        - name: owasp-settings
-          workspace: owasp-settings
       params:
         - name: url
           value: $(params.repoUrl)
