@@ -526,10 +526,10 @@ spec:
       volumeClaimTemplate:
         spec:
           accessModes:
-            - ReadWriteOnce # access mode may affect how you can use this volume in parallel tasks
-          resources:
-            requests:
-              storage: 1Gi
+        - ReadWriteOnce # access mode may affect how you can use this volume in parallel tasks
+        resources:
+          requests:
+            storage: 1Gi
   #  emptyDir: {}
   - name: ssh-creds
     secret:
